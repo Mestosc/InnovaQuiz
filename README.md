@@ -1,4 +1,4 @@
-# Trivia
+# Innova Quiz
 
 Este es mi proyecto de juego para la asignatura de LMSXI es un pequeño trivia en el cual hay preguntas principalmente de matematicas y de informatica que no son demasiado complicadas
 
@@ -6,6 +6,17 @@ Este proyecto fue hecho con la ayuda de ChatGPT para el CSS y para alguna cosa e
 
 
 Gracias a la libreria [AnimeJS](https://animejs.com/) que utilice para las animaciones, aqui aproveche un poco de ChatGPT y de la documentacion oficial lo entiendo mejor o eso creo que las animaciones por CSS y puedo aprovechar los objetos del HTML obtenidos en JavaScript, muchas gracias a los desarrolladores de esta herramienta
+
+
+
+## 💻 Imagenes
+
+![Pantalla de bienvenida](image.png)
+
+![Ejemplo de una pantalla de pregunta](image-1.png)
+
+![Ejemplo con seleccion de respuestas](image-2.png)
+
 
 --------------------
 Hecho con ️❤️ por Oscar
