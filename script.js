@@ -109,17 +109,7 @@ let preguntas = [
   pregunta10, // 0.5 pt
   preguntaCSS // 0.5 pt  (bonus)
 ];
-preguntas = shuffleArray(preguntas) // Usando la funcion shuffleArray para organizar el Array de forma aleatoria y que las preguntas sean esas
 
-let puntos = 0 // Los puntos en el juego
-
-let imgFeedback = document.getElementById("feedback-img"); // La imagen que indica si hemos acertado o no
-
-let pregunta = document.getElementById("pregunta")
-let opciones = document.getElementById("opciones")
-
-let puntosCon = document.getElementById("puntos")
-puntosCon.innerHTML = "Puntos: " + puntos;
 
 function generarMensajeFinal(puntos) {
   if (puntos > 8) {
@@ -209,4 +199,20 @@ function shuffleArray(array) {
   return array.sort(() => Math.random() - 0.5);
 }
 
-mostrarPregunta()
+preguntas = shuffleArray(preguntas) // Usando la funcion shuffleArray para organizar el Array de forma aleatoria y que las preguntas sean esas
+
+let puntos = 0 // Los puntos en el juego
+
+let imgFeedback = document.getElementById("feedback-img"); // La imagen que indica si hemos acertado o no
+
+let pregunta = document.getElementById("pregunta")
+let opciones = document.getElementById("opciones")
+  
+let puntosCon = document.getElementById("puntos")
+
+document.getElementById("start").addEventListener("click",function() {
+  document.getElementById("pantalla-incial").style.display = "none"
+  document.getElementById('pantalla-juego').style.display = "flex"
+  puntosCon.innerHTML = "Puntos: " + puntos;
+  mostrarPregunta()
+})
