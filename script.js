@@ -133,7 +133,7 @@ function animarImagen() {
       targets: imgFeedback,
       opacity: [0, 0.5, 1],
       scale: [1, 1.5],
-      duration: 1000,
+      duration: 900,
       easing: 'easeOutCubic'
     }) // Animacion de aparicion, muestra la aparicion del elemento
     .add({
@@ -143,7 +143,7 @@ function animarImagen() {
       targets: imgFeedback,
       scale: [1.5, 1],
       opacity: [1, 0.5, 0],
-      duration: 1000,
+      duration: 600,
       easing: 'easeOutExpo'
     }); // Desaparicion del elemento
 }
