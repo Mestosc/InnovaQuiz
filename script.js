@@ -169,6 +169,7 @@ function mostrarPregunta() {
       i = 0 // Seteamos i a 0 otra vez
       puntos = 0 // Colocamos la puntuacion a 0
       preguntas = shuffleArray(preguntas) // Rebarajamos el Array
+      pregunta.style.userSelect = ""
       mostrarPregunta() // Volvemos a ejecutar esta funcion para empezar otra vez
     })
     return;
