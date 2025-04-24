@@ -1,4 +1,4 @@
-class Pregunta {
+class Pregunta { // Definiendo base para estructurar las preguntas
   constructor(pregunta, respuestaCorrecta, posiblesRespuestas, puntos) {
     this.pregunta = pregunta
     this.respuestaCorrecta = respuestaCorrecta
