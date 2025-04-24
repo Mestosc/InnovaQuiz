@@ -154,7 +154,7 @@ function mostrarPregunta() {
   if (i >= preguntas.length) {
     pregunta.textContent = generarMensajeFinal(puntos); // Generacion del mensaje final usando los puntos que se hayan obtenido
     pregunta.style.userSelect = "none"
-    opciones.innerHTML = '<input type="button" value="Volver a jugar" id="reset"><br></input><input type="button" value="Pantalla de Inicio" id="irInicio"></input>' // generamos el boton de reset para poder volver a empezar el juego si así lo necesitamos
+    opciones.innerHTML = '</input><input type="button" value="Pantalla de Inicio" id="irInicio"><br></input><input type="button" value="Volver a jugar" id="reset">' // generamos el boton de reset para poder volver a empezar el juego si así lo necesitamos
     document.getElementById("irInicio").addEventListener("click",function() {
       document.getElementById("pantalla-incial").style.display = "block"
     document.getElementById('pantalla-juego').style.display = "none"

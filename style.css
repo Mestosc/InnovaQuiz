@@ -1,5 +1,8 @@
 /* Ambas pantallas se centran igual que el <body> */
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+  font-family: "Roboto";
+}
 section#pantalla-juego {
   display: none;
   flex-direction: column;
@@ -84,6 +87,8 @@ body {
 }
 
 p {
+  display: flex;
+  flex-direction: column;
   font-size: 1.2rem;
   background: #ffffff10;
   padding: 10px 20px;
@@ -127,13 +132,25 @@ p {
   z-index: 9999;
 }
 
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+  user-select: none;
+}
+
 #reset {
   appearance: none;
   /* limpia estilos nativos */
   padding: 12px 28px;
+  justify-content: center;
+  align-items: center;
   font-size: 1.1rem;
   font-family: inherit;
   font-weight: 600;
+  margin: 10px;
   color: #fff;
   background: #ff4e50;
   /* rojo coral */
