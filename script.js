@@ -163,6 +163,7 @@ function mostrarPregunta() {
   imgFeedback.style.opacity = 0 // Nos aseguramos de que la opacidad este a 0 ya que luego necesitamos cambiar sobre uno
   if (i >= preguntas.length) {
     pregunta.textContent = generarMensajeFinal(puntos); // Generacion del mensaje final usando los puntos que se hayan obtenido
+    pregunta.style.userSelect = "none"
     opciones.innerHTML = '<input type="button" value=" Resetear" id="reset"></input>' // generamos el boton de reset para poder volver a empezar el juego si así lo necesitamos
     document.getElementById("reset").addEventListener("click", function () { // Hacemos el reset
       i = 0 // Seteamos i a 0 otra vez
