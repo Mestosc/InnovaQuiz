@@ -1,13 +1,13 @@
 class Pregunta {
-    constructor(pregunta,respuestaCorrecta,posiblesRespuestas,puntos) {
-	this.pregunta = pregunta
-	this.respuestaCorrecta = respuestaCorrecta
-	this.posiblesRespuestas = posiblesRespuestas
-	this.puntos = puntos
+  constructor(pregunta, respuestaCorrecta, posiblesRespuestas, puntos) {
+    this.pregunta = pregunta
+    this.respuestaCorrecta = respuestaCorrecta
+    this.posiblesRespuestas = posiblesRespuestas
+    this.puntos = puntos
   }
-   compararRespuesta(respuestaUsuario) {
-       return this.respuestaCorrecta == respuestaUsuario
-   }
+  compararRespuesta(respuestaUsuario) {
+    return this.respuestaCorrecta == respuestaUsuario
+  }
 }
 // ─ Alta (2 pts c/u) ─────────────────────────────
 const pregunta2 = new Pregunta(
@@ -121,83 +121,84 @@ let puntosCon = document.getElementById("puntos")
 puntosCon.innerHTML = "Puntos: " + puntos;
 
 function generarMensajeFinal(puntos) {
-    if (puntos>8) {
-	return "Tienes unos conocimientos sobresalientes"
-    } else if (puntos>= 7) {
-	return "Tienes unos conocimientos notables"
-    } else if (puntos > 5) {
-	return "Tienes unos conocimientos aprobatorios"
-    } else if (puntos == 5) {
-	return "Tienes unos conocimientos suficientes"
-    } else {
-	return "Has suspendido"
-    }
+  if (puntos > 8) {
+    return "Tienes unos conocimientos sobresalientes"
+  } else if (puntos >= 7) {
+    return "Tienes unos conocimientos notables"
+  } else if (puntos > 5) {
+    return "Tienes unos conocimientos aprobatorios"
+  } else if (puntos == 5) {
+    return "Tienes unos conocimientos suficientes"
+  } else {
+    return "Has suspendido"
+  }
 }
 let i = 0;
+
 function animarImagen() {
-    anime.set(imgFeedback, { scale: 1, opacity: 1 });
-    anime.timeline({autoplay: true})
+  anime.set(imgFeedback, { scale: 1, opacity: 1 });
+  anime.timeline({ autoplay: true })
     .add({
-	targets: imgFeedback,
-	scale: [1, 1.5],
-	duration: 900,
-	easing: 'easeOutCubic'
+      targets: imgFeedback,
+      scale: [1, 1.5],
+      duration: 900,
+      easing: 'easeOutCubic'
     })
-     .add({
+    .add({
       duration: 200    // solo tiempo, sin cambiar propiedades
     })
-     .add({
+    .add({
       targets: imgFeedback,
-      scale:   [1.5, 1],
+      scale: [1.5, 1],
       opacity: [1, 0],
       duration: 600,
-      easing:  'easeOutExpo'
+      easing: 'easeOutExpo'
     });
-    
+
 }
 function mostrarPregunta() {
-    imgFeedback.style.opacity = 0
-    if (i >= preguntas.length) {
-	pregunta.textContent = generarMensajeFinal(puntos);
-	opciones.innerHTML = '<input type="button" value=" Resetear" id="reset"></input>'
-	document.getElementById("reset").addEventListener("click", function() {
-	    i = 0
-	    puntos = 0
-	    preguntas = shuffleArray(preguntas)
-	    mostrarPregunta()
-	})
-	return;
-    } 
-      let p = preguntas[i]
-      pregunta.textContent = p.pregunta;
-      opciones.innerHTML = anadirPosiblesRespuestas(p.posiblesRespuestas)
-      puntosCon.innerHTML = "Puntos: " + puntos
-      let selrespuesta = document.getElementById("selrespuesta");
-      selrespuesta.addEventListener("change", function () {
-           let respuestaUsuario = parseInt(this.value);
-           if (p.compararRespuesta(respuestaUsuario)) {
-               puntos+=p.puntos;
-               puntosCon.innerHTML = "Puntos: " + puntos;
-	       imgFeedback.src = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSIyNDBweCIgaGVpZ2h0PSIyNDBweCI+PHBhdGggZmlsbD0iIzRjYWY1MCIgZD0iTTQ0LDI0YzAsMTEuMDQ1LTguOTU1LDIwLTIwLDIwUzQsMzUuMDQ1LDQsMjRTMTIuOTU1LDQsMjQsNFM0NCwxMi45NTUsNDQsMjR6Ii8+PHBhdGggZmlsbD0iI2NjZmY5MCIgZD0iTTM0LjYwMiwxNC42MDJMMjEsMjguMTk5bC01LjYwMi01LjU5OGwtMi43OTcsMi43OTdMMjEsMzMuODAxbDE2LjM5OC0xNi40MDJMMzQuNjAyLDE0LjYwMnoiLz48L3N2Zz4="
-           } else {
-	       imgFeedback.src = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSIyNDBweCIgaGVpZ2h0PSIyNDBweCI+PHBhdGggZmlsbD0iI2Y0NDMzNiIgZD0iTTQ0LDI0YzAsMTEuMDQ1LTguOTU1LDIwLTIwLDIwUzQsMzUuMDQ1LDQsMjRTMTIuOTU1LDQsMjQsNFM0NCwxMi45NTUsNDQsMjR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTI5LjY1NiwxNS41MTZsMi44MjgsMi44MjhsLTE0LjE0LDE0LjE0bC0yLjgyOC0yLjgyOEwyOS42NTYsMTUuNTE2eiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0zMi40ODQsMjkuNjU2bC0yLjgyOCwyLjgyOGwtMTQuMTQtMTQuMTRsMi44MjgtMi44MjhMMzIuNDg0LDI5LjY1NnoiLz48L3N2Zz4="
-	}
-	  animarImagen()
-	  setTimeout(() => {
-            i++;
-            mostrarPregunta();
-        }, 1700); // Espera 1.5 segundos antes de pasar
-    });
+  imgFeedback.style.opacity = 0
+  if (i >= preguntas.length) {
+    pregunta.textContent = generarMensajeFinal(puntos);
+    opciones.innerHTML = '<input type="button" value=" Resetear" id="reset"></input>'
+    document.getElementById("reset").addEventListener("click", function () {
+      i = 0
+      puntos = 0
+      preguntas = shuffleArray(preguntas)
+      mostrarPregunta()
+    })
+    return;
+  }
+  let p = preguntas[i]
+  pregunta.textContent = p.pregunta;
+  opciones.innerHTML = anadirPosiblesRespuestas(p.posiblesRespuestas)
+  puntosCon.innerHTML = "Puntos: " + puntos
+  let selrespuesta = document.getElementById("selrespuesta");
+  selrespuesta.addEventListener("change", function () {
+    let respuestaUsuario = parseInt(this.value);
+    if (p.compararRespuesta(respuestaUsuario)) {
+      puntos += p.puntos;
+      puntosCon.innerHTML = "Puntos: " + puntos;
+      imgFeedback.src = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSIyNDBweCIgaGVpZ2h0PSIyNDBweCI+PHBhdGggZmlsbD0iIzRjYWY1MCIgZD0iTTQ0LDI0YzAsMTEuMDQ1LTguOTU1LDIwLTIwLDIwUzQsMzUuMDQ1LDQsMjRTMTIuOTU1LDQsMjQsNFM0NCwxMi45NTUsNDQsMjR6Ii8+PHBhdGggZmlsbD0iI2NjZmY5MCIgZD0iTTM0LjYwMiwxNC42MDJMMjEsMjguMTk5bC01LjYwMi01LjU5OGwtMi43OTcsMi43OTdMMjEsMzMuODAxbDE2LjM5OC0xNi40MDJMMzQuNjAyLDE0LjYwMnoiLz48L3N2Zz4="
+    } else {
+      imgFeedback.src = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSIyNDBweCIgaGVpZ2h0PSIyNDBweCI+PHBhdGggZmlsbD0iI2Y0NDMzNiIgZD0iTTQ0LDI0YzAsMTEuMDQ1LTguOTU1LDIwLTIwLDIwUzQsMzUuMDQ1LDQsMjRTMTIuOTU1LDQsMjQsNFM0NCwxMi45NTUsNDQsMjR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTI5LjY1NiwxNS41MTZsMi44MjgsMi44MjhsLTE0LjE0LDE0LjE0bC0yLjgyOC0yLjgyOEwyOS42NTYsMTUuNTE2eiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0zMi40ODQsMjkuNjU2bC0yLjgyOCwyLjgyOGwtMTQuMTQtMTQuMTRsMi44MjgtMi44MjhMMzIuNDg0LDI5LjY1NnoiLz48L3N2Zz4="
+    }
+    animarImagen()
+    setTimeout(() => {
+      i++;
+      mostrarPregunta();
+    }, 1700); // Espera 1.5 segundos antes de pasar
+  });
 }
 
 function anadirPosiblesRespuestas(posiblesRespuestas) {
-    let finalRespuesta = '<select name="opcion_respuesta" id="selrespuesta">'
-    finalRespuesta += '<option disabled selected value="">Elige una opción</option>';
-    for (let i = 0;i<posiblesRespuestas.length;i++) {
-	finalRespuesta = finalRespuesta + `<option value="${i+1}">${posiblesRespuestas[i]}</option>`
-    }
-    finalRespuesta = finalRespuesta + "</select>"
-    return finalRespuesta
+  let finalRespuesta = '<select name="opcion_respuesta" id="selrespuesta">'
+  finalRespuesta += '<option disabled selected value="">Elige una opción</option>';
+  for (let i = 0; i < posiblesRespuestas.length; i++) {
+    finalRespuesta = finalRespuesta + `<option value="${i + 1}">${posiblesRespuestas[i]}</option>`
+  }
+  finalRespuesta = finalRespuesta + "</select>"
+  return finalRespuesta
 }
 function shuffleArray(array) {
   return array.sort(() => Math.random() - 0.5);
