@@ -111,8 +111,9 @@ let preguntas = [
 ];
 preguntas = shuffleArray(preguntas)
 console.log(preguntas)
-let puntos = 0
-let imgFeedback = document.getElementById("feedback-img");
+let puntos = 0 // Los puntos en el juego
+
+let imgFeedback = document.getElementById("feedback-img"); // La imagen que indica si hemos acertado o no
 
 let pregunta = document.getElementById("pregunta")
 let opciones = document.getElementById("opciones")
@@ -136,16 +137,17 @@ function generarMensajeFinal(puntos) {
 let i = 0;
 
 function animarImagen() {
-  anime.set(imgFeedback, { scale: 1, opacity: 1 });
-  anime.timeline({ autoplay: true })
+  imgFeedback.style.display = "block"
+  anime.set(imgFeedback, { scale: 1, opacity: 1 }); // Defino que la opacidad y la escala sea la adecuada para que la animacion se vea coherente siempre que recurra a ella
+  anime.timeline({ autoplay: true }) // Establezco un conjunto de animaciones que se llevaran a cabo
     .add({
       targets: imgFeedback,
       scale: [1, 1.5],
       duration: 900,
       easing: 'easeOutCubic'
-    })
+    }) // Animacion de aparicion, muestra la aparicion del elemento
     .add({
-      duration: 200    // solo tiempo, sin cambiar propiedades
+      duration: 200    // solo tiempo, sin cambiar propiedades para que el elemento este ahi un ratito corto que al menos permita verlo
     })
     .add({
       targets: imgFeedback,
@@ -153,10 +155,11 @@ function animarImagen() {
       opacity: [1, 0],
       duration: 600,
       easing: 'easeOutExpo'
-    });
+    }); // Desaparicion del elemento
 
 }
 function mostrarPregunta() {
+  imgFeedback.style.display = "none"
   imgFeedback.style.opacity = 0
   if (i >= preguntas.length) {
     pregunta.textContent = generarMensajeFinal(puntos);
@@ -188,7 +191,7 @@ function mostrarPregunta() {
       i++;
       mostrarPregunta();
     }, 1700); // Espera 1.5 segundos antes de pasar
-  });
+  })
 }
 
 function anadirPosiblesRespuestas(posiblesRespuestas) {

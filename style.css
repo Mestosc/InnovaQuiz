@@ -77,14 +77,14 @@ body {
   text-align: center;
 }
 
-
-
 #feedback-img {
-  display: none;
+  display: block;
   position: fixed;
+  margin-bottom: 20px;
   margin: 0 auto;           /* Centrada */
   align-items: center;
   justify-content: center;
+  user-select: none;
   max-height: 150px;
   z-index: 9999;
 }
