@@ -12,6 +12,7 @@ section#pantalla-juego {
 h1 {
     user-select: none;
 }
+
 /* Evita que el <br> meta espacio extra en la pantalla inicial */
 #pantalla-inicial br { display: none; }
 body {
@@ -172,6 +173,37 @@ p {
 }
 
 #start:active {
+  transform: scale(.97);
+  box-shadow: 0 2px 6px #00000060 inset;
+  filter: brightness(.9);
+}
+
+#irInicio {
+  appearance: none;
+  /* limpia estilos nativos */
+  padding: 12px 28px;
+  display:block;      /* lo convierte en bloque */
+  margin:0 auto;      /* auto‑márgenes lo centran horizontalmente */
+  font-size: 1.1rem;
+  font-family: inherit;
+  font-weight: 600;
+  color: #fff;
+  /* rojo coral */
+  background: linear-gradient(135deg, #32c866, #2cb84d); /* verde esmeralda */
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px #00000040;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+
+#irInicio:hover {
+  transform: scale(1.07);
+  box-shadow: 0 6px 14px #00000060;
+  cursor: pointer;
+}
+
+#irInicio:active {
   transform: scale(.97);
   box-shadow: 0 2px 6px #00000060 inset;
   filter: brightness(.9);

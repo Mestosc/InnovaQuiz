@@ -124,7 +124,7 @@ function generarMensajeFinal(puntos) {
     return "Has suspendido"
   }
 }
-let i = 0; // Variable que representa el indice de la lista sobre la que vamos a hacer
+
 
 function animarImagen() {
   imgFeedback.style.display = "block"
@@ -154,7 +154,11 @@ function mostrarPregunta() {
   if (i >= preguntas.length) {
     pregunta.textContent = generarMensajeFinal(puntos); // Generacion del mensaje final usando los puntos que se hayan obtenido
     pregunta.style.userSelect = "none"
-    opciones.innerHTML = '<input type="button" value=" Resetear" id="reset"></input>' // generamos el boton de reset para poder volver a empezar el juego si así lo necesitamos
+    opciones.innerHTML = '<input type="button" value="Volver a jugar" id="reset"><br></input><input type="button" value="Pantalla de Inicio" id="irInicio"></input>' // generamos el boton de reset para poder volver a empezar el juego si así lo necesitamos
+    document.getElementById("irInicio").addEventListener("click",function() {
+      document.getElementById("pantalla-incial").style.display = "block"
+    document.getElementById('pantalla-juego').style.display = "none"
+    })
     document.getElementById("reset").addEventListener("click", function () { // Hacemos el reset
       i = 0 // Seteamos i a 0 otra vez
       puntos = 0 // Colocamos la puntuacion a 0
@@ -201,18 +205,20 @@ function shuffleArray(array) {
 
 preguntas = shuffleArray(preguntas) // Usando la funcion shuffleArray para organizar el Array de forma aleatoria y que las preguntas sean esas
 
-let puntos = 0 // Los puntos en el juego
 
 let imgFeedback = document.getElementById("feedback-img"); // La imagen que indica si hemos acertado o no
 
 let pregunta = document.getElementById("pregunta")
 let opciones = document.getElementById("opciones")
-  
+let puntos; // Puntos
+let i; // Variable que representa el indice de la lista sobre la que vamos a hacer
 let puntosCon = document.getElementById("puntos")
 
 document.getElementById("start").addEventListener("click",function() {
   document.getElementById("pantalla-incial").style.display = "none"
   document.getElementById('pantalla-juego').style.display = "flex"
+  puntos = 0 // Los puntos en el juego
+  i = 0
   puntosCon.innerHTML = "Puntos: " + puntos;
   mostrarPregunta()
 })
