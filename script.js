@@ -128,12 +128,12 @@ function generarMensajeFinal(puntos) {
 
 function animarImagen() {
   imgFeedback.style.display = "block"
-  anime.set(imgFeedback, { scale: 1, opacity: 1 }); // Defino que la opacidad y la escala sea la adecuada para que la animacion se vea coherente siempre que recurra a ella
   anime.timeline({ autoplay: true }) // Establezco un conjunto de animaciones que se llevaran a cabo
     .add({
       targets: imgFeedback,
+      opacity: [0, 0.5, 1],
       scale: [1, 1.5],
-      duration: 900,
+      duration: 1000,
       easing: 'easeOutCubic'
     }) // Animacion de aparicion, muestra la aparicion del elemento
     .add({
@@ -142,8 +142,8 @@ function animarImagen() {
     .add({
       targets: imgFeedback,
       scale: [1.5, 1],
-      opacity: [1, 0],
-      duration: 600,
+      opacity: [1, 0.5, 0],
+      duration: 1000,
       easing: 'easeOutExpo'
     }); // Desaparicion del elemento
 }
@@ -203,11 +203,8 @@ function shuffleArray(array) {
   return array.sort(() => Math.random() - 0.5);
 }
 
-preguntas = shuffleArray(preguntas) // Usando la funcion shuffleArray para organizar el Array de forma aleatoria y que las preguntas sean esas
-
 
 let imgFeedback = document.getElementById("feedback-img"); // La imagen que indica si hemos acertado o no
-
 let pregunta = document.getElementById("pregunta")
 let opciones = document.getElementById("opciones")
 let puntos; // Puntos
@@ -217,8 +214,8 @@ let puntosCon = document.getElementById("puntos")
 document.getElementById("start").addEventListener("click",function() {
   document.getElementById("pantalla-incial").style.display = "none"
   document.getElementById('pantalla-juego').style.display = "flex"
+  preguntas = shuffleArray(preguntas) // Usando la funcion shuffleArray para organizar el Array de forma aleatoria y que las preguntas sean esas
   puntos = 0 // Los puntos en el juego
   i = 0
-  puntosCon.innerHTML = "Puntos: " + puntos;
   mostrarPregunta()
 })
