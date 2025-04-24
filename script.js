@@ -109,8 +109,8 @@ let preguntas = [
   pregunta10, // 0.5 pt
   preguntaCSS // 0.5 pt  (bonus)
 ];
-preguntas = shuffleArray(preguntas)
-console.log(preguntas)
+preguntas = shuffleArray(preguntas) // Usando la funcion shuffleArray para organizar el Array de forma aleatoria y que las preguntas sean esas
+
 let puntos = 0 // Los puntos en el juego
 
 let imgFeedback = document.getElementById("feedback-img"); // La imagen que indica si hemos acertado o no
@@ -134,7 +134,7 @@ function generarMensajeFinal(puntos) {
     return "Has suspendido"
   }
 }
-let i = 0;
+let i = 0; // Variable que representa el indice de la lista sobre la que vamos a hacer
 
 function animarImagen() {
   imgFeedback.style.display = "block"
@@ -156,19 +156,19 @@ function animarImagen() {
       duration: 600,
       easing: 'easeOutExpo'
     }); // Desaparicion del elemento
-
 }
+
 function mostrarPregunta() {
-  imgFeedback.style.display = "none"
-  imgFeedback.style.opacity = 0
+  imgFeedback.style.display = "none" // Al comienzo eliminamos el elemento para que no interfiera cuando hagamos click en las preguntas
+  imgFeedback.style.opacity = 0 // Nos aseguramos de que la opacidad este a 0 ya que luego necesitamos cambiar sobre uno
   if (i >= preguntas.length) {
-    pregunta.textContent = generarMensajeFinal(puntos);
-    opciones.innerHTML = '<input type="button" value=" Resetear" id="reset"></input>'
-    document.getElementById("reset").addEventListener("click", function () {
-      i = 0
-      puntos = 0
-      preguntas = shuffleArray(preguntas)
-      mostrarPregunta()
+    pregunta.textContent = generarMensajeFinal(puntos); // Generacion del mensaje final usando los puntos que se hayan obtenido
+    opciones.innerHTML = '<input type="button" value=" Resetear" id="reset"></input>' // generamos el boton de reset para poder volver a empezar el juego si así lo necesitamos
+    document.getElementById("reset").addEventListener("click", function () { // Hacemos el reset
+      i = 0 // Seteamos i a 0 otra vez
+      puntos = 0 // Colocamos la puntuacion a 0
+      preguntas = shuffleArray(preguntas) // Rebarajamos el Array
+      mostrarPregunta() // Volvemos a ejecutar esta funcion para empezar otra vez
     })
     return;
   }
