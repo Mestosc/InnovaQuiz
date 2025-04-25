@@ -11,9 +11,9 @@ Gracias a la libreria [AnimeJS](https://animejs.com/) que utilice para las anima
 
 ## 💻 Imagenes
 
-![Pantalla de bienvenida](image.png)
+![Pantalla de Inicio](image.png)
 
-![Ejemplo de una pantalla de pregunta](image-1.png)
+![Ejemplo con Preguntas](image-1.png)
 
 ![Ejemplo con seleccion de respuestas](image-2.png)
 
