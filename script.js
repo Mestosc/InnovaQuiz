@@ -6,13 +6,13 @@ class Pregunta { // Definiendo base para estructurar las preguntas
     this.puntos = puntos
   }
   compararRespuesta(respuestaUsuario) {
-    return this.respuestaCorrecta == respuestaUsuario
+    return this.respuestaCorrecta === respuestaUsuario
   }
 }
 // ─ Alta (2 pts c/u) ─────────────────────────────
 const pregunta2 = new Pregunta(
   "¿Que es HTML?",
-  2,
+  "Lenguaje de Marcado de Hipertexto",
   [
     "Lenguaje de Marcado de Programas",
     "Lenguaje de Marcado de Hipertexto",
@@ -23,7 +23,7 @@ const pregunta2 = new Pregunta(
 
 const pregunta5 = new Pregunta(
   "¿Cuál es la constante que aproxima 3,14159…?",
-  3,
+  "π (pi)",
   ["e", "φ", "π (pi)", "i"],
   2
 );
@@ -31,28 +31,28 @@ const pregunta5 = new Pregunta(
 // ─ Media (1 pt c/u) ─────────────────────────────
 const pregunta1 = new Pregunta(
   "¿Cual es la capital de Inglaterra?",
-  3,
+  "Londres",
   ["Madrid", "Oslo", "Londres"],
   1
 );
 
 const pregunta3 = new Pregunta(
   "¿Cual de estos numeros es irracional?",
-  1,
+  "e",
   ["e", "2/3", "10"],
   1
 );
 
 const pregunta8 = new Pregunta(
   "¿Cómo se llama la sucesión 1, 1, 2, 3, 5, 8, …?",
-  4,
+  "Fibonacci",
   ["Aritmética", "Geométrica", "Harmónica", "Fibonacci"],
   1
 );
 
 const pregunta9 = new Pregunta(
   "¿Cuál es la base numérica más utilizada en informática?",
-  2,
+  "Binario",
   ["Decimal", "Binario", "Hexadecimal", "Octal"],
   1
 );
@@ -60,7 +60,7 @@ const pregunta9 = new Pregunta(
 // ─ Baja (0.5 pt c/u) ────────────────────────────
 const pregunta4 = new Pregunta(
   "¿Que es Programar?",
-  3,
+  "Darle instrucciones al ordenador de manera logica usando herramientas como lenguajes de programacion",
   [
     "Lo que no hace una pizarra",
     "Una cosa rara de informaticos",
@@ -71,14 +71,14 @@ const pregunta4 = new Pregunta(
 
 const pregunta7 = new Pregunta(
   "¿Qué parte del ordenador se llama memoria de acceso aleatorio?",
-  1,
+  "RAM",
   ["RAM", "CPU", "GPU", "SSD"],
   0.5
 );
 
 const pregunta10 = new Pregunta(
   "¿Qué navegador web es desarrollado por Google?",
-  4,
+  "Chrome",
   ["Edge", "Safari", "Firefox", "Chrome"],
   0.5
 );
@@ -86,7 +86,7 @@ const pregunta10 = new Pregunta(
 // ─ Bonus (0.5 pt) ───────────────────────────────
 const preguntaCSS = new Pregunta(
   "¿Que es CSS?",
-  4,
+  "Satanas encarnado y una forma de estilizar aplicaciones y webs",
   [
     "Satanas encarnado",
     "Una forma de estilizar aplicaciones y webs",
@@ -163,10 +163,9 @@ function mostrarPregunta() {
       i = 0 // Seteamos i a 0 otra vez
       puntos = 0 // Colocamos la puntuacion a 0
       preguntas = shuffleArray(preguntas) // Rebarajamos el Array
-      pregunta.style.userSelect = ""
+      pregunta.style.userSelect = "" // Hacemos que la pregunta sea posible
       mostrarPregunta() // Volvemos a ejecutar esta funcion para empezar otra vez
     })
-    return;
   }
   let p = preguntas[i]
   pregunta.textContent = p.pregunta;
@@ -174,7 +173,7 @@ function mostrarPregunta() {
   puntosCon.innerHTML = "Puntos: " + puntos
   let selrespuesta = document.getElementById("selrespuesta");
   selrespuesta.addEventListener("change", function () {
-    let respuestaUsuario = parseInt(this.value);
+    let respuestaUsuario = this.value;
     if (p.compararRespuesta(respuestaUsuario)) {
       puntos += p.puntos;
       puntosCon.innerHTML = "Puntos: " + puntos;
@@ -185,22 +184,23 @@ function mostrarPregunta() {
     animarImagen()
     setTimeout(() => {
       i++;
-      mostrarPregunta();
-    }, 1700); // Espera 1.5 segundos antes de pasar
+      mostrarPregunta(); // Ejecutamos mostrarPregunta 
+    }, 1700); // Espera 1.7 segundos antes de pasar
   })
 }
 
 function anadirPosiblesRespuestas(posiblesRespuestas) {
+  posiblesRespuestas = shuffleArray(posiblesRespuestas) // Barajamos las respuestas para que no esten siempre en el mismo orden
   let finalRespuesta = '<select name="opcion_respuesta" id="selrespuesta">'
-  finalRespuesta += '<option disabled selected value="">Elige una opción</option>';
+  finalRespuesta += '<option disabled selected value=""> Elige una opción</option>';
   for (let i = 0; i < posiblesRespuestas.length; i++) {
-    finalRespuesta = finalRespuesta + `<option value="${i + 1}">${posiblesRespuestas[i]}</option>`
+    finalRespuesta += `<option value="${posiblesRespuestas[i]}">${posiblesRespuestas[i]}</option>`
   }
   finalRespuesta = finalRespuesta + "</select>"
   return finalRespuesta
 }
 function shuffleArray(array) {
-  return array.sort(() => Math.random() - 0.5);
+  return array.sort(() => Math.random() - 0.5)
 }
 
 
