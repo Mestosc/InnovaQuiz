@@ -19,6 +19,6 @@ Gracias a la libreria [AnimeJS](https://animejs.com/) que utilice para las anima
 
 
 --------------------
-Hecho con ️❤️ por Oscar
+Hecho con ❤️ por Oscar
 
 

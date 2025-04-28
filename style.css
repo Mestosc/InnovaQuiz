@@ -121,6 +121,7 @@ p {
 
 #feedback-img {
   display: block;
+  opacity: 0;
   position: fixed;
   margin-bottom: 20px;
   margin: 0 auto;

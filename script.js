@@ -110,6 +110,9 @@ let preguntas = [
   preguntaCSS // 0.5 pt  (bonus)
 ];
 
+function shuffleArray(array) {
+  return array.sort(() => Math.random() - 0.5)
+}
 
 function generarMensajeFinal(puntos) {
   if (puntos > 8) {
@@ -150,7 +153,6 @@ function animarImagen() {
 
 function mostrarPregunta() {
   imgFeedback.style.display = "none" // Al comienzo eliminamos el elemento para que no interfiera cuando hagamos click en las preguntas
-  imgFeedback.style.opacity = 0 // Nos aseguramos de que la opacidad este a 0 ya que luego necesitamos cambiar sobre uno
   if (i >= preguntas.length) {
     pregunta.textContent = generarMensajeFinal(puntos); // Generacion del mensaje final usando los puntos que se hayan obtenido
     pregunta.style.userSelect = "none"
@@ -199,10 +201,6 @@ function anadirPosiblesRespuestas(posiblesRespuestas) {
   finalRespuesta = finalRespuesta + "</select>"
   return finalRespuesta
 }
-function shuffleArray(array) {
-  return array.sort(() => Math.random() - 0.5)
-}
-
 
 let imgFeedback = document.getElementById("feedback-img"); // La imagen que indica si hemos acertado o no
 let pregunta = document.getElementById("pregunta")
