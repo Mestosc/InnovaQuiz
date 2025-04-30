@@ -1,13 +1,13 @@
-class Pregunta { // Definiendo base para estructurar las preguntas
-  constructor(pregunta, respuestaCorrecta, posiblesRespuestas, puntos) {
-    this.pregunta = pregunta
-    this.respuestaCorrecta = respuestaCorrecta
-    this.posiblesRespuestas = posiblesRespuestas
-    this.puntos = puntos
-  }
-  compararRespuesta(respuestaUsuario) {
-    return this.respuestaCorrecta === respuestaUsuario
-  }
+ class Pregunta { // Clase que define las preguntas del cuestionario
+    constructor(pregunta, respuestaCorrecta, posiblesRespuestas, puntos) {
+        this.pregunta = pregunta;
+        this.respuestaCorrecta = respuestaCorrecta;
+        this.posiblesRespuestas = posiblesRespuestas;
+        this.puntos = puntos;
+    }
+    compararRespuesta(respuestaUsuario) {
+        return this.respuestaCorrecta === respuestaUsuario;
+    }
 }
 // ─ Alta (2 pts c/u) ─────────────────────────────
 const pregunta2 = new Pregunta(
@@ -111,7 +111,7 @@ let preguntas = [
 ];
 
 function shuffleArray(array) {
-  return array.sort(() => Math.random() - 0.5)
+    return array.sort(() => Math.random() - 0.5);
 }
 
 function generarMensajeFinal(puntos) {
@@ -155,17 +155,15 @@ function mostrarPregunta() {
   imgFeedback.style.display = "none" // Al comienzo eliminamos el elemento para que no interfiera cuando hagamos click en las preguntas
   if (i >= preguntas.length) {
     pregunta.textContent = generarMensajeFinal(puntos); // Generacion del mensaje final usando los puntos que se hayan obtenido
-    pregunta.style.userSelect = "none"
     opciones.innerHTML = '<button id="irInicio"><i class="fa-solid fa-house"></i> Pantalla de Inicio</button><br><button id="reset"><i class="fa-solid fa-repeat"></i> Volver a jugar</button>' // generamos el boton de reset para poder volver a empezar el juego si así lo necesitamos
-    document.getElementById("irInicio").addEventListener("click",function() {
-      document.getElementById("pantalla-incial").style.display = "block"
-    document.getElementById('pantalla-juego').style.display = "none"
+      document.getElementById("irInicio").addEventListener("click",function() {
+	  document.getElementById("pantalla-incial").style.display = "block"
+	  document.getElementById('pantalla-juego').style.display = "none"
     })
     document.getElementById("reset").addEventListener("click", function () { // Hacemos el reset
       i = 0 // Seteamos i a 0 otra vez
       puntos = 0 // Colocamos la puntuacion a 0
       preguntas = shuffleArray(preguntas) // Rebarajamos el Array
-      pregunta.style.userSelect = "" // Hacemos que la pregunta sea posible
       mostrarPregunta() // Volvemos a ejecutar esta funcion para empezar otra vez
     })
   }
@@ -187,7 +185,7 @@ function mostrarPregunta() {
     setTimeout(() => {
       i++;
       mostrarPregunta(); // Ejecutamos mostrarPregunta 
-    }, 1700); // Espera 1.7 segundos antes de pasar
+    }, 1700); // Espera 1.7 segundos antes de pasar, pensando ponerlo a 1.5
   })
 }
 
@@ -195,8 +193,8 @@ function anadirPosiblesRespuestas(posiblesRespuestas) {
   posiblesRespuestas = shuffleArray(posiblesRespuestas) // Barajamos las respuestas para que no esten siempre en el mismo orden
   let finalRespuesta = '<select name="opcion_respuesta" id="selrespuesta">'
   finalRespuesta += '<option disabled selected value=""> Elige una opción</option>';
-  for (let i = 0; i < posiblesRespuestas.length; i++) {
-    finalRespuesta += `<option value="${posiblesRespuestas[i]}">${posiblesRespuestas[i]}</option>`
+  for (let respuesta of posiblesRespuestas) {
+    finalRespuesta += `<option value="${respuesta}">${respuesta}</option>`
   }
   finalRespuesta = finalRespuesta + "</select>"
   return finalRespuesta
