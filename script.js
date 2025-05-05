@@ -129,13 +129,13 @@ function generarMensajeFinal(puntos) {
 }
 
 
-function animarImagen() {
+function animarImagenFeedback() {
   imgFeedback.style.display = "block"
   anime.timeline({ autoplay: true }) // Establezco un conjunto de animaciones que se llevaran a cabo
     .add({
       targets: imgFeedback,
-      opacity: [0, 0.5, 1],
-      scale: [1, 1.5],
+      opacity: [0, 0.5, 1], // Cambiamos la opacidad hasta 1 progresivamente
+      scale: [1, 1.5], // Escalamos el elemento a lo que necesitamos
       duration: 900,
       easing: 'easeOutCubic'
     }) // Animacion de aparicion, muestra la aparicion del elemento
@@ -144,8 +144,8 @@ function animarImagen() {
     })
     .add({
       targets: imgFeedback,
-      scale: [1.5, 1],
-      opacity: [1, 0.5, 0],
+      scale: [1.5, 1], // Hacemos esos cambios a la inversa
+      opacity: [1, 0.5, 0], // Hacemos que la opacidad cambie desde 1 a cero revirtiendo asi ambas propiedades a su estado orginal
       duration: 600,
       easing: 'easeOutExpo'
     }); // Desaparicion del elemento
@@ -169,7 +169,7 @@ function mostrarPregunta() {
   }
   let p = preguntas[i]
   pregunta.textContent = p.pregunta;
-  opciones.innerHTML = anadirPosiblesRespuestas(p.posiblesRespuestas)
+  opciones.innerHTML = anadirPosiblesRespuestas(p.posiblesRespuestas) // Opciones 
   puntosCon.innerHTML = "Puntos: " + puntos
   let selrespuesta = document.getElementById("selrespuesta");
   selrespuesta.addEventListener("change", function () {
@@ -181,7 +181,7 @@ function mostrarPregunta() {
     } else {
       imgFeedback.src = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSIyNDBweCIgaGVpZ2h0PSIyNDBweCI+PHBhdGggZmlsbD0iI2Y0NDMzNiIgZD0iTTQ0LDI0YzAsMTEuMDQ1LTguOTU1LDIwLTIwLDIwUzQsMzUuMDQ1LDQsMjRTMTIuOTU1LDQsMjQsNFM0NCwxMi45NTUsNDQsMjR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTI5LjY1NiwxNS41MTZsMi44MjgsMi44MjhsLTE0LjE0LDE0LjE0bC0yLjgyOC0yLjgyOEwyOS42NTYsMTUuNTE2eiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0zMi40ODQsMjkuNjU2bC0yLjgyOCwyLjgyOGwtMTQuMTQtMTQuMTRsMi44MjgtMi44MjhMMzIuNDg0LDI5LjY1NnoiLz48L3N2Zz4="
     }
-    animarImagen()
+    animarImagenFeedback()
     setTimeout(() => {
       i++;
       mostrarPregunta(); // Ejecutamos mostrarPregunta 
@@ -191,27 +191,27 @@ function mostrarPregunta() {
 
 function anadirPosiblesRespuestas(posiblesRespuestas) {
   posiblesRespuestas = shuffleArray(posiblesRespuestas) // Barajamos las respuestas para que no esten siempre en el mismo orden
-  let finalRespuesta = '<select name="opcion_respuesta" id="selrespuesta">'
-  finalRespuesta += '<option disabled selected value=""> Elige una opción</option>';
-  for (let respuesta of posiblesRespuestas) {
-    finalRespuesta += `<option value="${respuesta}">${respuesta}</option>`
+  let finalRespuesta = '<select name="opcion_respuesta" id="selrespuesta">' // Definimos finalRespuesta como el principio del select
+  finalRespuesta += '<option disabled selected value=""> Elige una opción</option>'; // Le metemos esta opcion para que sea vea coherente en todas
+  for (let respuesta of posiblesRespuestas) { // Recorremos todas las preguntas
+    finalRespuesta += `<option value="${respuesta}">${respuesta}</option>` // Metemos un elemento option por cada pregunta
   }
-  finalRespuesta = finalRespuesta + "</select>"
-  return finalRespuesta
+  finalRespuesta = finalRespuesta + "</select>" // Cerramos el select
+  return finalRespuesta // Devolvemos el resultado
 }
 
 let imgFeedback = document.getElementById("feedback-img"); // La imagen que indica si hemos acertado o no
-let pregunta = document.getElementById("pregunta")
-let opciones = document.getElementById("opciones")
+let pregunta = document.getElementById("pregunta") // El espacio donde se mostrara la pregunta
+let opciones = document.getElementById("opciones") // El espacio donde se muestran las opciones
 let puntos; // Puntos
 let i; // Variable que representa el indice de la lista sobre la que vamos a hacer
 let puntosCon = document.getElementById("puntos")
 
-document.getElementById("start").addEventListener("click",function() {
-  document.getElementById("pantalla-incial").style.display = "none"
-  document.getElementById('pantalla-juego').style.display = "flex"
+document.getElementById("start").addEventListener("click",function() { // En cuanto le damos al boton de empezar
+  document.getElementById("pantalla-incial").style.display = "none" // Ocultamos la seccion inical
+  document.getElementById('pantalla-juego').style.display = "flex" // Desocultamos seteando la propiedad de la pantalla de juego como flex
   preguntas = shuffleArray(preguntas) // Usando la funcion shuffleArray para organizar el Array de forma aleatoria y que las preguntas sean esas
   puntos = 0 // Los puntos en el juego
-  i = 0
+  i = 0 // Seteamos la variable con la que iteraremos la lista de preguntas
   mostrarPregunta()
 })
