@@ -9,7 +9,7 @@ Gracias a la libreria [AnimeJS](https://animejs.com/) que utilice para las anima
 
 
 
-## 💻 Imagenes
+## 💻 Imágenes
 
 ![Pantalla de Inicio](image.png)
 
