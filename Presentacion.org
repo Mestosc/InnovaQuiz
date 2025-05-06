@@ -325,4 +325,4 @@ p {
 }
 #+end_src
 * Final ❓
-Muchas gracias por vuestro tiempo espero que os haya gustado, esta presentacion fue hecha gracias a [[https://revealjs.com/][RevealJS]]
+Muchas gracias por vuestro tiempo espero que os haya gustado, esta presentación fue hecha gracias a [[https://revealjs.com/][RevealJS]]
