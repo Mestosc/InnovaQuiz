@@ -99,7 +99,7 @@ function mostrarPregunta() {
       i++;
       mostrarPregunta(); // Ejecutamos mostrarPregunta 
     }, 1700); // Espera 1.7 segundos antes de pasar, pensando ponerlo a 1.5
-  })
+  }, {once: true})  // Ese once true es para que el solo se ejecute el event listener una vez ya que como genero el select de forma dinamica cada vez y lo voy llamando he oido que el selrespuesta podria ir añadiendo eventListeners a medida que voy iterando así lo evito 
 }
 #+end_src
 ** Animar Imagen
