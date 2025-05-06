@@ -1,0 +1,224 @@
+#+title: Innova Quiz: Vamos a la aventura
+#+author: Oscar Rodriguez
+#+REVEAL_THEME: night
+#+REVEAL_TRANS: convex
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@4.5.0
+#+options: timestamp:nil num:nil
+#+HTML_HEAD: <base target="_blank">
+
+* ¿Que es Innova Quiz?
+*Innova Quiz* es un pequeño juego de preguntas tipo trivia, desarrollado como proyecto para la asignatura de **LMSXI**. Las preguntas están centradas principalmente en temas de 🧮 matemáticas e 🖥️ informática, y tienen un nivel de dificultad accesible. Eso según el README en  [[https://github.com/Mestosc/InnovaQuiz][Github]]
+
+Características: 
+- Tiene un estilo visual refrescante con una funcionalidad simple de entender 
+- Te da la posibilidad de reinventar una vez las preguntas fallidas
+
+Eso son las características que un usuario más notara
+
+* Visión de lo que es el juego 🕹️
+Aquí se os mostrara un poco el juego
+[[file:index.html][Juego]]
+
+* Vamos a hablar de código 👨‍💻
+Bien aquí somos programadores y probablemente más cosas aquí queremos código así que vamos a echarle un vistazo a algunas de las funciones más importantes
+** Definición de pregunta 
+Defino una plantilla para lo que son las preguntas
+#+begin_src javascript :exports code
+class Pregunta { // Clase que define las preguntas del cuestionario
+    constructor(pregunta, respuestaCorrecta, posiblesRespuestas, puntos) {
+        this.pregunta = pregunta;
+        this.respuestaCorrecta = respuestaCorrecta;
+        this.posiblesRespuestas = posiblesRespuestas;
+        this.puntos = puntos;
+    }
+    compararRespuesta(respuestaUsuario) {
+        return this.respuestaCorrecta === respuestaUsuario;
+    }
+}
+#+end_src
+** Comenzar juego
+Cada vez que queremos volver a empezar el juego (desde el principio) es necesario establecer una serie de valores y ejecutar la función mostrarPregunta, así que lo abstraigo aquí en lugar de poner todo el rato ese mismo proceso 
+#+begin_src javascript :exports code
+function comenzarJuego() {
+    i = 0 // Seteamos i a 0 otra vez
+    puntos = 0 // Colocamos la puntuacion a 0
+    preguntasFalladas = []
+    reintento = false;
+    preguntas = listarPreguntas() /* Añadimos las preguntas a la lista dado a la manera en la que funciona
+    mostrarPreguntas cuando se va a la ronda de fallos la lista de preguntas pasa a ser solo de las fallidas y se vuelve a recorrer desde 0 solo
+    con esas así que necesitamos colocar las preguntas otra vez*/
+    preguntas = shuffleArray(preguntas) // Rebarajamos el Array
+    mostrarPregunta() // Volvemos a ejecutar esta funcion para empezar otra vez
+}
+#+end_src
+** Mostrar Pregunta 
+Es el núcleo de este juego prácticamente hablando, ya que muestra las preguntas junto con la opción de respuesta e itera por la lista en respuesta al evento de responder hasta que llega al final en el cual
+dependiendo de si hay respuestas que hayas fallado que realizara diversas acciones
+#+begin_src javascript :exports code
+function mostrarPregunta() {
+  imgFeedback.style.display = "none" // Al comienzo eliminamos el elemento para que no interfiera cuando hagamos click en las preguntas
+  if (i >= preguntas.length) {
+      if (preguntasFalladas.length > 0 && !reintento) {
+	  reintento = true
+	  pregunta.textContent = "¿Desea reintentar?"
+	  opciones.innerHTML = 
+        '<button id="reintentarFallidas"><i class="fa-solid fa-repeat"></i> Reintentar fallidas</button><br> <button id="seguirNormal"><i class="fa-solid fa-arrow-right"></i> Seguir normal</button><br>'
+	  document.getElementById("seguirNormal").addEventListener("click", mostrarFaseFinal)
+      // Reintentar solo fallidas
+      document.getElementById("reintentarFallidas").addEventListener("click", function() {
+        preguntas = preguntasFalladas.slice();    // 4. Copiamos solo las fallidas
+        i = 0;
+        mostrarPregunta();
+      }); } 
+      else {
+	  mostrarFaseFinal()
+      }
+  }
+  let p = preguntas[i]
+  pregunta.textContent = p.pregunta;
+  opciones.innerHTML = anadirPosiblesRespuestas(p.posiblesRespuestas) // Opciones 
+  puntosCon.innerHTML = "Puntos: " + puntos
+  let selrespuesta = document.getElementById("selrespuesta");
+  selrespuesta.addEventListener("change", function () {
+    let respuestaUsuario = this.value;
+    if (p.compararRespuesta(respuestaUsuario)) {
+      puntos += p.puntos;
+      puntosCon.innerHTML = "Puntos: " + puntos;
+      imgFeedback.src = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSIyNDBweCIgaGVpZ2h0PSIyNDBweCI+PHBhdGggZmlsbD0iIzRjYWY1MCIgZD0iTTQ0LDI0YzAsMTEuMDQ1LTguOTU1LDIwLTIwLDIwUzQsMzUuMDQ1LDQsMjRTMTIuOTU1LDQsMjQsNFM0NCwxMi45NTUsNDQsMjR6Ii8+PHBhdGggZmlsbD0iI2NjZmY5MCIgZD0iTTM0LjYwMiwxNC42MDJMMjEsMjguMTk5bC01LjYwMi01LjU5OGwtMi43OTcsMi43OTdMMjEsMzMuODAxbDE2LjM5OC0xNi40MDJMMzQuNjAyLDE0LjYwMnoiLz48L3N2Zz4="
+    } else {
+      imgFeedback.src = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSIyNDBweCIgaGVpZ2h0PSIyNDBweCI+PHBhdGggZmlsbD0iI2Y0NDMzNiIgZD0iTTQ0LDI0YzAsMTEuMDQ1LTguOTU1LDIwLTIwLDIwUzQsMzUuMDQ1LDQsMjRTMTIuOTU1LDQsMjQsNFM0NCwxMi45NTUsNDQsMjR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTI5LjY1NiwxNS41MTZsMi44MjgsMi44MjhsLTE0LjE0LDE0LjE0bC0yLjgyOC0yLjgyOEwyOS42NTYsMTUuNTE2eiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0zMi40ODQsMjkuNjU2bC0yLjgyOCwyLjgyOGwtMTQuMTQtMTQuMTRsMi44MjgtMi44MjhMMzIuNDg0LDI5LjY1NnoiLz48L3N2Zz4="
+	preguntasFalladas.push(p)
+    }
+    animarImagenFeedback() // Llamamos a la funcion que anima la imagen Feedback
+    setTimeout(() => {
+      i++;
+      mostrarPregunta(); // Ejecutamos mostrarPregunta 
+    }, 1700); // Espera 1.7 segundos antes de pasar, pensando ponerlo a 1.5
+  })
+}
+#+end_src
+** Animar Imagen
+Permite animar la imagen que nos dice si las cosas están correctas o incorrectas, usando la librería AnimeJS, gracias a Samuel por recomendarmela
+#+begin_src javascript :exports code
+function animarImagenFeedback() {
+  imgFeedback.style.display = "block"
+  anime.timeline({ autoplay: true }) // Establezco un conjunto de animaciones que se llevaran a cabo
+    .add({
+      targets: imgFeedback, // Definimos hacia que objeto aplica la animacion
+      opacity: [0, 0.5, 1], // Cambiamos la opacidad hasta 1 progresivamente
+      scale: [1, 1.5], // Escalamos el elemento a lo que necesitamos
+      duration: 900,
+      easing: 'easeOutCubic'
+    }) // Animacion de aparicion, muestra la aparicion del elemento
+    .add({
+      duration: 200    // solo tiempo, sin cambiar propiedades para que el elemento este ahi un ratito corto que al menos permita verlo
+    })
+    .add({
+      targets: imgFeedback, // Definimos hacia que objeto aplica la animacion
+      scale: [1.5, 1], // Hacemos esos cambios a la inversa
+      opacity: [1, 0.5, 0], // Hacemos que la opacidad cambie desde 1 a cero revirtiendo asi ambas propiedades a su estado orginal
+      duration: 600,
+      easing: 'easeOutExpo'
+    }); // Desaparicion del elemento
+}
+#+end_src
+** Mostrar fase final 
+Muestra la fase final del cuestionario
+#+begin_src javascript :exports code
+function mostrarFaseFinal() {
+    pregunta.textContent = generarMensajeFinal(puntos); // Generacion del mensaje final usando los puntos que se hayan obtenido
+    opciones.innerHTML = '<button id="irInicio"><i class="fa-solid fa-house"></i> Pantalla de Inicio</button><br><button id="reset"><i class="fa-solid fa-repeat"></i> Volver a jugar</button>' // generamos el boton de reset para poder volver a empezar el juego si así lo necesitamos
+      document.getElementById("irInicio").addEventListener("click",function() {
+	  document.getElementById("pantalla-incial").style.display = "block"
+	  document.getElementById('pantalla-juego').style.display = "none"
+    })
+    document.getElementById("reset").addEventListener("click",comenzarJuego)
+}
+#+end_src
+** Generar mensaje final
+Usando una puntuación del 1 al 10 genera un mensaje final
+#+begin_src javascript :exports code
+function generarMensajeFinal(puntos) {
+  if (puntos > 8) {
+    return "Tienes unos conocimientos sobresalientes"
+  } else if (puntos >= 7) {
+    return "Tienes unos conocimientos notables"
+  } else if (puntos > 5) {
+    return "Tienes unos conocimientos aprobatorios"
+  } else if (puntos == 5) {
+    return "Tienes unos conocimientos suficientes"
+  } else {
+    return "Has suspendido"
+  }
+}
+#+end_src
+** Añadir posibles respuestas
+Nos crea un elemento =select= de html que contiene las respuestas
+#+begin_src javascript :exports code
+function anadirPosiblesRespuestas(posiblesRespuestas) {
+  posiblesRespuestas = shuffleArray(posiblesRespuestas) // Barajamos las respuestas para que no esten siempre en el mismo orden
+  let finalRespuesta = '<select name="opcion_respuesta" id="selrespuesta">' // Definimos finalRespuesta como el principio del select
+  finalRespuesta += '<option disabled selected value=""> Elige una opción</option>'; // Le metemos esta opcion para que sea vea coherente en todas
+  for (let respuesta of posiblesRespuestas) { // Recorremos todas las preguntas
+    finalRespuesta += `<option value="${respuesta}">${respuesta}</option>` // Metemos un elemento option por cada pregunta
+  }
+  finalRespuesta = finalRespuesta + "</select>" // Cerramos el select
+  return finalRespuesta // Devolvemos el resultado
+}
+#+end_src
+** Definición de elementos
+#+begin_src javascript :exports code
+// Primero definimos las variables que emplearemos en el flujo principal del programa
+let preguntas; // Las preguntas que se van a hacer
+let preguntasFalladas; // Las preguntas que se han fallado durante el Quiz
+let reintento; // Si se ha hecho el reintento
+let puntos; // Puntos
+let i; // Variable que representa el indice de la lista sobre la que vamos a hacer
+
+
+/* Luego definiremos los elementos sobre los que necesitaremos hacer cosas, como estos elementos siempre van a ser los
+mismos en todo el flujo de ejecucion no necesito poder cambiar sus valores de hecho al contrario eso seria contraproducente asi que son una constante
+*/
+const imgFeedback = document.getElementById("feedback-img"); // La imagen que indica si hemos acertado o no
+const pregunta = document.getElementById("pregunta") // El espacio donde se mostrara la pregunta
+const opciones = document.getElementById("opciones") // El espacio donde se muestran las opciones
+const puntosCon = document.getElementById("puntos") // Espacio donde se muestran los puntos
+
+#+end_src
+** Definición de evento primario
+Se lo denomina así por que es el evento que lo inicia todo desde la primera pantalla activando la pantalla con preguntas
+#+begin_src javascript
+document.getElementById("start").addEventListener("click",function() { // En cuanto le damos al boton de empezar
+  document.getElementById("pantalla-incial").style.display = "none" // Ocultamos la seccion inical
+  document.getElementById('pantalla-juego').style.display = "flex" // Desocultamos seteando la propiedad de la pantalla de juego como flex
+  comenzarJuego() // Añadimos la funcion que define todos los datos necesarios para ejecutar el juego y luego la funcion mostrarPreguntas
+})
+#+end_src
+* Como se estructura 🧩
+Ahora vamos a ver como se estructura el documento HTML que sirve de base para todo esto, el documento a efectos de lo que nosotros vemos se divide en dos secciones, y luego tenemos el head que yo lo voy a mostrar porque tiene alguna
+cosa interesante
+
+** Pantalla inicial
+Esta es la pantalla en la que inicia el jugador 
+#+begin_src html :exports code
+	<section id="pantalla-incial">
+     	<h1>Bienvenido a Innova Quiz</h1>
+		<p class="introduccion">
+			Pon a prueba tus conocimientos respondiendo preguntas sobre tecnología y matemáticas. Cada pregunta tiene un valor de puntos según su dificultad y relevancia. ¡Diviértete y demuestra lo que sabes! 🎮
+		</p>
+		<br>
+	 	<button id="start"><i class="fa-solid fa-play"></i> Empezar</button>
+	</section>
+#+end_src
+** Pantalla de juego 
+Aquí definimos la pantalla de juego y aunque pueda parecer escueto cuando metemos el javascript esta es la más expresiva
+#+begin_src html :exports code
+<section id="pantalla-juego">
+		<img id="feedback-img" src="" alt="">
+		<p id="pregunta"></p>
+		<span id="puntos">Puntos: 0</span>
+		<p id="opciones"></p>
+</section>
+#+end_src
+* Dándole estilo 🎨
+Aunque todo esto esta muy bien no nos sirve si se ve 💩

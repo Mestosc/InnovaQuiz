@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Innova Quiz: Vamos a la aventura</title>
+<meta name="author" content="Oscar Rodriguez"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/night.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<base target="_blank">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Innova Quiz: Vamos a la aventura</h1><p class="subtitle"></p>
+<h2 class="author">Oscar Rodriguez</h2>
+</section>
+<section>
+<section id="slide-orgb1594e3">
+<h2 id="orgb1594e3">¿Que es Innova Quiz?</h2>
+<p>
+<b>Innova Quiz</b> es un pequeño juego de preguntas tipo trivia, desarrollado como proyecto para la asignatura de <b><b>LMSXI</b></b>. Las preguntas están centradas principalmente en temas de 🧮 matemáticas e 🖥️ informática, y tienen un nivel de dificultad accesible. Eso según el README en  <a href="https://github.com/Mestosc/InnovaQuiz">Github</a>
+</p>
+
+<p>
+Características: 
+</p>
+<ul>
+<li>Tiene un estilo visual refrescante con una funcionalidad simple de entender</li>
+<li>Te da la posibilidad de reinventar una vez las preguntas fallidas</li>
+
+</ul>
+
+<p>
+Eso son las características que un usuario más notara
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgcce6796">
+<h2 id="orgcce6796">Visión de lo que es el juego 🕹️</h2>
+<p>
+Aquí se os mostrara un poco el juego
+<a href="index.html">Juego</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org8f6de71">
+<h2 id="org8f6de71">Vamos a hablar de codigo 👨‍💻</h2>
+<p>
+Bien aquí somos programadores y probablemente más cosas aquí queremos código así que vamos a echarle un vistazo a algunas de las funciones más importantes
+</p>
+</section>
+<section id="slide-org20c7df5">
+<h3 id="org20c7df5">Definición de pregunta</h3>
+<p>
+Defino una plantilla para lo que son las preguntas
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7; font-style: italic;">class</span> Pregunta <span style="color: #f38ba8;">{</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Clase que define las preguntas del cuestionario</span>
+    constructor<span style="color: #fab387;">(</span>pregunta, respuestaCorrecta, posiblesRespuestas, puntos<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
+        <span style="color: #fab387;">this</span>.pregunta = pregunta;
+        <span style="color: #fab387;">this</span>.respuestaCorrecta = respuestaCorrecta;
+        <span style="color: #fab387;">this</span>.posiblesRespuestas = posiblesRespuestas;
+        <span style="color: #fab387;">this</span>.puntos = puntos;
+    <span style="color: #fab387;">}</span>
+    compararRespuesta<span style="color: #fab387;">(</span>respuestaUsuario<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
+        <span style="color: #cba6f7; font-style: italic;">return</span> <span style="color: #fab387;">this</span>.respuestaCorrecta === respuestaUsuario;
+    <span style="color: #fab387;">}</span>
+<span style="color: #f38ba8;">}</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-org358b16f">
+<h3 id="org358b16f">Comenzar juego</h3>
+<p>
+Cada vez que queremos volver a empezar el juego (desde el principio) es necesario establecer una serie de valores y ejecutar la función mostrarPregunta, así que lo abstraigo aquí en lugar de poner todo el rato ese mismo proceso 
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7; font-style: italic;">function</span> <span style="color: #89b4fa;">comenzarJuego</span><span style="color: #f38ba8;">()</span> <span style="color: #f38ba8;">{</span>
+    i = 0 <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Seteamos i a 0 otra vez</span>
+    puntos = 0 <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Colocamos la puntuacion a 0</span>
+    preguntasFalladas = <span style="color: #fab387;">[]</span>
+    reintento = <span style="color: #fab387;">false</span>;
+    preguntas = listarPreguntas<span style="color: #fab387;">()</span> <span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">A&#241;adimos las preguntas a la lista dado a la manera en la que funciona</span>
+<span style="color: #6c7086; font-style: italic;">    mostrarPreguntas cuando se va a la ronda de fallos la lista de preguntas pasa a ser solo de las fallidas y se vuelve a recorrer desde 0 solo</span>
+<span style="color: #6c7086; font-style: italic;">    con esas as&#237; que necesitamos colocar las preguntas otra vez</span><span style="color: #6c7086;">*/</span>
+    preguntas = shuffleArray<span style="color: #fab387;">(</span>preguntas<span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Rebarajamos el Array</span>
+    mostrarPregunta<span style="color: #fab387;">()</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Volvemos a ejecutar esta funcion para empezar otra vez</span>
+<span style="color: #f38ba8;">}</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-orgb8de170">
+<h3 id="orgb8de170">Mostrar Pregunta</h3>
+<p>
+Es el núcleo de este juego prácticamente hablando, ya que muestra las preguntas junto con la opción de respuesta e itera por la lista en respuesta al evento de responder hasta que llega al final en el cual
+dependiendo de si hay respuestas que hayas fallado que realizara diversas acciones
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7; font-style: italic;">function</span> <span style="color: #89b4fa;">mostrarPregunta</span><span style="color: #f38ba8;">()</span> <span style="color: #f38ba8;">{</span>
+  imgFeedback.style.display = <span style="color: #a6e3a1;">"none"</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Al comienzo eliminamos el elemento para que no interfiera cuando hagamos click en las preguntas</span>
+  <span style="color: #cba6f7; font-style: italic;">if</span> <span style="color: #fab387;">(</span>i &gt;= preguntas.length<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
+      <span style="color: #cba6f7; font-style: italic;">if</span> <span style="color: #f9e2af;">(</span>preguntasFalladas.length &gt; 0 &amp;&amp; !reintento<span style="color: #f9e2af;">)</span> <span style="color: #f9e2af;">{</span>
+          reintento = <span style="color: #fab387;">true</span>
+          pregunta.textContent = <span style="color: #a6e3a1;">"&#191;Desea reintentar?"</span>
+          opciones.innerHTML = 
+        <span style="color: #a6e3a1;">'&lt;button id="reintentarFallidas"&gt;&lt;i class="fa-solid fa-repeat"&gt;&lt;/i&gt; Reintentar fallidas&lt;/button&gt;&lt;br&gt; &lt;button id="seguirNormal"&gt;&lt;i class="fa-solid fa-arrow-right"&gt;&lt;/i&gt; Seguir normal&lt;/button&gt;&lt;br&gt;'</span>
+          document.getElementById<span style="color: #a6e3a1;">(</span><span style="color: #a6e3a1;">"seguirNormal"</span><span style="color: #a6e3a1;">)</span>.addEventListener<span style="color: #a6e3a1;">(</span><span style="color: #a6e3a1;">"click"</span>, mostrarFaseFinal<span style="color: #a6e3a1;">)</span>
+      <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Reintentar solo fallidas</span>
+      document.getElementById<span style="color: #a6e3a1;">(</span><span style="color: #a6e3a1;">"reintentarFallidas"</span><span style="color: #a6e3a1;">)</span>.addEventListener<span style="color: #a6e3a1;">(</span><span style="color: #a6e3a1;">"click"</span>, <span style="color: #cba6f7; font-style: italic;">function</span><span style="color: #74c7ec;">()</span> <span style="color: #74c7ec;">{</span>
+        preguntas = preguntasFalladas.slice<span style="color: #b4befe;">()</span>;    <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">4. Copiamos solo las fallidas</span>
+        i = 0;
+        mostrarPregunta<span style="color: #b4befe;">()</span>;
+      <span style="color: #74c7ec;">}</span><span style="color: #a6e3a1;">)</span>; <span style="color: #f9e2af;">}</span> 
+      <span style="color: #cba6f7; font-style: italic;">else</span> <span style="color: #f9e2af;">{</span>
+          mostrarFaseFinal<span style="color: #a6e3a1;">()</span>
+      <span style="color: #f9e2af;">}</span>
+  <span style="color: #fab387;">}</span>
+  <span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">p</span> = preguntas<span style="color: #fab387;">[</span>i<span style="color: #fab387;">]</span>
+  pregunta.textContent = p.pregunta;
+  opciones.innerHTML = anadirPosiblesRespuestas<span style="color: #fab387;">(</span>p.posiblesRespuestas<span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Opciones </span>
+  puntosCon.innerHTML = <span style="color: #a6e3a1;">"Puntos: "</span> + puntos
+  <span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">selrespuesta</span> = document.getElementById<span style="color: #fab387;">(</span><span style="color: #a6e3a1;">"selrespuesta"</span><span style="color: #fab387;">)</span>;
+  selrespuesta.addEventListener<span style="color: #fab387;">(</span><span style="color: #a6e3a1;">"change"</span>, <span style="color: #cba6f7; font-style: italic;">function</span> <span style="color: #f9e2af;">()</span> <span style="color: #f9e2af;">{</span>
+    <span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">respuestaUsuario</span> = <span style="color: #fab387;">this</span>.value;
+    <span style="color: #cba6f7; font-style: italic;">if</span> <span style="color: #a6e3a1;">(</span>p.compararRespuesta<span style="color: #74c7ec;">(</span>respuestaUsuario<span style="color: #74c7ec;">)</span><span style="color: #a6e3a1;">)</span> <span style="color: #a6e3a1;">{</span>
+      puntos += p.puntos;
+      puntosCon.innerHTML = <span style="color: #a6e3a1;">"Puntos: "</span> + puntos;
+      imgFeedback.src = <span style="color: #a6e3a1;">"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSIyNDBweCIgaGVpZ2h0PSIyNDBweCI+PHBhdGggZmlsbD0iIzRjYWY1MCIgZD0iTTQ0LDI0YzAsMTEuMDQ1LTguOTU1LDIwLTIwLDIwUzQsMzUuMDQ1LDQsMjRTMTIuOTU1LDQsMjQsNFM0NCwxMi45NTUsNDQsMjR6Ii8+PHBhdGggZmlsbD0iI2NjZmY5MCIgZD0iTTM0LjYwMiwxNC42MDJMMjEsMjguMTk5bC01LjYwMi01LjU5OGwtMi43OTcsMi43OTdMMjEsMzMuODAxbDE2LjM5OC0xNi40MDJMMzQuNjAyLDE0LjYwMnoiLz48L3N2Zz4="</span>
+    <span style="color: #a6e3a1;">}</span> <span style="color: #cba6f7; font-style: italic;">else</span> <span style="color: #a6e3a1;">{</span>
+      imgFeedback.src = <span style="color: #a6e3a1;">"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSIyNDBweCIgaGVpZ2h0PSIyNDBweCI+PHBhdGggZmlsbD0iI2Y0NDMzNiIgZD0iTTQ0LDI0YzAsMTEuMDQ1LTguOTU1LDIwLTIwLDIwUzQsMzUuMDQ1LDQsMjRTMTIuOTU1LDQsMjQsNFM0NCwxMi45NTUsNDQsMjR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTI5LjY1NiwxNS41MTZsMi44MjgsMi44MjhsLTE0LjE0LDE0LjE0bC0yLjgyOC0yLjgyOEwyOS42NTYsMTUuNTE2eiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0zMi40ODQsMjkuNjU2bC0yLjgyOCwyLjgyOGwtMTQuMTQtMTQuMTRsMi44MjgtMi44MjhMMzIuNDg0LDI5LjY1NnoiLz48L3N2Zz4="</span>
+        preguntasFalladas.push<span style="color: #74c7ec;">(</span>p<span style="color: #74c7ec;">)</span>
+    <span style="color: #a6e3a1;">}</span>
+    animarImagenFeedback<span style="color: #a6e3a1;">()</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Llamamos a la funcion que anima la imagen Feedback</span>
+    setTimeout<span style="color: #a6e3a1;">(</span><span style="color: #74c7ec;">()</span> =&gt; <span style="color: #74c7ec;">{</span>
+      i++;
+      mostrarPregunta<span style="color: #b4befe;">()</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Ejecutamos mostrarPregunta </span>
+    <span style="color: #74c7ec;">}</span>, 1700<span style="color: #a6e3a1;">)</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Espera 1.7 segundos antes de pasar, pensando ponerlo a 1.5</span>
+  <span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span>
+<span style="color: #f38ba8;">}</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-orgcd5d85a">
+<h3 id="orgcd5d85a">Animar Imagen</h3>
+<p>
+Permite animar la imagen que nos dice si las cosas están correctas o incorrectas, usando la librería AnimeJS, gracias a Samuel por recomendarmela
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7; font-style: italic;">function</span> <span style="color: #89b4fa;">animarImagenFeedback</span><span style="color: #f38ba8;">()</span> <span style="color: #f38ba8;">{</span>
+  imgFeedback.style.display = <span style="color: #a6e3a1;">"block"</span>
+  anime.timeline<span style="color: #fab387;">(</span><span style="color: #f9e2af;">{</span> autoplay: <span style="color: #fab387;">true</span> <span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Establezco un conjunto de animaciones que se llevaran a cabo</span>
+    .add<span style="color: #fab387;">(</span><span style="color: #f9e2af;">{</span>
+      targets: imgFeedback, <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Definimos hacia que objeto aplica la animacion</span>
+      opacity: <span style="color: #a6e3a1;">[</span>0, 0.5, 1<span style="color: #a6e3a1;">]</span>, <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Cambiamos la opacidad hasta 1 progresivamente</span>
+      scale: <span style="color: #a6e3a1;">[</span>1, 1.5<span style="color: #a6e3a1;">]</span>, <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Escalamos el elemento a lo que necesitamos</span>
+      duration: 900,
+      easing: <span style="color: #a6e3a1;">'easeOutCubic'</span>
+    <span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Animacion de aparicion, muestra la aparicion del elemento</span>
+    .add<span style="color: #fab387;">(</span><span style="color: #f9e2af;">{</span>
+      duration: 200    <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">solo tiempo, sin cambiar propiedades para que el elemento este ahi un ratito corto que al menos permita verlo</span>
+    <span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span>
+    .add<span style="color: #fab387;">(</span><span style="color: #f9e2af;">{</span>
+      targets: imgFeedback, <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Definimos hacia que objeto aplica la animacion</span>
+      scale: <span style="color: #a6e3a1;">[</span>1.5, 1<span style="color: #a6e3a1;">]</span>, <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Hacemos esos cambios a la inversa</span>
+      opacity: <span style="color: #a6e3a1;">[</span>1, 0.5, 0<span style="color: #a6e3a1;">]</span>, <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Hacemos que la opacidad cambie desde 1 a cero revirtiendo asi ambas propiedades a su estado orginal</span>
+      duration: 600,
+      easing: <span style="color: #a6e3a1;">'easeOutExpo'</span>
+    <span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Desaparicion del elemento</span>
+<span style="color: #f38ba8;">}</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-org615a16d">
+<h3 id="org615a16d">Mostrar fase final</h3>
+<p>
+Muestra la fase final del cuestionario
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7; font-style: italic;">function</span> <span style="color: #89b4fa;">mostrarFaseFinal</span><span style="color: #f38ba8;">()</span> <span style="color: #f38ba8;">{</span>
+    pregunta.textContent = generarMensajeFinal<span style="color: #fab387;">(</span>puntos<span style="color: #fab387;">)</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Generacion del mensaje final usando los puntos que se hayan obtenido</span>
+    opciones.innerHTML = <span style="color: #a6e3a1;">'&lt;button id="irInicio"&gt;&lt;i class="fa-solid fa-house"&gt;&lt;/i&gt; Pantalla de Inicio&lt;/button&gt;&lt;br&gt;&lt;button id="reset"&gt;&lt;i class="fa-solid fa-repeat"&gt;&lt;/i&gt; Volver a jugar&lt;/button&gt;'</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">generamos el boton de reset para poder volver a empezar el juego si as&#237; lo necesitamos</span>
+      document.getElementById<span style="color: #fab387;">(</span><span style="color: #a6e3a1;">"irInicio"</span><span style="color: #fab387;">)</span>.addEventListener<span style="color: #fab387;">(</span><span style="color: #a6e3a1;">"click"</span>,<span style="color: #cba6f7; font-style: italic;">function</span><span style="color: #f9e2af;">()</span> <span style="color: #f9e2af;">{</span>
+          document.getElementById<span style="color: #a6e3a1;">(</span><span style="color: #a6e3a1;">"pantalla-incial"</span><span style="color: #a6e3a1;">)</span>.style.display = <span style="color: #a6e3a1;">"block"</span>
+          document.getElementById<span style="color: #a6e3a1;">(</span><span style="color: #a6e3a1;">'pantalla-juego'</span><span style="color: #a6e3a1;">)</span>.style.display = <span style="color: #a6e3a1;">"none"</span>
+    <span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span>
+    document.getElementById<span style="color: #fab387;">(</span><span style="color: #a6e3a1;">"reset"</span><span style="color: #fab387;">)</span>.addEventListener<span style="color: #fab387;">(</span><span style="color: #a6e3a1;">"click"</span>,comenzarJuego<span style="color: #fab387;">)</span>
+<span style="color: #f38ba8;">}</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-org090b124">
+<h3 id="org090b124">Generar mensaje final</h3>
+<p>
+Usando una puntuación del 1 al 10 genera un mensaje final
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7; font-style: italic;">function</span> <span style="color: #89b4fa;">generarMensajeFinal</span><span style="color: #f38ba8;">(</span><span style="color: #cdd6f4;">puntos</span><span style="color: #f38ba8;">)</span> <span style="color: #f38ba8;">{</span>
+  <span style="color: #cba6f7; font-style: italic;">if</span> <span style="color: #fab387;">(</span>puntos &gt; 8<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
+    <span style="color: #cba6f7; font-style: italic;">return</span> <span style="color: #a6e3a1;">"Tienes unos conocimientos sobresalientes"</span>
+  <span style="color: #fab387;">}</span> <span style="color: #cba6f7; font-style: italic;">else</span> <span style="color: #cba6f7; font-style: italic;">if</span> <span style="color: #fab387;">(</span>puntos &gt;= 7<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
+    <span style="color: #cba6f7; font-style: italic;">return</span> <span style="color: #a6e3a1;">"Tienes unos conocimientos notables"</span>
+  <span style="color: #fab387;">}</span> <span style="color: #cba6f7; font-style: italic;">else</span> <span style="color: #cba6f7; font-style: italic;">if</span> <span style="color: #fab387;">(</span>puntos &gt; 5<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
+    <span style="color: #cba6f7; font-style: italic;">return</span> <span style="color: #a6e3a1;">"Tienes unos conocimientos aprobatorios"</span>
+  <span style="color: #fab387;">}</span> <span style="color: #cba6f7; font-style: italic;">else</span> <span style="color: #cba6f7; font-style: italic;">if</span> <span style="color: #fab387;">(</span>puntos == 5<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
+    <span style="color: #cba6f7; font-style: italic;">return</span> <span style="color: #a6e3a1;">"Tienes unos conocimientos suficientes"</span>
+  <span style="color: #fab387;">}</span> <span style="color: #cba6f7; font-style: italic;">else</span> <span style="color: #fab387;">{</span>
+    <span style="color: #cba6f7; font-style: italic;">return</span> <span style="color: #a6e3a1;">"Has suspendido"</span>
+  <span style="color: #fab387;">}</span>
+<span style="color: #f38ba8;">}</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-org6535716">
+<h3 id="org6535716">Añadir posibles respuestas</h3>
+<p>
+Nos crea un elemento <code>select</code> de html que contiene las respuestas
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7; font-style: italic;">function</span> <span style="color: #89b4fa;">anadirPosiblesRespuestas</span><span style="color: #f38ba8;">(</span><span style="color: #cdd6f4;">posiblesRespuestas</span><span style="color: #f38ba8;">)</span> <span style="color: #f38ba8;">{</span>
+  posiblesRespuestas = shuffleArray<span style="color: #fab387;">(</span>posiblesRespuestas<span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Barajamos las respuestas para que no esten siempre en el mismo orden</span>
+  <span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">finalRespuesta</span> = <span style="color: #a6e3a1;">'&lt;select name="opcion_respuesta" id="selrespuesta"&gt;'</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Definimos finalRespuesta como el principio del select</span>
+  finalRespuesta += <span style="color: #a6e3a1;">'&lt;option disabled selected value=""&gt; Elige una opci&#243;n&lt;/option&gt;'</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Le metemos esta opcion para que sea vea coherente en todas</span>
+  <span style="color: #cba6f7; font-style: italic;">for</span> <span style="color: #fab387;">(</span><span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">respuesta</span> <span style="color: #cba6f7; font-style: italic;">of</span> posiblesRespuestas<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Recorremos todas las preguntas</span>
+    finalRespuesta += <span style="color: #a6e3a1;">`&lt;option value="${respuesta}"&gt;${respuesta}&lt;/option&gt;`</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Metemos un elemento option por cada pregunta</span>
+  <span style="color: #fab387;">}</span>
+  finalRespuesta = finalRespuesta + <span style="color: #a6e3a1;">"&lt;/select&gt;"</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Cerramos el select</span>
+  <span style="color: #cba6f7; font-style: italic;">return</span> finalRespuesta <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Devolvemos el resultado</span>
+<span style="color: #f38ba8;">}</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-org9c40cc6">
+<h3 id="org9c40cc6">Definición de elementos</h3>
+<div class="org-src-container">
+
+<pre  class="src src-javascript"   ><code trim><span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Primero definimos las variables que emplearemos en el flujo principal del programa</span>
+<span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">preguntas</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Las preguntas que se van a hacer</span>
+<span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">preguntasFalladas</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Las preguntas que se han fallado durante el Quiz</span>
+<span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">reintento</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Si se ha hecho el reintento</span>
+<span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">puntos</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Puntos</span>
+<span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">i</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Variable que representa el indice de la lista sobre la que vamos a hacer</span>
+
+
+<span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">Luego definiremos los elementos sobre los que necesitaremos hacer cosas, como estos elementos siempre van a ser los</span>
+<span style="color: #6c7086; font-style: italic;">mismos en todo el flujo de ejecucion no necesito poder cambiar sus valores de hecho al contrario eso seria contraproducente asi que son una constante</span>
+<span style="color: #6c7086;">*/</span>
+<span style="color: #cba6f7; font-style: italic;">const</span> <span style="color: #cdd6f4;">imgFeedback</span> = document.getElementById<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"feedback-img"</span><span style="color: #f38ba8;">)</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">La imagen que indica si hemos acertado o no</span>
+<span style="color: #cba6f7; font-style: italic;">const</span> <span style="color: #cdd6f4;">pregunta</span> = document.getElementById<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"pregunta"</span><span style="color: #f38ba8;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">El espacio donde se mostrara la pregunta</span>
+<span style="color: #cba6f7; font-style: italic;">const</span> <span style="color: #cdd6f4;">opciones</span> = document.getElementById<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"opciones"</span><span style="color: #f38ba8;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">El espacio donde se muestran las opciones</span>
+<span style="color: #cba6f7; font-style: italic;">const</span> <span style="color: #cdd6f4;">puntosCon</span> = document.getElementById<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"puntos"</span><span style="color: #f38ba8;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Espacio donde se muestran los puntos</span>
+
+</code></pre>
+</div>
+</section>
+<section id="slide-org49d5bbf">
+<h3 id="org49d5bbf">Definición de evento primario</h3>
+<p>
+Se lo denomina así por que es el evento que lo inicia todo desde la primera pantalla activando la pantalla con preguntas
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-javascript"   ><code trim>document.getElementById<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"start"</span><span style="color: #f38ba8;">)</span>.addEventListener<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"click"</span>,<span style="color: #cba6f7; font-style: italic;">function</span><span style="color: #fab387;">()</span> <span style="color: #fab387;">{</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">En cuanto le damos al boton de empezar</span>
+  document.getElementById<span style="color: #f9e2af;">(</span><span style="color: #a6e3a1;">"pantalla-incial"</span><span style="color: #f9e2af;">)</span>.style.display = <span style="color: #a6e3a1;">"none"</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Ocultamos la seccion inical</span>
+  document.getElementById<span style="color: #f9e2af;">(</span><span style="color: #a6e3a1;">'pantalla-juego'</span><span style="color: #f9e2af;">)</span>.style.display = <span style="color: #a6e3a1;">"flex"</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Desocultamos seteando la propiedad de la pantalla de juego como flex</span>
+  comenzarJuego<span style="color: #f9e2af;">()</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">A&#241;adimos la funcion que define todos los datos necesarios para ejecutar el juego y luego la funcion mostrarPreguntas</span>
+<span style="color: #fab387;">}</span><span style="color: #f38ba8;">)</span>
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org35ce252">
+<h2 id="org35ce252">Como se estructura</h2>
+<p>
+Ahora vamos a ver como se estructura el documento HTML que sirve de base para todo esto, el documento a efectos de lo que nosotros vemos se divide en dos secciones, y luego tenemos el head que yo lo voy a mostrar porque tiene alguna
+cosa interesante
+</p>
+</section>
+<section id="slide-org9ebfcfd">
+<h3 id="org9ebfcfd">Pantalla inicial</h3>
+<p>
+Esta es la pantalla en la que inicia el jugador 
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-html"   ><code trim>&lt;<span style="color: #89b4fa;">section</span> <span style="color: #cdd6f4;">id</span>=<span style="color: #a6e3a1;">"pantalla-incial"</span>&gt;
+&lt;<span style="color: #89b4fa;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Bienvenido a Innova Quiz</span>&lt;/<span style="color: #89b4fa;">h1</span>&gt;
+        &lt;<span style="color: #89b4fa;">p</span> <span style="color: #cdd6f4;">class</span>=<span style="color: #a6e3a1;">"introduccion"</span>&gt;
+                Pon a prueba tus conocimientos respondiendo preguntas sobre tecnolog&#237;a y matem&#225;ticas. Cada pregunta tiene un valor de puntos seg&#250;n su dificultad y relevancia. &#161;Divi&#233;rtete y demuestra lo que sabes! &#127918;
+        &lt;/<span style="color: #89b4fa;">p</span>&gt;
+        &lt;<span style="color: #89b4fa;">br</span>&gt;
+        &lt;<span style="color: #89b4fa;">button</span> <span style="color: #cdd6f4;">id</span>=<span style="color: #a6e3a1;">"start"</span>&gt;&lt;<span style="color: #89b4fa;">i</span> <span style="color: #cdd6f4;">class</span>=<span style="color: #a6e3a1;">"fa-solid fa-play"</span>&gt;&lt;/<span style="color: #89b4fa;">i</span>&gt; Empezar&lt;/<span style="color: #89b4fa;">button</span>&gt;
+&lt;/<span style="color: #89b4fa;">section</span>&gt;
+</code></pre>
+</div>
+</section>
+<section id="slide-org359dd81">
+<h3 id="org359dd81">Pantalla de juego</h3>
+<p>
+Aquí definimos la pantalla de juego y aunque pueda parecer escueto cuando metemos el javascript esta es la más expresiva
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-html"   ><code trim>&lt;<span style="color: #89b4fa;">section</span> <span style="color: #cdd6f4;">id</span>=<span style="color: #a6e3a1;">"pantalla-juego"</span>&gt;
+                &lt;<span style="color: #89b4fa;">img</span> <span style="color: #cdd6f4;">id</span>=<span style="color: #a6e3a1;">"feedback-img"</span> <span style="color: #cdd6f4;">src</span>=<span style="color: #a6e3a1;">""</span> <span style="color: #cdd6f4;">alt</span>=<span style="color: #a6e3a1;">""</span>&gt;
+                &lt;<span style="color: #89b4fa;">p</span> <span style="color: #cdd6f4;">id</span>=<span style="color: #a6e3a1;">"pregunta"</span>&gt;&lt;/<span style="color: #89b4fa;">p</span>&gt;
+                &lt;<span style="color: #89b4fa;">span</span> <span style="color: #cdd6f4;">id</span>=<span style="color: #a6e3a1;">"puntos"</span>&gt;Puntos: 0&lt;/<span style="color: #89b4fa;">span</span>&gt;
+                &lt;<span style="color: #89b4fa;">p</span> <span style="color: #cdd6f4;">id</span>=<span style="color: #a6e3a1;">"opciones"</span>&gt;&lt;/<span style="color: #89b4fa;">p</span>&gt;
+        &lt;/<span style="color: #89b4fa;">section</span>&gt;
+</code></pre>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+
+</script>
+</body>
+</html>

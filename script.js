@@ -147,7 +147,7 @@ function animarImagenFeedback() {
   imgFeedback.style.display = "block"
   anime.timeline({ autoplay: true }) // Establezco un conjunto de animaciones que se llevaran a cabo
     .add({
-      targets: imgFeedback,
+      targets: imgFeedback, // Definimos hacia que objeto aplica la animacion
       opacity: [0, 0.5, 1], // Cambiamos la opacidad hasta 1 progresivamente
       scale: [1, 1.5], // Escalamos el elemento a lo que necesitamos
       duration: 900,
@@ -157,7 +157,7 @@ function animarImagenFeedback() {
       duration: 200    // solo tiempo, sin cambiar propiedades para que el elemento este ahi un ratito corto que al menos permita verlo
     })
     .add({
-      targets: imgFeedback,
+      targets: imgFeedback, // Definimos hacia que objeto aplica la animacion
       scale: [1.5, 1], // Hacemos esos cambios a la inversa
       opacity: [1, 0.5, 0], // Hacemos que la opacidad cambie desde 1 a cero revirtiendo asi ambas propiedades a su estado orginal
       duration: 600,
