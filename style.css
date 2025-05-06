@@ -62,17 +62,6 @@ body {
   box-shadow: 0 4px 8px #00000040;
 }
 
-#opciones select {
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 10px;
-  border: none;
-  background-color: #fff;
-  color: #333;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 6px #00000040;
-  transition: transform 0.2s;
-}
 
 #opciones select:hover {
   transform: scale(1.05);
