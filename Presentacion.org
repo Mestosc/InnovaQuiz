@@ -105,7 +105,7 @@ function mostrarPregunta() {
 #+end_src
 ** Animar Imagen
 Permite animar la imagen que nos dice si las cosas están correctas o incorrectas, usando la librería AnimeJS, gracias a Samuel por recomendarmela
-#+begin_src javascript :exports code
+#+begin_src javascript
 function animarImagenFeedback() {
   imgFeedback.style.display = "block"
   anime.timeline({ autoplay: true }) // Establezco un conjunto de animaciones que se llevaran a cabo
@@ -130,7 +130,7 @@ function animarImagenFeedback() {
 #+end_src
 ** Mostrar fase final 
 Muestra la fase final del cuestionario
-#+begin_src javascript :exports code
+#+begin_src javascript
 function mostrarFaseFinal() {
     pregunta.textContent = generarMensajeFinal(puntos); // Generacion del mensaje final usando los puntos que se hayan obtenido
     opciones.innerHTML = '<button id="irInicio"><i class="fa-solid fa-house"></i> Pantalla de Inicio</button><br><button id="reset"><i class="fa-solid fa-repeat"></i> Volver a jugar</button>' // generamos el boton de reset para poder volver a empezar el juego si así lo necesitamos
@@ -143,7 +143,7 @@ function mostrarFaseFinal() {
 #+end_src
 ** Generar mensaje final
 Usando una puntuación del 1 al 10 genera un mensaje final
-#+begin_src javascript :exports code
+#+begin_src javascript
 function generarMensajeFinal(puntos) {
   if (puntos > 8) {
     return "Tienes unos conocimientos sobresalientes"
@@ -160,7 +160,7 @@ function generarMensajeFinal(puntos) {
 #+end_src
 ** Añadir posibles respuestas
 Nos crea un elemento =select= de html que contiene las respuestas
-#+begin_src javascript :exports code
+#+begin_src javascript
 function anadirPosiblesRespuestas(posiblesRespuestas) {
   posiblesRespuestas = shuffleArray(posiblesRespuestas) // Barajamos las respuestas para que no esten siempre en el mismo orden
   let finalRespuesta = '<select name="opcion_respuesta" id="selrespuesta">' // Definimos finalRespuesta como el principio del select
@@ -173,7 +173,7 @@ function anadirPosiblesRespuestas(posiblesRespuestas) {
 }
 #+end_src
 ** Definición de elementos
-Aqui definimos los elementos que seran necesarios tener para luego poder llevar a cabo el flujo de ejecucion y que todo se vea correctamente a nivel global
+Aquí definimos los elementos que seran necesarios tener para luego poder llevar a cabo el flujo de ejecucion y que todo se vea correctamente a nivel global
 #+begin_src javascript :exports code
 // Primero definimos las variables que emplearemos en el flujo principal del programa
 let preguntas; // Las preguntas que se van a hacer
@@ -217,24 +217,24 @@ Esta es la cabecera del archivo que normalmente no se vería en el HTML final de
 #+end_src
 ** Pantalla inicial
 Esta es la pantalla en la que inicia el jugador 
-#+begin_src html :exports code
-	<section id="pantalla-incial">
-     	<h1>Bienvenido a Innova Quiz</h1>
-		<p class="introduccion">
-			Pon a prueba tus conocimientos respondiendo preguntas sobre tecnología y matemáticas. Cada pregunta tiene un valor de puntos según su dificultad y relevancia. ¡Diviértete y demuestra lo que sabes! 🎮
-		</p>
-		<br>
-	 	<button id="start"><i class="fa-solid fa-play"></i> Empezar</button>
-	</section>
+#+begin_src html
+<section id="pantalla-incial">
+  <h1>Bienvenido a Innova Quiz</h1>
+  <p class="introduccion">
+    Pon a prueba tus conocimientos respondiendo preguntas sobre tecnología y matemáticas. Cada pregunta tiene un valor de puntos según su dificultad y relevancia. ¡Diviértete y demuestra lo que sabes! 🎮
+  </p>
+  <br>
+  <button id="start"><i class="fa-solid fa-play"></i> Empezar</button>
+</section>
 #+end_src
 ** Pantalla de juego 
 Aquí definimos la pantalla de juego y aunque pueda parecer escueto cuando metemos el javascript esta es la más expresiva
 #+begin_src html :exports code
 <section id="pantalla-juego">
-		<img id="feedback-img" src="" alt="">
-		<p id="pregunta"></p>
-		<span id="puntos">Puntos: 0</span>
-		<p id="opciones"></p>
+  <img id="feedback-img" src="" alt="">
+  <p id="pregunta"></p>
+  <span id="puntos">Puntos: 0</span>
+  <p id="opciones"></p>
 </section>
 #+end_src
 * Dándole estilo 🎨
