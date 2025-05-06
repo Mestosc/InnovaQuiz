@@ -44,7 +44,6 @@ Aquí incluyo capturas del juego para que veáis como es
 
 - A los desarrolladores de ✨ **AnimeJS** por esta increíble herramienta.
 - A 🤖 **ChatGPT** por ayudarme cuando me atasqué en algunas partes del código.
-- A la asignatura 📘 **LMSXI** por darme la oportunidad de desarrollar algo creativo y divertido.
 
 --------------------
 Hecho con ❤️ por Oscar
