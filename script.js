@@ -111,7 +111,15 @@ function listarPreguntas() {
   preguntaCSS // 0.5 pt
 ];
 }
-
+function comenzarJuego() {
+    i = 0 // Seteamos i a 0 otra vez
+    puntos = 0 // Colocamos la puntuacion a 0
+    failedQuestions = []
+    reintento = false;
+    preguntas = listarPreguntas()
+    preguntas = shuffleArray(preguntas) // Rebarajamos el Array
+    mostrarPregunta() // Volvemos a ejecutar esta funcion para empezar otra vez
+}
 function shuffleArray(array) {
     return array.sort(() => Math.random() - 0.5);
 }
@@ -159,19 +167,12 @@ function mostrarFaseFinal() {
 	  document.getElementById("pantalla-incial").style.display = "block"
 	  document.getElementById('pantalla-juego').style.display = "none"
     })
-    document.getElementById("reset").addEventListener("click", function () { // Hacemos el reset
-      i = 0 // Seteamos i a 0 otra vez
-      puntos = 0 // Colocamos la puntuacion a 0
-      failedQuestions = []
-      preguntas = listarPreguntas()
-      preguntas = shuffleArray(preguntas) // Rebarajamos el Array
-      mostrarPregunta() // Volvemos a ejecutar esta funcion para empezar otra vez
-    })
+    document.getElementById("reset").addEventListener("click",comenzarJuego)
 }
 function mostrarPregunta() {
   imgFeedback.style.display = "none" // Al comienzo eliminamos el elemento para que no interfiera cuando hagamos click en las preguntas
   if (i >= preguntas.length) {
-      if (failedQuestions.length > 0 && reintento == false) {
+      if (failedQuestions.length > 0 && !reintento) {
 	  reintento = true
 	  pregunta.textContent = "¿Desea reintentar?"
 	  opciones.innerHTML = 
@@ -220,22 +221,21 @@ function anadirPosiblesRespuestas(posiblesRespuestas) {
   finalRespuesta = finalRespuesta + "</select>" // Cerramos el select
   return finalRespuesta // Devolvemos el resultado
 }
+// Primero definimos las variables que emplearemos en el flujo principal del programa
 let preguntas;
-let imgFeedback = document.getElementById("feedback-img"); // La imagen que indica si hemos acertado o no
-let pregunta = document.getElementById("pregunta") // El espacio donde se mostrara la pregunta
-let opciones = document.getElementById("opciones") // El espacio donde se muestran las opciones
+let failedQuestions;
+let reintento;
 let puntos; // Puntos
 let i; // Variable que representa el indice de la lista sobre la que vamos a hacer
-let puntosCon = document.getElementById("puntos")
-let failedQuestions;
-let reintento = false
+
+// Luego definiremos los elementos sobre los que necesitaremos hacer cosas
+const imgFeedback = document.getElementById("feedback-img"); // La imagen que indica si hemos acertado o no
+let pregunta = document.getElementById("pregunta") // El espacio donde se mostrara la pregunta
+let opciones = document.getElementById("opciones") // El espacio donde se muestran las opciones
+const puntosCon = document.getElementById("puntos")
+
 document.getElementById("start").addEventListener("click",function() { // En cuanto le damos al boton de empezar
-  failedQuestions = []
-  preguntas = listarPreguntas()
   document.getElementById("pantalla-incial").style.display = "none" // Ocultamos la seccion inical
   document.getElementById('pantalla-juego').style.display = "flex" // Desocultamos seteando la propiedad de la pantalla de juego como flex
-  preguntas = shuffleArray(preguntas) // Usando la funcion shuffleArray para organizar el Array de forma aleatoria y que las preguntas sean esas
-  puntos = 0 // Los puntos en el juego
-  i = 0 // Seteamos la variable con la que iteraremos la lista de preguntas
-  mostrarPregunta()
+  comenzarJuego()
 })
