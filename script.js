@@ -114,7 +114,7 @@ function listarPreguntas() {
 function comenzarJuego() {
     i = 0 // Seteamos i a 0 otra vez
     puntos = 0 // Colocamos la puntuacion a 0
-    preguntasFallidas = []
+    preguntasFalladas = []
     reintento = false;
     preguntas = listarPreguntas()
     preguntas = shuffleArray(preguntas) // Rebarajamos el Array
@@ -172,7 +172,7 @@ function mostrarFaseFinal() {
 function mostrarPregunta() {
   imgFeedback.style.display = "none" // Al comienzo eliminamos el elemento para que no interfiera cuando hagamos click en las preguntas
   if (i >= preguntas.length) {
-      if (preguntasFallidas.length > 0 && !reintento) {
+      if (preguntasFalladas.length > 0 && !reintento) {
 	  reintento = true
 	  pregunta.textContent = "¿Desea reintentar?"
 	  opciones.innerHTML = 
@@ -180,7 +180,7 @@ function mostrarPregunta() {
 	  document.getElementById("seguirNormal").addEventListener("click", mostrarFaseFinal)
       // Reintentar solo fallidas
       document.getElementById("reintentarFallidas").addEventListener("click", function() {
-        preguntas = preguntasFallidas.slice();    // 4. Copiamos solo las fallidas
+        preguntas = preguntasFalladas.slice();    // 4. Copiamos solo las fallidas
         i = 0;
         mostrarPregunta();
       }); } 
@@ -201,7 +201,7 @@ function mostrarPregunta() {
       imgFeedback.src = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSIyNDBweCIgaGVpZ2h0PSIyNDBweCI+PHBhdGggZmlsbD0iIzRjYWY1MCIgZD0iTTQ0LDI0YzAsMTEuMDQ1LTguOTU1LDIwLTIwLDIwUzQsMzUuMDQ1LDQsMjRTMTIuOTU1LDQsMjQsNFM0NCwxMi45NTUsNDQsMjR6Ii8+PHBhdGggZmlsbD0iI2NjZmY5MCIgZD0iTTM0LjYwMiwxNC42MDJMMjEsMjguMTk5bC01LjYwMi01LjU5OGwtMi43OTcsMi43OTdMMjEsMzMuODAxbDE2LjM5OC0xNi40MDJMMzQuNjAyLDE0LjYwMnoiLz48L3N2Zz4="
     } else {
       imgFeedback.src = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSIyNDBweCIgaGVpZ2h0PSIyNDBweCI+PHBhdGggZmlsbD0iI2Y0NDMzNiIgZD0iTTQ0LDI0YzAsMTEuMDQ1LTguOTU1LDIwLTIwLDIwUzQsMzUuMDQ1LDQsMjRTMTIuOTU1LDQsMjQsNFM0NCwxMi45NTUsNDQsMjR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTI5LjY1NiwxNS41MTZsMi44MjgsMi44MjhsLTE0LjE0LDE0LjE0bC0yLjgyOC0yLjgyOEwyOS42NTYsMTUuNTE2eiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0zMi40ODQsMjkuNjU2bC0yLjgyOCwyLjgyOGwtMTQuMTQtMTQuMTRsMi44MjgtMi44MjhMMzIuNDg0LDI5LjY1NnoiLz48L3N2Zz4="
-	preguntasFallidas.push(p)
+	preguntasFalladas.push(p)
     }
     animarImagenFeedback() // Llamamos a la funcion que anima la imagen Feedback
     setTimeout(() => {
@@ -223,7 +223,7 @@ function anadirPosiblesRespuestas(posiblesRespuestas) {
 }
 // Primero definimos las variables que emplearemos en el flujo principal del programa
 let preguntas; // Las preguntas que se van a hacer
-let preguntasFallidas; // Las preguntas fallidas
+let preguntasFalladas; // Las preguntas que se han fallado durante el Quiz
 let reintento; // Si se ha hecho el reintento
 let puntos; // Puntos
 let i; // Variable que representa el indice de la lista sobre la que vamos a hacer
