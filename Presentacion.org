@@ -19,7 +19,7 @@ Eso son las características que un usuario más notara
 * Visión de lo que es el juego 🕹️
 Aquí esta el 
 [[file:index.html][Juego]]
-** Imagen de la pantalla de redencion
+** Imagen de la pantalla de redención
 La llamada pantalla de redencion nos da la oportunidad de volver a contestar las preguntas incorrectas una vez más antes de acabar 
 [[./pantallaRedencion.png]]
 ** Imagen pantalla final
