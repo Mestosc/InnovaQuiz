@@ -1,15 +1,37 @@
-# Innova Quiz
+# 🎮 Innova Quiz
 
-Este es mi proyecto de juego para la asignatura de LMSXI es un pequeño trivia en el cual hay preguntas principalmente de matematicas y de informatica que no son demasiado complicadas
+**Innova Quiz** es un pequeño juego de preguntas tipo trivia, desarrollado como proyecto para la asignatura de **LMSXI**. Las preguntas están centradas principalmente en temas de 🧮 matemáticas e 🖥️ informática, y tienen un nivel de dificultad accesible.
 
-Este proyecto fue hecho con la ayuda de ChatGPT para el CSS y para alguna cosa en el javascript que me dio problemas y no sabia manejar, al final me dio una solucion que tras pues revisar y hacer cosas por mi cuenta la cambie que es la parte de la imagen para decir que esta bien o mal, he conseguido hacer algo funcional aunque podria haber salido mejor si supiera como hacer o lo entendiera podria hacer que el usuario tenga que meter un XML o un txt o algo así con las preguntas, pero de momento estan en el codigo y por supuesto es mono-usuario
+## ❓ ¿De qué trata?
 
+Este juego consiste en responder preguntas con varias opciones ✅❌, mostrando al usuario si ha acertado o no mediante imágenes y animaciones.  
+Actualmente es una aplicación **mono-usuario** 👤 y las preguntas están definidas directamente en el código fuente 🧾.
 
-Gracias a la librería [AnimeJS](https://animejs.com/) que utilice para las animaciones, aqui aproveche un poco de ChatGPT y de la documentacion oficial lo entiendo mejor o eso creo que las animaciones por CSS y puedo aprovechar los objetos del HTML obtenidos en JavaScript, muchas gracias a los desarrolladores de esta herramienta
+## 🛠️ Tecnologías y herramientas usadas
 
+- 🧱 **HTML5** y 🎨 **CSS3** para la estructura y el diseño visual del juego.
+- 🧠 **JavaScript** para la lógica del juego.
+- 💫 [**AnimeJS**](https://animejs.com/) para animaciones fluidas y visuales atractivas.
 
+## 📚 Aprendizajes y apoyo
 
-## 💻 Imágenes
+Durante el desarrollo del proyecto:
+
+- Utilicé 🤖 **ChatGPT** para resolver problemas puntuales en el CSS y JavaScript.
+- Por ejemplo, me ayudó a solucionar un problema con el cambio de imagen que indica si la respuesta es correcta o incorrecta 🟢🔴. Aunque al final adapté la solución por mi cuenta tras entenderla mejor 🧠.
+- También me apoyé en la 📖 documentación oficial de AnimeJS y CSS para aprender a crear y personalizar animaciones.
+- Ahora entiendo mejor cómo manipular los objetos del DOM desde JavaScript y aplicarles efectos visuales 🎯.
+
+## 🚀 Posibles mejoras
+
+Aunque el proyecto funciona 🎉, tengo en mente varias ideas para mejorarlo:
+
+- 📂 Leer las preguntas desde un archivo externo (por ejemplo, XML o TXT) en vez de tenerlas fijas en el código.
+- 👥 Añadir soporte para múltiples usuarios.
+- 🏆 Incorporar una pequeña base de datos o sistema de puntuaciones.
+
+## 🖼️ Vista previa
+Aquí incluyo capturas del juego para que veáis como es
 
 ![Pantalla de Inicio](image.png)
 
@@ -17,6 +39,11 @@ Gracias a la librería [AnimeJS](https://animejs.com/) que utilice para las anim
 
 ![Ejemplo con seleccion de respuestas](image-2.png)
 
+## 🙌 Agradecimientos
+
+- A los desarrolladores de ✨ **AnimeJS** por esta increíble herramienta.
+- A 🤖 **ChatGPT** por ayudarme cuando me atasqué en algunas partes del código.
+- A la asignatura 📘 **LMSXI** por darme la oportunidad de desarrollar algo creativo y divertido.
 
 --------------------
 Hecho con ❤️ por Oscar
