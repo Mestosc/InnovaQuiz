@@ -21,7 +21,7 @@ Durante el desarrollo del proyecto:
 - Por ejemplo, me ayudó a solucionar un problema con el cambio de imagen que indica si la respuesta es correcta o incorrecta 🟢🔴. Aunque al final adapté la solución por mi cuenta tras entenderla mejor 🧠.
 - También me apoyé en la 📖 documentación oficial de AnimeJS y CSS(principalmente animaciones de botones y cosas así más esteticas y pequeñas la animacion más compleja que es la de la imagen de Feeback si usa AnimeJS) para aprender a crear y personalizar animaciones.
 - Ahora entiendo mejor cómo manipular los objetos del DOM desde JavaScript y aplicarles efectos visuales 🎯.
-- No entiendo nada de CSS ahí me apoye completamente en ChatGPT.
+- No entiendo nada de CSS ahí me apoye completamente en 🤖 **ChatGPT**.
 
 ## 🚀 Posibles mejoras
 
