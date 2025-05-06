@@ -1,4 +1,6 @@
- class Pregunta { // Clase que define las preguntas del cuestionario
+// Comienzo de programa 
+
+class Pregunta { // Clase que define las preguntas del cuestionario
     constructor(pregunta, respuestaCorrecta, posiblesRespuestas, puntos) {
         this.pregunta = pregunta;
         this.respuestaCorrecta = respuestaCorrecta;
@@ -96,7 +98,7 @@ const preguntaCSS = new Pregunta(
   0.5
 );
 
-// ─ Array final ──────────────────────────────────
+// Definicion de las funciones usadas durante el juego para la operativa
 function listarPreguntas() {
    return [
   pregunta1,  // 1 pt
@@ -116,7 +118,9 @@ function comenzarJuego() {
     puntos = 0 // Colocamos la puntuacion a 0
     preguntasFalladas = []
     reintento = false;
-    preguntas = listarPreguntas()
+    preguntas = listarPreguntas() /* Añadimos las preguntas a la lista dado a la manera en la que funciona
+    mostrarPreguntas cuando se va a la ronda de fallos la lista de preguntas pasa a ser solo de las fallidas y se vuelve a recorrer desde 0 solo
+    con esas así que necesitamos colocar las preguntas otra vez*/
     preguntas = shuffleArray(preguntas) // Rebarajamos el Array
     mostrarPregunta() // Volvemos a ejecutar esta funcion para empezar otra vez
 }
@@ -221,12 +225,18 @@ function anadirPosiblesRespuestas(posiblesRespuestas) {
   finalRespuesta = finalRespuesta + "</select>" // Cerramos el select
   return finalRespuesta // Devolvemos el resultado
 }
+
+// Fin de la definicion de las funciones
+
+// Definicion de variables y elementos constantes necesarios para la ejecucion
+
 // Primero definimos las variables que emplearemos en el flujo principal del programa
 let preguntas; // Las preguntas que se van a hacer
 let preguntasFalladas; // Las preguntas que se han fallado durante el Quiz
 let reintento; // Si se ha hecho el reintento
 let puntos; // Puntos
 let i; // Variable que representa el indice de la lista sobre la que vamos a hacer
+
 
 /* Luego definiremos los elementos sobre los que necesitaremos hacer cosas, como estos elementos siempre van a ser los
 mismos en todo el flujo de ejecucion no necesito poder cambiar sus valores de hecho al contrario eso seria contraproducente asi que son una constante
@@ -236,8 +246,15 @@ const pregunta = document.getElementById("pregunta") // El espacio donde se most
 const opciones = document.getElementById("opciones") // El espacio donde se muestran las opciones
 const puntosCon = document.getElementById("puntos") // Espacio donde se muestran los puntos
 
+// Fin de Definicion de variables y elementos constantes necesarios para la ejecucion
+
+// Definicion del comienzo de programa mediante un evento
+
 document.getElementById("start").addEventListener("click",function() { // En cuanto le damos al boton de empezar
   document.getElementById("pantalla-incial").style.display = "none" // Ocultamos la seccion inical
   document.getElementById('pantalla-juego').style.display = "flex" // Desocultamos seteando la propiedad de la pantalla de juego como flex
-  comenzarJuego()
+  comenzarJuego() // Añadimos la funcion que define todos los datos necesarios para ejecutar el juego y luego la funcion mostrarPreguntas
 })
+
+// Fin de definicion de evento principal
+// Fin de programa
