@@ -97,7 +97,8 @@ const preguntaCSS = new Pregunta(
 );
 
 // ─ Array final ──────────────────────────────────
-let preguntas = [
+function listarPreguntas() {
+   return [
   pregunta1,  // 1 pt
   pregunta2,  // 2 pt
   pregunta3,  // 1 pt
@@ -107,8 +108,9 @@ let preguntas = [
   pregunta8,  // 1 pt
   pregunta9,  // 1 pt
   pregunta10, // 0.5 pt
-  preguntaCSS // 0.5 pt  (bonus)
+  preguntaCSS // 0.5 pt
 ];
+}
 
 function shuffleArray(array) {
     return array.sort(() => Math.random() - 0.5);
@@ -150,10 +152,7 @@ function animarImagenFeedback() {
       easing: 'easeOutExpo'
     }); // Desaparicion del elemento
 }
-
-function mostrarPregunta() {
-  imgFeedback.style.display = "none" // Al comienzo eliminamos el elemento para que no interfiera cuando hagamos click en las preguntas
-  if (i >= preguntas.length) {
+function mostrarFaseFinal() {
     pregunta.textContent = generarMensajeFinal(puntos); // Generacion del mensaje final usando los puntos que se hayan obtenido
     opciones.innerHTML = '<button id="irInicio"><i class="fa-solid fa-house"></i> Pantalla de Inicio</button><br><button id="reset"><i class="fa-solid fa-repeat"></i> Volver a jugar</button>' // generamos el boton de reset para poder volver a empezar el juego si así lo necesitamos
       document.getElementById("irInicio").addEventListener("click",function() {
@@ -163,9 +162,30 @@ function mostrarPregunta() {
     document.getElementById("reset").addEventListener("click", function () { // Hacemos el reset
       i = 0 // Seteamos i a 0 otra vez
       puntos = 0 // Colocamos la puntuacion a 0
+      failedQuestions = []
+      preguntas = listarPreguntas()
       preguntas = shuffleArray(preguntas) // Rebarajamos el Array
       mostrarPregunta() // Volvemos a ejecutar esta funcion para empezar otra vez
     })
+}
+function mostrarPregunta() {
+  imgFeedback.style.display = "none" // Al comienzo eliminamos el elemento para que no interfiera cuando hagamos click en las preguntas
+  if (i >= preguntas.length) {
+      if (failedQuestions.length > 0 && reintento == false) {
+	  reintento = true
+	  pregunta.textContent = "¿Desea reintentar?"
+	  opciones.innerHTML = 
+        '<button id="reintentarFallidas"><i class="fa-solid fa-repeat"></i> Reintentar fallidas</button><br> <button id="seguirNormal"><i class="fa-solid fa-arrow-right"></i> Seguir normal</button><br>'
+	  document.getElementById("seguirNormal").addEventListener("click", mostrarFaseFinal)
+      // Reintentar solo fallidas
+      document.getElementById("reintentarFallidas").addEventListener("click", function() {
+        preguntas = failedQuestions.slice();    // 4. Copiamos solo las fallidas
+        i = 0;
+        mostrarPregunta();
+      }); } 
+      else {
+	  mostrarFaseFinal()
+      }
   }
   let p = preguntas[i]
   pregunta.textContent = p.pregunta;
@@ -180,6 +200,7 @@ function mostrarPregunta() {
       imgFeedback.src = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSIyNDBweCIgaGVpZ2h0PSIyNDBweCI+PHBhdGggZmlsbD0iIzRjYWY1MCIgZD0iTTQ0LDI0YzAsMTEuMDQ1LTguOTU1LDIwLTIwLDIwUzQsMzUuMDQ1LDQsMjRTMTIuOTU1LDQsMjQsNFM0NCwxMi45NTUsNDQsMjR6Ii8+PHBhdGggZmlsbD0iI2NjZmY5MCIgZD0iTTM0LjYwMiwxNC42MDJMMjEsMjguMTk5bC01LjYwMi01LjU5OGwtMi43OTcsMi43OTdMMjEsMzMuODAxbDE2LjM5OC0xNi40MDJMMzQuNjAyLDE0LjYwMnoiLz48L3N2Zz4="
     } else {
       imgFeedback.src = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSIyNDBweCIgaGVpZ2h0PSIyNDBweCI+PHBhdGggZmlsbD0iI2Y0NDMzNiIgZD0iTTQ0LDI0YzAsMTEuMDQ1LTguOTU1LDIwLTIwLDIwUzQsMzUuMDQ1LDQsMjRTMTIuOTU1LDQsMjQsNFM0NCwxMi45NTUsNDQsMjR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTI5LjY1NiwxNS41MTZsMi44MjgsMi44MjhsLTE0LjE0LDE0LjE0bC0yLjgyOC0yLjgyOEwyOS42NTYsMTUuNTE2eiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0zMi40ODQsMjkuNjU2bC0yLjgyOCwyLjgyOGwtMTQuMTQtMTQuMTRsMi44MjgtMi44MjhMMzIuNDg0LDI5LjY1NnoiLz48L3N2Zz4="
+	failedQuestions.push(p)
     }
     animarImagenFeedback() // Llamamos a la funcion que anima la imagen Feedback
     setTimeout(() => {
@@ -199,15 +220,18 @@ function anadirPosiblesRespuestas(posiblesRespuestas) {
   finalRespuesta = finalRespuesta + "</select>" // Cerramos el select
   return finalRespuesta // Devolvemos el resultado
 }
-
+let preguntas;
 let imgFeedback = document.getElementById("feedback-img"); // La imagen que indica si hemos acertado o no
 let pregunta = document.getElementById("pregunta") // El espacio donde se mostrara la pregunta
 let opciones = document.getElementById("opciones") // El espacio donde se muestran las opciones
 let puntos; // Puntos
 let i; // Variable que representa el indice de la lista sobre la que vamos a hacer
 let puntosCon = document.getElementById("puntos")
-
+let failedQuestions;
+let reintento = false
 document.getElementById("start").addEventListener("click",function() { // En cuanto le damos al boton de empezar
+  failedQuestions = []
+  preguntas = listarPreguntas()
   document.getElementById("pantalla-incial").style.display = "none" // Ocultamos la seccion inical
   document.getElementById('pantalla-juego').style.display = "flex" // Desocultamos seteando la propiedad de la pantalla de juego como flex
   preguntas = shuffleArray(preguntas) // Usando la funcion shuffleArray para organizar el Array de forma aleatoria y que las preguntas sean esas

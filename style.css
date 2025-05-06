@@ -241,3 +241,46 @@ footer {
   cursor: not-allowed;
   transform: none;
 }
+
+/* Estilo base común */
+#seguirNormal,
+#reintentarFallidas {
+  appearance: none;          /* Elimina estilos por defecto */
+  padding: 12px 28px;        /* Espaciado cómodo */
+  display: block;            /* Para poder centrar con margin auto */
+  margin: 10px auto;         /* Centrado horizontal y separación */
+  font-size: 1.1rem;
+  font-family: inherit;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  transition: transform .2s ease, box-shadow .2s ease;
+  cursor: pointer;
+}
+
+/* Botón Seguir: verde esmeralda */
+#seguirNormal {
+  background: linear-gradient(135deg, #32c866 0%, #2cb84d 100%);
+}
+
+/* Botón Reintentar fallidas: naranja coral */
+#reintentarFallidas {
+  background: linear-gradient(135deg, #ff9a32 0%, #ff4e50 100%);
+}
+
+/* Hover */
+#seguirNormal:hover,
+#reintentarFallidas:hover {
+  transform: scale(1.07);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+}
+
+/* Active (presionado) */
+#seguirNormal:active,
+#reintentarFallidas:active {
+  transform: scale(.97);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4) inset;
+  filter: brightness(.9);
+}
