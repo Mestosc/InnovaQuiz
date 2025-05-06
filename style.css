@@ -29,7 +29,7 @@ h1 {
 /* Evita que el <br> meta espacio extra en la pantalla inicial */
 #pantalla-inicial br { display: none; }
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Roboto', sans-serif;
   background: radial-gradient(circle at top left,
       #ffe37a 0%,
       /* amarillo maíz */

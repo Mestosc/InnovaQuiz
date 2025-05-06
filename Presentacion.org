@@ -18,7 +18,11 @@ Eso son las características que un usuario más notara
 * Visión de lo que es el juego 🕹️
 Aquí se os mostrara un poco el juego
 [[file:index.html][Juego]]
-
+** Imagen de la pantalla de redencion
+La llamada pantalla de redencion nos da la oportunidad de volver a contestar las preguntas incorrectas una vez más antes de acabar 
+[[./pantallaRedencion.png]]
+** Imagen pantalla final
+[[./pantallaFinal.png]]
 * Vamos a hablar de código 👨‍💻
 Bien aquí somos programadores y probablemente más cosas aquí queremos código así que vamos a echarle un vistazo a algunas de las funciones más importantes
 ** Definición de pregunta 
@@ -167,6 +171,7 @@ function anadirPosiblesRespuestas(posiblesRespuestas) {
 }
 #+end_src
 ** Definición de elementos
+Aqui definimos los elementos que seran necesarios tener para luego poder llevar a cabo el flujo de ejecucion y que todo se vea correctamente a nivel global
 #+begin_src javascript :exports code
 // Primero definimos las variables que emplearemos en el flujo principal del programa
 let preguntas; // Las preguntas que se van a hacer
@@ -174,7 +179,6 @@ let preguntasFalladas; // Las preguntas que se han fallado durante el Quiz
 let reintento; // Si se ha hecho el reintento
 let puntos; // Puntos
 let i; // Variable que representa el indice de la lista sobre la que vamos a hacer
-
 
 /* Luego definiremos los elementos sobre los que necesitaremos hacer cosas, como estos elementos siempre van a ser los
 mismos en todo el flujo de ejecucion no necesito poder cambiar sus valores de hecho al contrario eso seria contraproducente asi que son una constante
@@ -195,9 +199,20 @@ document.getElementById("start").addEventListener("click",function() { // En cua
 })
 #+end_src
 * Como se estructura 🧩
-Ahora vamos a ver como se estructura el documento HTML que sirve de base para todo esto, el documento a efectos de lo que nosotros vemos se divide en dos secciones, y luego tenemos el head que yo lo voy a mostrar porque tiene alguna
-cosa interesante
+Ahora vamos a ver como se estructura el documento HTML que sirve de base para todo esto (al menos a un nivel gráfico), el documento a efectos de lo que nosotros vemos se divide en dos secciones, y luego tenemos el head que yo lo voy a mostrar porque tiene alguna
+cosa interesante.
 
+** Cabecera
+Esta es la cabecera del archivo que normalmente no se vería en el HTML final del juego pero que yo quiero explicar aquí algo rápido algunas cosas
+#+begin_src html
+<title>Innova Quiz</title>
+<script src="script.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+#+end_src
 ** Pantalla inicial
 Esta es la pantalla en la que inicia el jugador 
 #+begin_src html :exports code
@@ -221,4 +236,20 @@ Aquí definimos la pantalla de juego y aunque pueda parecer escueto cuando metem
 </section>
 #+end_src
 * Dándole estilo 🎨
-Aunque todo esto esta muy bien no nos sirve si se ve 💩
+Aunque todo el HTML y el JavaScript esta muy bien ,no nos gusta mucho si se ve 💩
+
+** Fuente tipografica 
+La fuente tipografica en general
+#+begin_SRC css
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+ * {
+  font-family: "Roboto";
+}
+#+end_SRC
+** Cuerpo
+Aqui defino un estilo especifico para el cuerpo del HTML que hace que se vea con ese degradado tan chulo
+#+begin_src css
+
+#+end_src
+* Final ❓
+Muchas gracias por vuestro tiempo espero que os haya gustado

@@ -33,8 +33,8 @@
 <h2 class="author">Oscar Rodriguez</h2>
 </section>
 <section>
-<section id="slide-orgb1594e3">
-<h2 id="orgb1594e3">¿Que es Innova Quiz?</h2>
+<section id="slide-orgd83a6d6">
+<h2 id="orgd83a6d6">¿Que es Innova Quiz?</h2>
 <p>
 <b>Innova Quiz</b> es un pequeño juego de preguntas tipo trivia, desarrollado como proyecto para la asignatura de <b><b>LMSXI</b></b>. Las preguntas están centradas principalmente en temas de 🧮 matemáticas e 🖥️ informática, y tienen un nivel de dificultad accesible. Eso según el README en  <a href="https://github.com/Mestosc/InnovaQuiz">Github</a>
 </p>
@@ -54,23 +54,38 @@ Eso son las características que un usuario más notara
 </section>
 </section>
 <section>
-<section id="slide-orgcce6796">
-<h2 id="orgcce6796">Visión de lo que es el juego 🕹️</h2>
+<section id="slide-orgeb1ec58">
+<h2 id="orgeb1ec58">Visión de lo que es el juego 🕹️</h2>
 <p>
 Aquí se os mostrara un poco el juego
 <a href="index.html">Juego</a>
 </p>
 </section>
+<section id="slide-orgad3d26c">
+<h3 id="orgad3d26c">Imagen de la pantalla de redencion</h3>
+<p>
+La llamada pantalla de redencion nos da la oportunidad de volver a contestar las preguntas incorrectas una vez más antes de acabar 
+<img src="./pantallaRedencion.png" alt="pantallaRedencion.png" />
+</p>
+</section>
+<section id="slide-org2f788b3">
+<h3 id="org2f788b3">Imagen pantalla final</h3>
+
+<div id="org47e7cbf" class="figure">
+<p><img src="./pantallaFinal.png" alt="pantallaFinal.png" />
+</p>
+</div>
+</section>
 </section>
 <section>
-<section id="slide-org8f6de71">
-<h2 id="org8f6de71">Vamos a hablar de codigo 👨‍💻</h2>
+<section id="slide-orgd78ea54">
+<h2 id="orgd78ea54">Vamos a hablar de código 👨‍💻</h2>
 <p>
 Bien aquí somos programadores y probablemente más cosas aquí queremos código así que vamos a echarle un vistazo a algunas de las funciones más importantes
 </p>
 </section>
-<section id="slide-org20c7df5">
-<h3 id="org20c7df5">Definición de pregunta</h3>
+<section id="slide-org146730a">
+<h3 id="org146730a">Definición de pregunta</h3>
 <p>
 Defino una plantilla para lo que son las preguntas
 </p>
@@ -90,8 +105,8 @@ Defino una plantilla para lo que son las preguntas
 </code></pre>
 </div>
 </section>
-<section id="slide-org358b16f">
-<h3 id="org358b16f">Comenzar juego</h3>
+<section id="slide-org2c8ec56">
+<h3 id="org2c8ec56">Comenzar juego</h3>
 <p>
 Cada vez que queremos volver a empezar el juego (desde el principio) es necesario establecer una serie de valores y ejecutar la función mostrarPregunta, así que lo abstraigo aquí en lugar de poner todo el rato ese mismo proceso 
 </p>
@@ -111,8 +126,8 @@ Cada vez que queremos volver a empezar el juego (desde el principio) es necesari
 </code></pre>
 </div>
 </section>
-<section id="slide-orgb8de170">
-<h3 id="orgb8de170">Mostrar Pregunta</h3>
+<section id="slide-org2c3213b">
+<h3 id="org2c3213b">Mostrar Pregunta</h3>
 <p>
 Es el núcleo de este juego prácticamente hablando, ya que muestra las preguntas junto con la opción de respuesta e itera por la lista en respuesta al evento de responder hasta que llega al final en el cual
 dependiendo de si hay respuestas que hayas fallado que realizara diversas acciones
@@ -163,8 +178,8 @@ dependiendo de si hay respuestas que hayas fallado que realizara diversas accion
 </code></pre>
 </div>
 </section>
-<section id="slide-orgcd5d85a">
-<h3 id="orgcd5d85a">Animar Imagen</h3>
+<section id="slide-orgef49e53">
+<h3 id="orgef49e53">Animar Imagen</h3>
 <p>
 Permite animar la imagen que nos dice si las cosas están correctas o incorrectas, usando la librería AnimeJS, gracias a Samuel por recomendarmela
 </p>
@@ -194,8 +209,8 @@ Permite animar la imagen que nos dice si las cosas están correctas o incorrecta
 </code></pre>
 </div>
 </section>
-<section id="slide-org615a16d">
-<h3 id="org615a16d">Mostrar fase final</h3>
+<section id="slide-org5b5e4f3">
+<h3 id="org5b5e4f3">Mostrar fase final</h3>
 <p>
 Muestra la fase final del cuestionario
 </p>
@@ -213,8 +228,8 @@ Muestra la fase final del cuestionario
 </code></pre>
 </div>
 </section>
-<section id="slide-org090b124">
-<h3 id="org090b124">Generar mensaje final</h3>
+<section id="slide-org02f2716">
+<h3 id="org02f2716">Generar mensaje final</h3>
 <p>
 Usando una puntuación del 1 al 10 genera un mensaje final
 </p>
@@ -236,8 +251,8 @@ Usando una puntuación del 1 al 10 genera un mensaje final
 </code></pre>
 </div>
 </section>
-<section id="slide-org6535716">
-<h3 id="org6535716">Añadir posibles respuestas</h3>
+<section id="slide-org30c5df3">
+<h3 id="org30c5df3">Añadir posibles respuestas</h3>
 <p>
 Nos crea un elemento <code>select</code> de html que contiene las respuestas
 </p>
@@ -256,8 +271,11 @@ Nos crea un elemento <code>select</code> de html que contiene las respuestas
 </code></pre>
 </div>
 </section>
-<section id="slide-org9c40cc6">
-<h3 id="org9c40cc6">Definición de elementos</h3>
+<section id="slide-orgfe4fca1">
+<h3 id="orgfe4fca1">Definición de elementos</h3>
+<p>
+Aqui definimos los elementos que seran necesarios tener para luego poder llevar a cabo el flujo de ejecucion y que todo se vea correctamente a nivel global
+</p>
 <div class="org-src-container">
 
 <pre  class="src src-javascript"   ><code trim><span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Primero definimos las variables que emplearemos en el flujo principal del programa</span>
@@ -266,7 +284,6 @@ Nos crea un elemento <code>select</code> de html que contiene las respuestas
 <span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">reintento</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Si se ha hecho el reintento</span>
 <span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">puntos</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Puntos</span>
 <span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">i</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Variable que representa el indice de la lista sobre la que vamos a hacer</span>
-
 
 <span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">Luego definiremos los elementos sobre los que necesitaremos hacer cosas, como estos elementos siempre van a ser los</span>
 <span style="color: #6c7086; font-style: italic;">mismos en todo el flujo de ejecucion no necesito poder cambiar sus valores de hecho al contrario eso seria contraproducente asi que son una constante</span>
@@ -279,8 +296,8 @@ Nos crea un elemento <code>select</code> de html que contiene las respuestas
 </code></pre>
 </div>
 </section>
-<section id="slide-org49d5bbf">
-<h3 id="org49d5bbf">Definición de evento primario</h3>
+<section id="slide-org8357ebb">
+<h3 id="org8357ebb">Definición de evento primario</h3>
 <p>
 Se lo denomina así por que es el evento que lo inicia todo desde la primera pantalla activando la pantalla con preguntas
 </p>
@@ -296,15 +313,32 @@ Se lo denomina así por que es el evento que lo inicia todo desde la primera pan
 </section>
 </section>
 <section>
-<section id="slide-org35ce252">
-<h2 id="org35ce252">Como se estructura</h2>
+<section id="slide-orgaa99824">
+<h2 id="orgaa99824">Como se estructura 🧩</h2>
 <p>
-Ahora vamos a ver como se estructura el documento HTML que sirve de base para todo esto, el documento a efectos de lo que nosotros vemos se divide en dos secciones, y luego tenemos el head que yo lo voy a mostrar porque tiene alguna
-cosa interesante
+Ahora vamos a ver como se estructura el documento HTML que sirve de base para todo esto (al menos a un nivel gráfico), el documento a efectos de lo que nosotros vemos se divide en dos secciones, y luego tenemos el head que yo lo voy a mostrar porque tiene alguna
+cosa interesante.
 </p>
 </section>
-<section id="slide-org9ebfcfd">
-<h3 id="org9ebfcfd">Pantalla inicial</h3>
+<section id="slide-org666833e">
+<h3 id="org666833e">Cabecera</h3>
+<p>
+Esta es la cabecera del archivo que normalmente no se vería en el HTML final del juego pero que yo quiero explicar aquí algo rápido algunas cosas
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-html"   ><code trim>&lt;<span style="color: #89b4fa;">title</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Innova Quiz</span>&lt;/<span style="color: #89b4fa;">title</span>&gt;
+&lt;<span style="color: #89b4fa;">script</span> <span style="color: #cdd6f4;">src</span>=<span style="color: #a6e3a1;">"script.js"</span> defer&gt;&lt;/<span style="color: #89b4fa;">script</span>&gt;
+&lt;<span style="color: #89b4fa;">script</span> <span style="color: #cdd6f4;">src</span>=<span style="color: #a6e3a1;">"https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"</span>&gt;&lt;/<span style="color: #89b4fa;">script</span>&gt;
+&lt;<span style="color: #89b4fa;">link</span> <span style="color: #cdd6f4;">rel</span>=<span style="color: #a6e3a1;">"stylesheet"</span> <span style="color: #cdd6f4;">href</span>=<span style="color: #a6e3a1;">"style.css"</span>&gt;
+&lt;<span style="color: #89b4fa;">link</span> <span style="color: #cdd6f4;">rel</span>=<span style="color: #a6e3a1;">"stylesheet"</span> <span style="color: #cdd6f4;">href</span>=<span style="color: #a6e3a1;">"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"</span> <span style="color: #cdd6f4;">integrity</span>=<span style="color: #a6e3a1;">"sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="</span> <span style="color: #cdd6f4;">crossorigin</span>=<span style="color: #a6e3a1;">"anonymous"</span> <span style="color: #cdd6f4;">referrerpolicy</span>=<span style="color: #a6e3a1;">"no-referrer"</span>&gt;
+&lt;<span style="color: #89b4fa;">link</span> <span style="color: #cdd6f4;">rel</span>=<span style="color: #a6e3a1;">"shortcut icon"</span> <span style="color: #cdd6f4;">href</span>=<span style="color: #a6e3a1;">"/favicon.ico"</span> <span style="color: #cdd6f4;">type</span>=<span style="color: #a6e3a1;">"image/x-icon"</span>&gt;
+&lt;<span style="color: #89b4fa;">link</span> <span style="color: #cdd6f4;">rel</span>=<span style="color: #a6e3a1;">"icon"</span> <span style="color: #cdd6f4;">href</span>=<span style="color: #a6e3a1;">"/favicon.ico"</span> <span style="color: #cdd6f4;">type</span>=<span style="color: #a6e3a1;">"image/x-icon"</span>&gt;
+</code></pre>
+</div>
+</section>
+<section id="slide-orgf6821af">
+<h3 id="orgf6821af">Pantalla inicial</h3>
 <p>
 Esta es la pantalla en la que inicia el jugador 
 </p>
@@ -321,8 +355,8 @@ Esta es la pantalla en la que inicia el jugador
 </code></pre>
 </div>
 </section>
-<section id="slide-org359dd81">
-<h3 id="org359dd81">Pantalla de juego</h3>
+<section id="slide-org748bb68">
+<h3 id="org748bb68">Pantalla de juego</h3>
 <p>
 Aquí definimos la pantalla de juego y aunque pueda parecer escueto cuando metemos el javascript esta es la más expresiva
 </p>
@@ -333,7 +367,48 @@ Aquí definimos la pantalla de juego y aunque pueda parecer escueto cuando metem
                 &lt;<span style="color: #89b4fa;">p</span> <span style="color: #cdd6f4;">id</span>=<span style="color: #a6e3a1;">"pregunta"</span>&gt;&lt;/<span style="color: #89b4fa;">p</span>&gt;
                 &lt;<span style="color: #89b4fa;">span</span> <span style="color: #cdd6f4;">id</span>=<span style="color: #a6e3a1;">"puntos"</span>&gt;Puntos: 0&lt;/<span style="color: #89b4fa;">span</span>&gt;
                 &lt;<span style="color: #89b4fa;">p</span> <span style="color: #cdd6f4;">id</span>=<span style="color: #a6e3a1;">"opciones"</span>&gt;&lt;/<span style="color: #89b4fa;">p</span>&gt;
-        &lt;/<span style="color: #89b4fa;">section</span>&gt;
+&lt;/<span style="color: #89b4fa;">section</span>&gt;
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orga4e39fc">
+<h2 id="orga4e39fc">Dándole estilo 🎨</h2>
+<p>
+Aunque todo el HTML y el JavaScript esta muy bien ,no nos gusta mucho si se ve 💩
+</p>
+</section>
+<section id="slide-orgb0e2420">
+<h3 id="orgb0e2420">Estilos</h3>
+<div class="org-src-container">
+
+<pre  class="src src-css"   ><code trim><span style="color: #f38ba8;">@import</span> url<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&amp;display=swap'</span><span style="color: #f38ba8;">)</span>;
+ <span style="color: #89b4fa;">*</span> <span style="color: #f38ba8;">{</span>
+  <span style="color: #cba6f7; font-style: italic;">font-family</span>: <span style="color: #a6e3a1;">"Roboto"</span>;
+<span style="color: #f38ba8;">}</span>
+<span style="color: #89b4fa;">body</span> <span style="color: #f38ba8;">{</span>
+  <span style="color: #cba6f7; font-style: italic;">font-family</span>: <span style="color: #a6e3a1;">'Roboto'</span>, sans-serif;
+  <span style="color: #cba6f7; font-style: italic;">background</span>: radial-gradient<span style="color: #fab387;">(</span>circle at top left,
+      <span style="color: #000000; background-color: #ffe37a;">#ffe37a</span> 0%,
+      <span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">amarillo ma&#237;z</span><span style="color: #6c7086;"> */</span>
+      <span style="color: #000000; background-color: #ffc34f;">#ffc34f</span> 25%,
+      <span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">naranja mango</span><span style="color: #6c7086;"> */</span>
+      <span style="color: #000000; background-color: #ff9a32;">#ff9a32</span> 55%,
+      <span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">mandarina jugosa</span><span style="color: #6c7086;"> */</span>
+      <span style="color: #000000; background-color: #ff7035;">#ff7035</span> 80%,
+      <span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">naranja&#8209;rojo suave</span><span style="color: #6c7086;"> */</span>
+      <span style="color: #ffffff; background-color: #ff4e4e;">#ff4e4e</span> 100%
+      <span style="color: #6c7086;">/* </span><span style="color: #000000; background-color: #FF7F50;">coral</span><span style="color: #6c7086; font-style: italic;"> vivo</span><span style="color: #6c7086;"> */</span>
+    <span style="color: #fab387;">)</span>;
+  <span style="color: #cba6f7; font-style: italic;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #cba6f7; font-style: italic;">display</span>: flex;
+  <span style="color: #cba6f7; font-style: italic;">flex-direction</span>: column;
+  <span style="color: #cba6f7; font-style: italic;">align-items</span>: center;
+  <span style="color: #cba6f7; font-style: italic;">justify-content</span>: center;
+  <span style="color: #cba6f7; font-style: italic;">height</span>: 100vh;
+  <span style="color: #cba6f7; font-style: italic;">margin</span>: 0;
+<span style="color: #f38ba8;">}</span>
 </code></pre>
 </div>
 </section>
