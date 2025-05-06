@@ -11,16 +11,17 @@ Actualmente es una aplicación **mono-usuario** 👤 y las preguntas están defi
 
 - 🧱 **HTML5** y 🎨 **CSS3** para la estructura y el diseño visual del juego.
 - 🧠 **JavaScript** para la lógica del juego.
-- 💫 [**AnimeJS**](https://animejs.com/) para animaciones fluidas y visuales atractivas.
+- 💫 [**AnimeJS**](https://animejs.com/) para animaciones fluidas y visuales atractivas, lo aproveche en la animación de la imagen del Feedback algunas otras me las puso ChatGPT en CSS, pero no descarto ponerlas con esta herramienta en algún momento.
 
 ## 📚 Aprendizajes y apoyo
 
 Durante el desarrollo del proyecto:
 
-- Utilicé 🤖 **ChatGPT** para resolver problemas puntuales en el CSS y JavaScript.
+- Utilicé 🤖 **ChatGPT** para resolver asuntos puntuales en el JavaScript.
 - Por ejemplo, me ayudó a solucionar un problema con el cambio de imagen que indica si la respuesta es correcta o incorrecta 🟢🔴. Aunque al final adapté la solución por mi cuenta tras entenderla mejor 🧠.
 - También me apoyé en la 📖 documentación oficial de AnimeJS y CSS para aprender a crear y personalizar animaciones.
 - Ahora entiendo mejor cómo manipular los objetos del DOM desde JavaScript y aplicarles efectos visuales 🎯.
+- No entiendo nada de CSS ahí me apoye completamente en ChatGPT.
 
 ## 🚀 Posibles mejoras
 
