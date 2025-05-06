@@ -5,6 +5,7 @@
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@4.5.0
 #+options: timestamp:nil num:nil
 #+HTML_HEAD: <base target="_blank">
+#+language: es
 
 * ¿Que es Innova Quiz?
 *Innova Quiz* es un pequeño juego de preguntas tipo trivia, desarrollado como proyecto para la asignatura de **LMSXI**. Las preguntas están centradas principalmente en temas de 🧮 matemáticas e 🖥️ informática, y tienen un nivel de dificultad accesible. Eso según el README en  [[https://github.com/Mestosc/InnovaQuiz][Github]]
