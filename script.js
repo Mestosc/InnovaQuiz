@@ -116,8 +116,8 @@ function listarPreguntas() {
 function comenzarJuego() {
     i = 0 // Seteamos i a 0 otra vez
     puntos = 0 // Colocamos la puntuacion a 0
-    preguntasFalladas = []
-    reintento = false;
+    preguntasFalladas = [] // Establecemos el array de preguntas que hayamos fallado como vacio ya que al recien empezar no hemos fallado ninguna
+    reintento = false; // Establecemos el intento como falso ya que al recien empezar no hemos podido realizar ningun intento extra
     preguntas = listarPreguntas() /* Añadimos las preguntas a la lista dado a la manera en la que funciona
     mostrarPreguntas cuando se va a la ronda de fallos la lista de preguntas pasa a ser solo de las fallidas y se vuelve a recorrer desde 0 solo
     con esas así que necesitamos colocar las preguntas otra vez*/
