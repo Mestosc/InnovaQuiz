@@ -315,7 +315,7 @@ footer {
 }
 #+end_src
 ** Select
-El estilo del =<select>= que muestra las preguntas.
+El estilo del =select= que muestra las preguntas.
 #+begin_src css
 #opciones select {
   appearance: none;
