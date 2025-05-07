@@ -29,6 +29,8 @@ La llamada pantalla de redencion nos da la oportunidad de volver a contestar las
 ** Imagen pantalla final
 Esta es la pantalla a la que se llega al finalizar una partida
 [[./pantallaFinal.png]]
+* Estructura general
+Este proyecto se estructura, en un HTML un CSS y un archivo JavaScript principales además de eso también se recurre a un CSS auxiliar que pues esta en remoto de FontAwesome para poner los iconos que se ven tanto en la pantalla de redención como en la final, además de eso también recurro a un javascript que esta en remoto para la animación de esas imágenes que muestran si esta correcto o incorrecto con el uso de cierta librería de la que hablare más adelante,
 * Vamos a hablar de código 👨‍💻
 Bien aquí somos programadores y probablemente más cosas aquí queremos código así que vamos a echarle un vistazo a algunas de las funciones más importantes
 ** Definición de pregunta 

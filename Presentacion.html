@@ -33,8 +33,8 @@
 <h2 class="author">Oscar Rodriguez</h2>
 </section>
 <section>
-<section id="slide-orgcefdbfb">
-<h2 id="orgcefdbfb">¿Que es Innova Quiz?</h2>
+<section id="slide-org20bac1a">
+<h2 id="org20bac1a">¿Que es Innova Quiz?</h2>
 <p>
 <b>Innova Quiz</b> es un pequeño juego de preguntas tipo trivia, desarrollado como proyecto para la asignatura de <b><b>LMSXI</b></b>. Las preguntas están centradas principalmente en temas de 🧮 matemáticas e 🖥️ informática, y tienen un nivel de dificultad accesible. Eso según el README en  <a href="https://github.com/Mestosc/InnovaQuiz">Github</a>
 </p>
@@ -52,8 +52,8 @@ Características:
 Eso son las características que un usuario más notara
 </p>
 </section>
-<section id="slide-org252480e">
-<h3 id="org252480e">Apunte 📝</h3>
+<section id="slide-org94d7046">
+<h3 id="org94d7046">Apunte 📝</h3>
 <p>
 En primer lugar aviso que esto fue hecho con la ayuda parcial de ChatGPT(salvo en el CSS ahi hizo todo prácticamente, yo hice algunas cosas de la configuración de ciertas imágenes) para resolver algunos problemas, hacer principalmente el CSS y alguna otra cosa para poder centrarme así en la lógica del juego,
 y en corregir diversos detalles para poder centrarme en ciertos detalles más pequeños pero que también son importantes tanto en el propio proyecto como alrededor por ejemplo el README del repositorio de Github, esta presentacion
@@ -62,22 +62,22 @@ y algunos detalles dentro del propio proyecto en relación a como están los bot
 </section>
 </section>
 <section>
-<section id="slide-org8996413">
-<h2 id="org8996413">Visión de lo que es el juego 🕹️</h2>
+<section id="slide-orgf78ccf9">
+<h2 id="orgf78ccf9">Visión de lo que es el juego 🕹️</h2>
 <p>
 Aquí esta el 
 <a href="index.html">Juego</a>
 </p>
 </section>
-<section id="slide-org6e914eb">
-<h3 id="org6e914eb">Imagen de la pantalla de redención</h3>
+<section id="slide-org5cb0c51">
+<h3 id="org5cb0c51">Imagen de la pantalla de redención</h3>
 <p>
 La llamada pantalla de redencion nos da la oportunidad de volver a contestar las preguntas incorrectas una vez más antes de acabar 
 <img src="./pantallaRedencion.png" alt="pantallaRedencion.png" />
 </p>
 </section>
-<section id="slide-org778beee">
-<h3 id="org778beee">Imagen pantalla final</h3>
+<section id="slide-org5cb25bb">
+<h3 id="org5cb25bb">Imagen pantalla final</h3>
 <p>
 Esta es la pantalla a la que se llega al finalizar una partida
 <img src="./pantallaFinal.png" alt="pantallaFinal.png" />
@@ -85,14 +85,22 @@ Esta es la pantalla a la que se llega al finalizar una partida
 </section>
 </section>
 <section>
-<section id="slide-org56414a7">
-<h2 id="org56414a7">Vamos a hablar de código 👨‍💻</h2>
+<section id="slide-org462b5c0">
+<h2 id="org462b5c0">Estructura general</h2>
+<p>
+Este proyecto se estructura, en un HTML un CSS y un archivo JavaScript principales además de eso también se recurre a un CSS auxiliar que pues esta en remoto de FontAwesome para poner los iconos que se ven tanto en la pantalla de redención como en la final, además de eso también recurro a un javascript que esta en remoto para la animación de esas imágenes que muestran si esta correcto o incorrecto con el uso de cierta librería de la que hablare más adelante,
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org8e776b3">
+<h2 id="org8e776b3">Vamos a hablar de código 👨‍💻</h2>
 <p>
 Bien aquí somos programadores y probablemente más cosas aquí queremos código así que vamos a echarle un vistazo a algunas de las funciones más importantes
 </p>
 </section>
-<section id="slide-org5ce4372">
-<h3 id="org5ce4372">Definición de pregunta</h3>
+<section id="slide-org764161f">
+<h3 id="org764161f">Definición de pregunta</h3>
 <p>
 Defino una plantilla para lo que son las preguntas
 </p>
@@ -112,8 +120,8 @@ Defino una plantilla para lo que son las preguntas
 </code></pre>
 </div>
 </section>
-<section id="slide-org35a5988">
-<h3 id="org35a5988">Definición de elementos</h3>
+<section id="slide-org3006df2">
+<h3 id="org3006df2">Definición de elementos</h3>
 <p>
 Aquí definimos los elementos que serán necesarios tener para luego poder llevar a cabo el flujo de ejecucion y que todo se vea correctamente a nivel global
 </p>
@@ -139,8 +147,8 @@ Aquí definimos los elementos que serán necesarios tener para luego poder lleva
 </code></pre>
 </div>
 </section>
-<section id="slide-org50676ee">
-<h3 id="org50676ee">Comenzar juego</h3>
+<section id="slide-orgda8e292">
+<h3 id="orgda8e292">Comenzar juego</h3>
 <p>
 Cada vez que queremos volver a empezar el juego (desde el principio) es necesario establecer una serie de valores y ejecutar la función mostrarPregunta, así que lo abstraigo aquí en lugar de poner todo el rato ese mismo proceso 
 </p>
@@ -161,8 +169,8 @@ Cada vez que queremos volver a empezar el juego (desde el principio) es necesari
 </code></pre>
 </div>
 </section>
-<section id="slide-org7ac2af5">
-<h3 id="org7ac2af5">Mostrar Pregunta</h3>
+<section id="slide-org6f15270">
+<h3 id="org6f15270">Mostrar Pregunta</h3>
 <p>
 Es el núcleo de este juego prácticamente hablando, ya que muestra las preguntas junto con la opción de respuesta e itera por la lista en respuesta al evento de responder hasta que llega al final en el cual
 dependiendo de si hay respuestas que hayas fallado que realizara diversas acciones
@@ -213,8 +221,8 @@ dependiendo de si hay respuestas que hayas fallado que realizara diversas accion
 </code></pre>
 </div>
 </section>
-<section id="slide-orge47d2cb">
-<h3 id="orge47d2cb">Animar Imagen</h3>
+<section id="slide-org27cf8c8">
+<h3 id="org27cf8c8">Animar Imagen</h3>
 <p>
 Permite animar la imagen que nos dice si las cosas están correctas o incorrectas, usando la librería AnimeJS, gracias a Samuel por recomendarmela
 </p>
@@ -244,8 +252,8 @@ Permite animar la imagen que nos dice si las cosas están correctas o incorrecta
 </code></pre>
 </div>
 </section>
-<section id="slide-orged847c3">
-<h3 id="orged847c3">Mostrar fase final</h3>
+<section id="slide-org377f011">
+<h3 id="org377f011">Mostrar fase final</h3>
 <p>
 Muestra la fase final del cuestionario
 </p>
@@ -263,8 +271,8 @@ Muestra la fase final del cuestionario
 </code></pre>
 </div>
 </section>
-<section id="slide-org2bf25b8">
-<h3 id="org2bf25b8">Generar mensaje final</h3>
+<section id="slide-org674b6b4">
+<h3 id="org674b6b4">Generar mensaje final</h3>
 <p>
 Usando una puntuación del 1 al 10 genera un mensaje final
 </p>
@@ -286,8 +294,8 @@ Usando una puntuación del 1 al 10 genera un mensaje final
 </code></pre>
 </div>
 </section>
-<section id="slide-orgec42720">
-<h3 id="orgec42720">Añadir posibles respuestas</h3>
+<section id="slide-org359a2dd">
+<h3 id="org359a2dd">Añadir posibles respuestas</h3>
 <p>
 Nos crea un elemento <code>select</code> de html que contiene las respuestas
 </p>
@@ -306,8 +314,8 @@ Nos crea un elemento <code>select</code> de html que contiene las respuestas
 </code></pre>
 </div>
 </section>
-<section id="slide-orgffb1a29">
-<h3 id="orgffb1a29">Definición de evento primario</h3>
+<section id="slide-orgda59d30">
+<h3 id="orgda59d30">Definición de evento primario</h3>
 <p>
 Se lo denomina así por que es el evento que lo inicia todo desde la primera pantalla activando la pantalla con preguntas
 </p>
@@ -323,15 +331,15 @@ Se lo denomina así por que es el evento que lo inicia todo desde la primera pan
 </section>
 </section>
 <section>
-<section id="slide-orgcf1e61d">
-<h2 id="orgcf1e61d">Como se estructura 🧩</h2>
+<section id="slide-orgb3263d4">
+<h2 id="orgb3263d4">Como se estructura 🧩</h2>
 <p>
 Ahora vamos a ver como se estructura el documento HTML que sirve de base para todo esto (al menos a un nivel gráfico), el documento a efectos de lo que nosotros vemos se divide en dos secciones, y luego tenemos el head que yo lo voy a mostrar porque tiene alguna
 cosa interesante.
 </p>
 </section>
-<section id="slide-org93ce352">
-<h3 id="org93ce352">Cabecera</h3>
+<section id="slide-org741ef59">
+<h3 id="org741ef59">Cabecera</h3>
 <p>
 Esta es la cabecera del archivo que normalmente no se vería en el HTML final del juego pero que yo quiero explicar aquí algo rápido algunas cosas
 </p>
@@ -347,8 +355,8 @@ Esta es la cabecera del archivo que normalmente no se vería en el HTML final de
 </code></pre>
 </div>
 </section>
-<section id="slide-org2eff3d2">
-<h3 id="org2eff3d2">Pantalla inicial</h3>
+<section id="slide-org88077be">
+<h3 id="org88077be">Pantalla inicial</h3>
 <p>
 Esta es la pantalla en la que inicia el jugador 
 </p>
@@ -365,8 +373,8 @@ Esta es la pantalla en la que inicia el jugador
 </code></pre>
 </div>
 </section>
-<section id="slide-org9e9e916">
-<h3 id="org9e9e916">Pantalla de juego</h3>
+<section id="slide-org7d57984">
+<h3 id="org7d57984">Pantalla de juego</h3>
 <p>
 Aquí definimos la pantalla de juego y aunque pueda parecer escueto cuando metemos el javascript esta es la más expresiva
 </p>
@@ -383,14 +391,14 @@ Aquí definimos la pantalla de juego y aunque pueda parecer escueto cuando metem
 </section>
 </section>
 <section>
-<section id="slide-orgf3c7a06">
-<h2 id="orgf3c7a06">Dándole estilo 🎨</h2>
+<section id="slide-orgdd96531">
+<h2 id="orgdd96531">Dándole estilo 🎨</h2>
 <p>
 Aunque todo el HTML y el JavaScript esta muy bien ,no nos gusta mucho si se ve 💩
 </p>
 </section>
-<section id="slide-orgb41a76e">
-<h3 id="orgb41a76e">Fuente tipográfica</h3>
+<section id="slide-org30387f4">
+<h3 id="org30387f4">Fuente tipográfica</h3>
 <p>
 La fuente tipográfica general usada es <b>Roboto</b>.
 </p>
@@ -403,8 +411,8 @@ La fuente tipográfica general usada es <b>Roboto</b>.
 </code></pre>
 </div>
 </section>
-<section id="slide-org426ee70">
-<h3 id="org426ee70">Cuerpo</h3>
+<section id="slide-org4f092a1">
+<h3 id="org4f092a1">Cuerpo</h3>
 <p>
 Este bloque agrupa el fondo y tipografía global, así como estilos de párrafos, puntos, imágenes fijas y pie de página.
 </p>
@@ -476,8 +484,8 @@ Este bloque agrupa el fondo y tipografía global, así como estilos de párrafos
 </code></pre>
 </div>
 </section>
-<section id="slide-orge66b3c2">
-<h3 id="orge66b3c2">Select</h3>
+<section id="slide-org4ab70ea">
+<h3 id="org4ab70ea">Select</h3>
 <p>
 El estilo del <code>select</code> que muestra las preguntas.
 </p>
@@ -512,8 +520,8 @@ El estilo del <code>select</code> que muestra las preguntas.
 </code></pre>
 </div>
 </section>
-<section id="slide-org71bdfca">
-<h3 id="org71bdfca">Botones</h3>
+<section id="slide-org77ca103">
+<h3 id="org77ca103">Botones</h3>
 <p>
 Aquí van los estilos de todos los botones (reset, start, irInicio, seguirNormal, reintentarFallidas).
 </p>
@@ -621,8 +629,8 @@ Aquí van los estilos de todos los botones (reset, start, irInicio, seguirNormal
 </section>
 </section>
 <section>
-<section id="slide-orgfd69f6b">
-<h2 id="orgfd69f6b">Final ❓</h2>
+<section id="slide-org62265db">
+<h2 id="org62265db">Final ❓</h2>
 <p>
 Muchas gracias por vuestro tiempo, y espero que os haya gustado, esta presentación fue hecha gracias a <a href="https://revealjs.com/">RevealJS</a>
 </p>
