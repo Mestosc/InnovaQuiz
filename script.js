@@ -118,10 +118,11 @@ function comenzarJuego() {
     puntos = 0 // Colocamos la puntuacion a 0
     preguntasFalladas = [] // Establecemos el array de preguntas que hayamos fallado como vacio ya que al recien empezar no hemos fallado ninguna
     reintento = false; // Establecemos el intento como falso ya que al recien empezar no hemos podido realizar ningun intento extra
-    preguntas = listarPreguntas() /* Añadimos las preguntas a la lista dado a la manera en la que funciona
+     /* Añadimos las preguntas a la lista dado a la manera en la que funciona
     mostrarPreguntas cuando se va a la ronda de fallos la lista de preguntas pasa a ser solo de las fallidas y se vuelve a recorrer desde 0 solo
-    con esas así que necesitamos colocar las preguntas otra vez*/
-    preguntas = shuffleArray(preguntas) // Rebarajamos el Array
+    con esas así que necesitamos colocar las preguntas otra vez, con listarPreguntas*/
+    preguntas = shuffleArray(listarPreguntas()) // Rebarajamos el Array
+    mostrarPregunta() // Volvemos a ejecutar esta funcion para empezar otra vez
     mostrarPregunta() // Volvemos a ejecutar esta funcion para empezar otra vez
 }
 function shuffleArray(array) {

@@ -28,7 +28,7 @@ La llamada pantalla de redencion nos da la oportunidad de volver a contestar las
 Bien aquí somos programadores y probablemente más cosas aquí queremos código así que vamos a echarle un vistazo a algunas de las funciones más importantes
 ** Definición de pregunta 
 Defino una plantilla para lo que son las preguntas
-#+begin_src javascript :exports code
+#+begin_src javascript
 class Pregunta { // Clase que define las preguntas del cuestionario
     constructor(pregunta, respuestaCorrecta, posiblesRespuestas, puntos) {
         this.pregunta = pregunta;
@@ -43,24 +43,24 @@ class Pregunta { // Clase que define las preguntas del cuestionario
 #+end_src
 ** Comenzar juego
 Cada vez que queremos volver a empezar el juego (desde el principio) es necesario establecer una serie de valores y ejecutar la función mostrarPregunta, así que lo abstraigo aquí en lugar de poner todo el rato ese mismo proceso 
-#+begin_src javascript :exports code
+#+begin_src javascript
 function comenzarJuego() {
     i = 0 // Seteamos i a 0 otra vez
     puntos = 0 // Colocamos la puntuacion a 0
     preguntasFalladas = [] // Establecemos el array de preguntas que hayamos fallado como vacio ya que al recien empezar no hemos fallado ninguna
     reintento = false; // Establecemos el intento como falso ya que al recien empezar no hemos podido realizar ningun intento extra
 
-    preguntas = listarPreguntas() /* Añadimos las preguntas a la lista dado a la manera en la que funciona
+    /* Añadimos las preguntas a la lista dado a la manera en la que funciona
     mostrarPreguntas cuando se va a la ronda de fallos la lista de preguntas pasa a ser solo de las fallidas y se vuelve a recorrer desde 0 solo
-    con esas así que necesitamos colocar las preguntas otra vez*/
-    preguntas = shuffleArray(preguntas) // Rebarajamos el Array
+    con esas así que necesitamos colocar las preguntas otra vez, con listarPreguntas*/
+    preguntas = shuffleArray(listarPreguntas()) // Rebarajamos el Array
     mostrarPregunta() // Volvemos a ejecutar esta funcion para empezar otra vez
 }
 #+end_src
 ** Mostrar Pregunta 
 Es el núcleo de este juego prácticamente hablando, ya que muestra las preguntas junto con la opción de respuesta e itera por la lista en respuesta al evento de responder hasta que llega al final en el cual
 dependiendo de si hay respuestas que hayas fallado que realizara diversas acciones
-#+begin_src javascript :exports code
+#+begin_src javascript
 function mostrarPregunta() {
   imgFeedback.style.display = "none" // Al comienzo eliminamos el elemento para que no interfiera cuando hagamos click en las preguntas
   if (i >= preguntas.length) {
@@ -315,7 +315,7 @@ footer {
 }
 #+end_src
 ** Select
-El estilo del `<select>` que muestra las preguntas.
+El estilo del =<select>= que muestra las preguntas.
 #+begin_src css
 #opciones select {
   appearance: none;
@@ -346,7 +346,6 @@ El estilo del `<select>` que muestra las preguntas.
 #+end_src
 ** Botones
 Aquí van los estilos de todos los botones (reset, start, irInicio, seguirNormal, reintentarFallidas).
-
 #+begin_src css
 /* Reset */
 #reset {

@@ -33,8 +33,8 @@
 <h2 class="author">Oscar Rodriguez</h2>
 </section>
 <section>
-<section id="slide-org1f1c0d1">
-<h2 id="org1f1c0d1">¿Que es Innova Quiz?</h2>
+<section id="slide-org3e61425">
+<h2 id="org3e61425">¿Que es Innova Quiz?</h2>
 <p>
 <b>Innova Quiz</b> es un pequeño juego de preguntas tipo trivia, desarrollado como proyecto para la asignatura de <b><b>LMSXI</b></b>. Las preguntas están centradas principalmente en temas de 🧮 matemáticas e 🖥️ informática, y tienen un nivel de dificultad accesible. Eso según el README en  <a href="https://github.com/Mestosc/InnovaQuiz">Github</a>
 </p>
@@ -54,44 +54,44 @@ Eso son las características que un usuario más notara
 </section>
 </section>
 <section>
-<section id="slide-orgafe25fb">
-<h2 id="orgafe25fb">Visión de lo que es el juego 🕹️</h2>
+<section id="slide-org3a55b29">
+<h2 id="org3a55b29">Visión de lo que es el juego 🕹️</h2>
 <p>
 Aquí esta el 
 <a href="index.html">Juego</a>
 </p>
 </section>
-<section id="slide-org75dbb20">
-<h3 id="org75dbb20">Imagen de la pantalla de redención</h3>
+<section id="slide-org875e742">
+<h3 id="org875e742">Imagen de la pantalla de redención</h3>
 <p>
 La llamada pantalla de redencion nos da la oportunidad de volver a contestar las preguntas incorrectas una vez más antes de acabar 
 <img src="./pantallaRedencion.png" alt="pantallaRedencion.png" />
 </p>
 </section>
-<section id="slide-orgf13c05d">
-<h3 id="orgf13c05d">Imagen pantalla final</h3>
+<section id="slide-org9d244c7">
+<h3 id="org9d244c7">Imagen pantalla final</h3>
 
-<div id="org904e41d" class="figure">
+<div id="org86935db" class="figure">
 <p><img src="./pantallaFinal.png" alt="pantallaFinal.png" />
 </p>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orge617e05">
-<h2 id="orge617e05">Vamos a hablar de código 👨‍💻</h2>
+<section id="slide-orgd7d38ec">
+<h2 id="orgd7d38ec">Vamos a hablar de código 👨‍💻</h2>
 <p>
 Bien aquí somos programadores y probablemente más cosas aquí queremos código así que vamos a echarle un vistazo a algunas de las funciones más importantes
 </p>
 </section>
-<section id="slide-org49e6a53">
-<h3 id="org49e6a53">Definición de pregunta</h3>
+<section id="slide-org4b4a509">
+<h3 id="org4b4a509">Definición de pregunta</h3>
 <p>
 Defino una plantilla para lo que son las preguntas
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7; font-style: italic;">class</span> Pregunta <span style="color: #f38ba8;">{</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Clase que define las preguntas del cuestionario</span>
+<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7;">class</span> Pregunta <span style="color: #f38ba8;">{</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Clase que define las preguntas del cuestionario</span>
     constructor<span style="color: #fab387;">(</span>pregunta, respuestaCorrecta, posiblesRespuestas, puntos<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
         <span style="color: #fab387;">this</span>.pregunta = pregunta;
         <span style="color: #fab387;">this</span>.respuestaCorrecta = respuestaCorrecta;
@@ -99,128 +99,128 @@ Defino una plantilla para lo que son las preguntas
         <span style="color: #fab387;">this</span>.puntos = puntos;
     <span style="color: #fab387;">}</span>
     compararRespuesta<span style="color: #fab387;">(</span>respuestaUsuario<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
-        <span style="color: #cba6f7; font-style: italic;">return</span> <span style="color: #fab387;">this</span>.respuestaCorrecta === respuestaUsuario;
+        <span style="color: #cba6f7;">return</span> <span style="color: #fab387;">this</span>.respuestaCorrecta === respuestaUsuario;
     <span style="color: #fab387;">}</span>
 <span style="color: #f38ba8;">}</span>
 </code></pre>
 </div>
 </section>
-<section id="slide-org04c664a">
-<h3 id="org04c664a">Comenzar juego</h3>
+<section id="slide-orgff3b0db">
+<h3 id="orgff3b0db">Comenzar juego</h3>
 <p>
 Cada vez que queremos volver a empezar el juego (desde el principio) es necesario establecer una serie de valores y ejecutar la función mostrarPregunta, así que lo abstraigo aquí en lugar de poner todo el rato ese mismo proceso 
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7; font-style: italic;">function</span> <span style="color: #89b4fa;">comenzarJuego</span><span style="color: #f38ba8;">()</span> <span style="color: #f38ba8;">{</span>
-    i = 0 <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Seteamos i a 0 otra vez</span>
-    puntos = 0 <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Colocamos la puntuacion a 0</span>
-    preguntasFalladas = <span style="color: #fab387;">[]</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Establecemos el array de preguntas que hayamos fallado como vacio ya que al recien empezar no hemos fallado ninguna</span>
-    reintento = <span style="color: #fab387;">false</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Establecemos el intento como falso ya que al recien empezar no hemos podido realizar ningun intento extra</span>
+<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7;">function</span> <span style="color: #89b4fa;">comenzarJuego</span><span style="color: #f38ba8;">()</span> <span style="color: #f38ba8;">{</span>
+    i = 0 <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Seteamos i a 0 otra vez</span>
+    puntos = 0 <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Colocamos la puntuacion a 0</span>
+    preguntasFalladas = <span style="color: #fab387;">[]</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Establecemos el array de preguntas que hayamos fallado como vacio ya que al recien empezar no hemos fallado ninguna</span>
+    reintento = <span style="color: #fab387;">false</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Establecemos el intento como falso ya que al recien empezar no hemos podido realizar ningun intento extra</span>
 
-    preguntas = listarPreguntas<span style="color: #fab387;">()</span> <span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">A&#241;adimos las preguntas a la lista dado a la manera en la que funciona</span>
-<span style="color: #6c7086; font-style: italic;">    mostrarPreguntas cuando se va a la ronda de fallos la lista de preguntas pasa a ser solo de las fallidas y se vuelve a recorrer desde 0 solo</span>
-<span style="color: #6c7086; font-style: italic;">    con esas as&#237; que necesitamos colocar las preguntas otra vez</span><span style="color: #6c7086;">*/</span>
-    preguntas = shuffleArray<span style="color: #fab387;">(</span>preguntas<span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Rebarajamos el Array</span>
-    mostrarPregunta<span style="color: #fab387;">()</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Volvemos a ejecutar esta funcion para empezar otra vez</span>
+    <span style="color: #6c7086;">/* </span><span style="color: #6c7086;">A&#241;adimos las preguntas a la lista dado a la manera en la que funciona</span>
+<span style="color: #6c7086;">    mostrarPreguntas cuando se va a la ronda de fallos la lista de preguntas pasa a ser solo de las fallidas y se vuelve a recorrer desde 0 solo</span>
+<span style="color: #6c7086;">    con esas as&#237; que necesitamos colocar las preguntas otra vez, con listarPreguntas</span><span style="color: #6c7086;">*/</span>
+    preguntas = shuffleArray<span style="color: #fab387;">(</span>listarPreguntas<span style="color: #f9e2af;">()</span><span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Rebarajamos el Array</span>
+    mostrarPregunta<span style="color: #fab387;">()</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Volvemos a ejecutar esta funcion para empezar otra vez</span>
 <span style="color: #f38ba8;">}</span>
 </code></pre>
 </div>
 </section>
-<section id="slide-org376fd46">
-<h3 id="org376fd46">Mostrar Pregunta</h3>
+<section id="slide-org40a71d9">
+<h3 id="org40a71d9">Mostrar Pregunta</h3>
 <p>
 Es el núcleo de este juego prácticamente hablando, ya que muestra las preguntas junto con la opción de respuesta e itera por la lista en respuesta al evento de responder hasta que llega al final en el cual
 dependiendo de si hay respuestas que hayas fallado que realizara diversas acciones
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7; font-style: italic;">function</span> <span style="color: #89b4fa;">mostrarPregunta</span><span style="color: #f38ba8;">()</span> <span style="color: #f38ba8;">{</span>
-  imgFeedback.style.display = <span style="color: #a6e3a1;">"none"</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Al comienzo eliminamos el elemento para que no interfiera cuando hagamos click en las preguntas</span>
-  <span style="color: #cba6f7; font-style: italic;">if</span> <span style="color: #fab387;">(</span>i &gt;= preguntas.length<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
-      <span style="color: #cba6f7; font-style: italic;">if</span> <span style="color: #f9e2af;">(</span>preguntasFalladas.length &gt; 0 &amp;&amp; !reintento<span style="color: #f9e2af;">)</span> <span style="color: #f9e2af;">{</span>
+<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7;">function</span> <span style="color: #89b4fa;">mostrarPregunta</span><span style="color: #f38ba8;">()</span> <span style="color: #f38ba8;">{</span>
+  imgFeedback.style.display = <span style="color: #a6e3a1;">"none"</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Al comienzo eliminamos el elemento para que no interfiera cuando hagamos click en las preguntas</span>
+  <span style="color: #cba6f7;">if</span> <span style="color: #fab387;">(</span>i &gt;= preguntas.length<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
+      <span style="color: #cba6f7;">if</span> <span style="color: #f9e2af;">(</span>preguntasFalladas.length &gt; 0 &amp;&amp; !reintento<span style="color: #f9e2af;">)</span> <span style="color: #f9e2af;">{</span>
           reintento = <span style="color: #fab387;">true</span>
           pregunta.textContent = <span style="color: #a6e3a1;">"&#191;Desea reintentar?"</span>
           opciones.innerHTML = 
         <span style="color: #a6e3a1;">'&lt;button id="reintentarFallidas"&gt;&lt;i class="fa-solid fa-repeat"&gt;&lt;/i&gt; Reintentar fallidas&lt;/button&gt;&lt;br&gt; &lt;button id="seguirNormal"&gt;&lt;i class="fa-solid fa-arrow-right"&gt;&lt;/i&gt; Seguir normal&lt;/button&gt;&lt;br&gt;'</span>
           document.getElementById<span style="color: #a6e3a1;">(</span><span style="color: #a6e3a1;">"seguirNormal"</span><span style="color: #a6e3a1;">)</span>.addEventListener<span style="color: #a6e3a1;">(</span><span style="color: #a6e3a1;">"click"</span>, mostrarFaseFinal<span style="color: #a6e3a1;">)</span>
-      <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Reintentar solo fallidas</span>
-      document.getElementById<span style="color: #a6e3a1;">(</span><span style="color: #a6e3a1;">"reintentarFallidas"</span><span style="color: #a6e3a1;">)</span>.addEventListener<span style="color: #a6e3a1;">(</span><span style="color: #a6e3a1;">"click"</span>, <span style="color: #cba6f7; font-style: italic;">function</span><span style="color: #74c7ec;">()</span> <span style="color: #74c7ec;">{</span>
-        preguntas = preguntasFalladas.slice<span style="color: #b4befe;">()</span>;    <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">4. Copiamos solo las fallidas</span>
+      <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Reintentar solo fallidas</span>
+      document.getElementById<span style="color: #a6e3a1;">(</span><span style="color: #a6e3a1;">"reintentarFallidas"</span><span style="color: #a6e3a1;">)</span>.addEventListener<span style="color: #a6e3a1;">(</span><span style="color: #a6e3a1;">"click"</span>, <span style="color: #cba6f7;">function</span><span style="color: #74c7ec;">()</span> <span style="color: #74c7ec;">{</span>
+        preguntas = preguntasFalladas.slice<span style="color: #b4befe;">()</span>;    <span style="color: #6c7086;">// </span><span style="color: #6c7086;">4. Copiamos solo las fallidas</span>
         i = 0;
         mostrarPregunta<span style="color: #b4befe;">()</span>;
       <span style="color: #74c7ec;">}</span><span style="color: #a6e3a1;">)</span>; <span style="color: #f9e2af;">}</span> 
-      <span style="color: #cba6f7; font-style: italic;">else</span> <span style="color: #f9e2af;">{</span>
+      <span style="color: #cba6f7;">else</span> <span style="color: #f9e2af;">{</span>
           mostrarFaseFinal<span style="color: #a6e3a1;">()</span>
       <span style="color: #f9e2af;">}</span>
   <span style="color: #fab387;">}</span>
-  <span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">p</span> = preguntas<span style="color: #fab387;">[</span>i<span style="color: #fab387;">]</span>
+  <span style="color: #cba6f7;">let</span> <span style="color: #cdd6f4;">p</span> = preguntas<span style="color: #fab387;">[</span>i<span style="color: #fab387;">]</span>
   pregunta.textContent = p.pregunta;
-  opciones.innerHTML = anadirPosiblesRespuestas<span style="color: #fab387;">(</span>p.posiblesRespuestas<span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Opciones </span>
+  opciones.innerHTML = anadirPosiblesRespuestas<span style="color: #fab387;">(</span>p.posiblesRespuestas<span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Opciones </span>
   puntosCon.innerHTML = <span style="color: #a6e3a1;">"Puntos: "</span> + puntos
-  <span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">selrespuesta</span> = document.getElementById<span style="color: #fab387;">(</span><span style="color: #a6e3a1;">"selrespuesta"</span><span style="color: #fab387;">)</span>;
-  selrespuesta.addEventListener<span style="color: #fab387;">(</span><span style="color: #a6e3a1;">"change"</span>, <span style="color: #cba6f7; font-style: italic;">function</span> <span style="color: #f9e2af;">()</span> <span style="color: #f9e2af;">{</span>
-    <span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">respuestaUsuario</span> = <span style="color: #fab387;">this</span>.value;
-    <span style="color: #cba6f7; font-style: italic;">if</span> <span style="color: #a6e3a1;">(</span>p.compararRespuesta<span style="color: #74c7ec;">(</span>respuestaUsuario<span style="color: #74c7ec;">)</span><span style="color: #a6e3a1;">)</span> <span style="color: #a6e3a1;">{</span>
+  <span style="color: #cba6f7;">let</span> <span style="color: #cdd6f4;">selrespuesta</span> = document.getElementById<span style="color: #fab387;">(</span><span style="color: #a6e3a1;">"selrespuesta"</span><span style="color: #fab387;">)</span>;
+  selrespuesta.addEventListener<span style="color: #fab387;">(</span><span style="color: #a6e3a1;">"change"</span>, <span style="color: #cba6f7;">function</span> <span style="color: #f9e2af;">()</span> <span style="color: #f9e2af;">{</span>
+    <span style="color: #cba6f7;">let</span> <span style="color: #cdd6f4;">respuestaUsuario</span> = <span style="color: #fab387;">this</span>.value;
+    <span style="color: #cba6f7;">if</span> <span style="color: #a6e3a1;">(</span>p.compararRespuesta<span style="color: #74c7ec;">(</span>respuestaUsuario<span style="color: #74c7ec;">)</span><span style="color: #a6e3a1;">)</span> <span style="color: #a6e3a1;">{</span>
       puntos += p.puntos;
       puntosCon.innerHTML = <span style="color: #a6e3a1;">"Puntos: "</span> + puntos;
       imgFeedback.src = <span style="color: #a6e3a1;">"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSIyNDBweCIgaGVpZ2h0PSIyNDBweCI+PHBhdGggZmlsbD0iIzRjYWY1MCIgZD0iTTQ0LDI0YzAsMTEuMDQ1LTguOTU1LDIwLTIwLDIwUzQsMzUuMDQ1LDQsMjRTMTIuOTU1LDQsMjQsNFM0NCwxMi45NTUsNDQsMjR6Ii8+PHBhdGggZmlsbD0iI2NjZmY5MCIgZD0iTTM0LjYwMiwxNC42MDJMMjEsMjguMTk5bC01LjYwMi01LjU5OGwtMi43OTcsMi43OTdMMjEsMzMuODAxbDE2LjM5OC0xNi40MDJMMzQuNjAyLDE0LjYwMnoiLz48L3N2Zz4="</span>
-    <span style="color: #a6e3a1;">}</span> <span style="color: #cba6f7; font-style: italic;">else</span> <span style="color: #a6e3a1;">{</span>
+    <span style="color: #a6e3a1;">}</span> <span style="color: #cba6f7;">else</span> <span style="color: #a6e3a1;">{</span>
       imgFeedback.src = <span style="color: #a6e3a1;">"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSIyNDBweCIgaGVpZ2h0PSIyNDBweCI+PHBhdGggZmlsbD0iI2Y0NDMzNiIgZD0iTTQ0LDI0YzAsMTEuMDQ1LTguOTU1LDIwLTIwLDIwUzQsMzUuMDQ1LDQsMjRTMTIuOTU1LDQsMjQsNFM0NCwxMi45NTUsNDQsMjR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTI5LjY1NiwxNS41MTZsMi44MjgsMi44MjhsLTE0LjE0LDE0LjE0bC0yLjgyOC0yLjgyOEwyOS42NTYsMTUuNTE2eiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0zMi40ODQsMjkuNjU2bC0yLjgyOCwyLjgyOGwtMTQuMTQtMTQuMTRsMi44MjgtMi44MjhMMzIuNDg0LDI5LjY1NnoiLz48L3N2Zz4="</span>
         preguntasFalladas.push<span style="color: #74c7ec;">(</span>p<span style="color: #74c7ec;">)</span>
     <span style="color: #a6e3a1;">}</span>
-    animarImagenFeedback<span style="color: #a6e3a1;">()</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Llamamos a la funcion que anima la imagen Feedback</span>
+    animarImagenFeedback<span style="color: #a6e3a1;">()</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Llamamos a la funcion que anima la imagen Feedback</span>
     setTimeout<span style="color: #a6e3a1;">(</span><span style="color: #74c7ec;">()</span> =&gt; <span style="color: #74c7ec;">{</span>
       i++;
-      mostrarPregunta<span style="color: #b4befe;">()</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Ejecutamos mostrarPregunta </span>
-    <span style="color: #74c7ec;">}</span>, 1700<span style="color: #a6e3a1;">)</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Espera 1.7 segundos antes de pasar, pensando ponerlo a 1.5</span>
-  <span style="color: #f9e2af;">}</span>, <span style="color: #f9e2af;">{</span>once: <span style="color: #fab387;">true</span><span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span>  <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Ese once true es para que el solo se ejecute el event listener una vez ya que como genero el select de forma dinamica cada vez y lo voy llamando he oido que el selrespuesta podria ir a&#241;adiendo eventListeners a medida que voy iterando as&#237; lo evito </span>
+      mostrarPregunta<span style="color: #b4befe;">()</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Ejecutamos mostrarPregunta </span>
+    <span style="color: #74c7ec;">}</span>, 1700<span style="color: #a6e3a1;">)</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Espera 1.7 segundos antes de pasar, pensando ponerlo a 1.5</span>
+  <span style="color: #f9e2af;">}</span>, <span style="color: #f9e2af;">{</span>once: <span style="color: #fab387;">true</span><span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span>  <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Ese once true es para que el solo se ejecute el event listener una vez ya que como genero el select de forma dinamica cada vez y lo voy llamando he oido que el selrespuesta podria ir a&#241;adiendo eventListeners a medida que voy iterando as&#237; lo evito </span>
 <span style="color: #f38ba8;">}</span>
 </code></pre>
 </div>
 </section>
-<section id="slide-orgf027229">
-<h3 id="orgf027229">Animar Imagen</h3>
+<section id="slide-orgd4c6463">
+<h3 id="orgd4c6463">Animar Imagen</h3>
 <p>
 Permite animar la imagen que nos dice si las cosas están correctas o incorrectas, usando la librería AnimeJS, gracias a Samuel por recomendarmela
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7; font-style: italic;">function</span> <span style="color: #89b4fa;">animarImagenFeedback</span><span style="color: #f38ba8;">()</span> <span style="color: #f38ba8;">{</span>
+<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7;">function</span> <span style="color: #89b4fa;">animarImagenFeedback</span><span style="color: #f38ba8;">()</span> <span style="color: #f38ba8;">{</span>
   imgFeedback.style.display = <span style="color: #a6e3a1;">"block"</span>
-  anime.timeline<span style="color: #fab387;">(</span><span style="color: #f9e2af;">{</span> autoplay: <span style="color: #fab387;">true</span> <span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Establezco un conjunto de animaciones que se llevaran a cabo</span>
+  anime.timeline<span style="color: #fab387;">(</span><span style="color: #f9e2af;">{</span> autoplay: <span style="color: #fab387;">true</span> <span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Establezco un conjunto de animaciones que se llevaran a cabo</span>
     .add<span style="color: #fab387;">(</span><span style="color: #f9e2af;">{</span>
-      targets: imgFeedback, <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Definimos hacia que objeto aplica la animacion</span>
-      opacity: <span style="color: #a6e3a1;">[</span>0, 0.5, 1<span style="color: #a6e3a1;">]</span>, <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Cambiamos la opacidad hasta 1 progresivamente</span>
-      scale: <span style="color: #a6e3a1;">[</span>1, 1.5<span style="color: #a6e3a1;">]</span>, <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Escalamos el elemento a lo que necesitamos</span>
+      targets: imgFeedback, <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Definimos hacia que objeto aplica la animacion</span>
+      opacity: <span style="color: #a6e3a1;">[</span>0, 0.5, 1<span style="color: #a6e3a1;">]</span>, <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Cambiamos la opacidad hasta 1 progresivamente</span>
+      scale: <span style="color: #a6e3a1;">[</span>1, 1.5<span style="color: #a6e3a1;">]</span>, <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Escalamos el elemento a lo que necesitamos</span>
       duration: 900,
       easing: <span style="color: #a6e3a1;">'easeOutCubic'</span>
-    <span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Animacion de aparicion, muestra la aparicion del elemento</span>
+    <span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Animacion de aparicion, muestra la aparicion del elemento</span>
     .add<span style="color: #fab387;">(</span><span style="color: #f9e2af;">{</span>
-      duration: 200    <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">solo tiempo, sin cambiar propiedades para que el elemento este ahi un ratito corto que al menos permita verlo</span>
+      duration: 200    <span style="color: #6c7086;">// </span><span style="color: #6c7086;">solo tiempo, sin cambiar propiedades para que el elemento este ahi un ratito corto que al menos permita verlo</span>
     <span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span>
     .add<span style="color: #fab387;">(</span><span style="color: #f9e2af;">{</span>
-      targets: imgFeedback, <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Definimos hacia que objeto aplica la animacion</span>
-      scale: <span style="color: #a6e3a1;">[</span>1.5, 1<span style="color: #a6e3a1;">]</span>, <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Hacemos esos cambios a la inversa</span>
-      opacity: <span style="color: #a6e3a1;">[</span>1, 0.5, 0<span style="color: #a6e3a1;">]</span>, <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Hacemos que la opacidad cambie desde 1 a cero revirtiendo asi ambas propiedades a su estado orginal</span>
+      targets: imgFeedback, <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Definimos hacia que objeto aplica la animacion</span>
+      scale: <span style="color: #a6e3a1;">[</span>1.5, 1<span style="color: #a6e3a1;">]</span>, <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Hacemos esos cambios a la inversa</span>
+      opacity: <span style="color: #a6e3a1;">[</span>1, 0.5, 0<span style="color: #a6e3a1;">]</span>, <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Hacemos que la opacidad cambie desde 1 a cero revirtiendo asi ambas propiedades a su estado orginal</span>
       duration: 600,
       easing: <span style="color: #a6e3a1;">'easeOutExpo'</span>
-    <span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Desaparicion del elemento</span>
+    <span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Desaparicion del elemento</span>
 <span style="color: #f38ba8;">}</span>
 </code></pre>
 </div>
 </section>
-<section id="slide-org1174b66">
-<h3 id="org1174b66">Mostrar fase final</h3>
+<section id="slide-org52a7812">
+<h3 id="org52a7812">Mostrar fase final</h3>
 <p>
 Muestra la fase final del cuestionario
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7; font-style: italic;">function</span> <span style="color: #89b4fa;">mostrarFaseFinal</span><span style="color: #f38ba8;">()</span> <span style="color: #f38ba8;">{</span>
-    pregunta.textContent = generarMensajeFinal<span style="color: #fab387;">(</span>puntos<span style="color: #fab387;">)</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Generacion del mensaje final usando los puntos que se hayan obtenido</span>
-    opciones.innerHTML = <span style="color: #a6e3a1;">'&lt;button id="irInicio"&gt;&lt;i class="fa-solid fa-house"&gt;&lt;/i&gt; Pantalla de Inicio&lt;/button&gt;&lt;br&gt;&lt;button id="reset"&gt;&lt;i class="fa-solid fa-repeat"&gt;&lt;/i&gt; Volver a jugar&lt;/button&gt;'</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">generamos el boton de reset para poder volver a empezar el juego si as&#237; lo necesitamos</span>
-      document.getElementById<span style="color: #fab387;">(</span><span style="color: #a6e3a1;">"irInicio"</span><span style="color: #fab387;">)</span>.addEventListener<span style="color: #fab387;">(</span><span style="color: #a6e3a1;">"click"</span>,<span style="color: #cba6f7; font-style: italic;">function</span><span style="color: #f9e2af;">()</span> <span style="color: #f9e2af;">{</span>
+<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7;">function</span> <span style="color: #89b4fa;">mostrarFaseFinal</span><span style="color: #f38ba8;">()</span> <span style="color: #f38ba8;">{</span>
+    pregunta.textContent = generarMensajeFinal<span style="color: #fab387;">(</span>puntos<span style="color: #fab387;">)</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Generacion del mensaje final usando los puntos que se hayan obtenido</span>
+    opciones.innerHTML = <span style="color: #a6e3a1;">'&lt;button id="irInicio"&gt;&lt;i class="fa-solid fa-house"&gt;&lt;/i&gt; Pantalla de Inicio&lt;/button&gt;&lt;br&gt;&lt;button id="reset"&gt;&lt;i class="fa-solid fa-repeat"&gt;&lt;/i&gt; Volver a jugar&lt;/button&gt;'</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">generamos el boton de reset para poder volver a empezar el juego si as&#237; lo necesitamos</span>
+      document.getElementById<span style="color: #fab387;">(</span><span style="color: #a6e3a1;">"irInicio"</span><span style="color: #fab387;">)</span>.addEventListener<span style="color: #fab387;">(</span><span style="color: #a6e3a1;">"click"</span>,<span style="color: #cba6f7;">function</span><span style="color: #f9e2af;">()</span> <span style="color: #f9e2af;">{</span>
           document.getElementById<span style="color: #a6e3a1;">(</span><span style="color: #a6e3a1;">"pantalla-incial"</span><span style="color: #a6e3a1;">)</span>.style.display = <span style="color: #a6e3a1;">"block"</span>
           document.getElementById<span style="color: #a6e3a1;">(</span><span style="color: #a6e3a1;">'pantalla-juego'</span><span style="color: #a6e3a1;">)</span>.style.display = <span style="color: #a6e3a1;">"none"</span>
     <span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span>
@@ -229,100 +229,100 @@ Muestra la fase final del cuestionario
 </code></pre>
 </div>
 </section>
-<section id="slide-orgb2717d8">
-<h3 id="orgb2717d8">Generar mensaje final</h3>
+<section id="slide-org83639d3">
+<h3 id="org83639d3">Generar mensaje final</h3>
 <p>
 Usando una puntuación del 1 al 10 genera un mensaje final
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7; font-style: italic;">function</span> <span style="color: #89b4fa;">generarMensajeFinal</span><span style="color: #f38ba8;">(</span><span style="color: #cdd6f4;">puntos</span><span style="color: #f38ba8;">)</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">if</span> <span style="color: #fab387;">(</span>puntos &gt; 8<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
-    <span style="color: #cba6f7; font-style: italic;">return</span> <span style="color: #a6e3a1;">"Tienes unos conocimientos sobresalientes"</span>
-  <span style="color: #fab387;">}</span> <span style="color: #cba6f7; font-style: italic;">else</span> <span style="color: #cba6f7; font-style: italic;">if</span> <span style="color: #fab387;">(</span>puntos &gt;= 7<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
-    <span style="color: #cba6f7; font-style: italic;">return</span> <span style="color: #a6e3a1;">"Tienes unos conocimientos notables"</span>
-  <span style="color: #fab387;">}</span> <span style="color: #cba6f7; font-style: italic;">else</span> <span style="color: #cba6f7; font-style: italic;">if</span> <span style="color: #fab387;">(</span>puntos &gt; 5<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
-    <span style="color: #cba6f7; font-style: italic;">return</span> <span style="color: #a6e3a1;">"Tienes unos conocimientos aprobatorios"</span>
-  <span style="color: #fab387;">}</span> <span style="color: #cba6f7; font-style: italic;">else</span> <span style="color: #cba6f7; font-style: italic;">if</span> <span style="color: #fab387;">(</span>puntos == 5<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
-    <span style="color: #cba6f7; font-style: italic;">return</span> <span style="color: #a6e3a1;">"Tienes unos conocimientos suficientes"</span>
-  <span style="color: #fab387;">}</span> <span style="color: #cba6f7; font-style: italic;">else</span> <span style="color: #fab387;">{</span>
-    <span style="color: #cba6f7; font-style: italic;">return</span> <span style="color: #a6e3a1;">"Has suspendido"</span>
+<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7;">function</span> <span style="color: #89b4fa;">generarMensajeFinal</span><span style="color: #f38ba8;">(</span><span style="color: #cdd6f4;">puntos</span><span style="color: #f38ba8;">)</span> <span style="color: #f38ba8;">{</span>
+  <span style="color: #cba6f7;">if</span> <span style="color: #fab387;">(</span>puntos &gt; 8<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
+    <span style="color: #cba6f7;">return</span> <span style="color: #a6e3a1;">"Tienes unos conocimientos sobresalientes"</span>
+  <span style="color: #fab387;">}</span> <span style="color: #cba6f7;">else</span> <span style="color: #cba6f7;">if</span> <span style="color: #fab387;">(</span>puntos &gt;= 7<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
+    <span style="color: #cba6f7;">return</span> <span style="color: #a6e3a1;">"Tienes unos conocimientos notables"</span>
+  <span style="color: #fab387;">}</span> <span style="color: #cba6f7;">else</span> <span style="color: #cba6f7;">if</span> <span style="color: #fab387;">(</span>puntos &gt; 5<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
+    <span style="color: #cba6f7;">return</span> <span style="color: #a6e3a1;">"Tienes unos conocimientos aprobatorios"</span>
+  <span style="color: #fab387;">}</span> <span style="color: #cba6f7;">else</span> <span style="color: #cba6f7;">if</span> <span style="color: #fab387;">(</span>puntos == 5<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span>
+    <span style="color: #cba6f7;">return</span> <span style="color: #a6e3a1;">"Tienes unos conocimientos suficientes"</span>
+  <span style="color: #fab387;">}</span> <span style="color: #cba6f7;">else</span> <span style="color: #fab387;">{</span>
+    <span style="color: #cba6f7;">return</span> <span style="color: #a6e3a1;">"Has suspendido"</span>
   <span style="color: #fab387;">}</span>
 <span style="color: #f38ba8;">}</span>
 </code></pre>
 </div>
 </section>
-<section id="slide-org0d3c858">
-<h3 id="org0d3c858">Añadir posibles respuestas</h3>
+<section id="slide-orgf1a2da6">
+<h3 id="orgf1a2da6">Añadir posibles respuestas</h3>
 <p>
 Nos crea un elemento <code>select</code> de html que contiene las respuestas
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7; font-style: italic;">function</span> <span style="color: #89b4fa;">anadirPosiblesRespuestas</span><span style="color: #f38ba8;">(</span><span style="color: #cdd6f4;">posiblesRespuestas</span><span style="color: #f38ba8;">)</span> <span style="color: #f38ba8;">{</span>
-  posiblesRespuestas = shuffleArray<span style="color: #fab387;">(</span>posiblesRespuestas<span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Barajamos las respuestas para que no esten siempre en el mismo orden</span>
-  <span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">finalRespuesta</span> = <span style="color: #a6e3a1;">'&lt;select name="opcion_respuesta" id="selrespuesta"&gt;'</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Definimos finalRespuesta como el principio del select</span>
-  finalRespuesta += <span style="color: #a6e3a1;">'&lt;option disabled selected value=""&gt; Elige una opci&#243;n&lt;/option&gt;'</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Le metemos esta opcion para que sea vea coherente en todas</span>
-  <span style="color: #cba6f7; font-style: italic;">for</span> <span style="color: #fab387;">(</span><span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">respuesta</span> <span style="color: #cba6f7; font-style: italic;">of</span> posiblesRespuestas<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Recorremos todas las preguntas</span>
-    finalRespuesta += <span style="color: #a6e3a1;">`&lt;option value="${respuesta}"&gt;${respuesta}&lt;/option&gt;`</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Metemos un elemento option por cada pregunta</span>
+<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7;">function</span> <span style="color: #89b4fa;">anadirPosiblesRespuestas</span><span style="color: #f38ba8;">(</span><span style="color: #cdd6f4;">posiblesRespuestas</span><span style="color: #f38ba8;">)</span> <span style="color: #f38ba8;">{</span>
+  posiblesRespuestas = shuffleArray<span style="color: #fab387;">(</span>posiblesRespuestas<span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Barajamos las respuestas para que no esten siempre en el mismo orden</span>
+  <span style="color: #cba6f7;">let</span> <span style="color: #cdd6f4;">finalRespuesta</span> = <span style="color: #a6e3a1;">'&lt;select name="opcion_respuesta" id="selrespuesta"&gt;'</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Definimos finalRespuesta como el principio del select</span>
+  finalRespuesta += <span style="color: #a6e3a1;">'&lt;option disabled selected value=""&gt; Elige una opci&#243;n&lt;/option&gt;'</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Le metemos esta opcion para que sea vea coherente en todas</span>
+  <span style="color: #cba6f7;">for</span> <span style="color: #fab387;">(</span><span style="color: #cba6f7;">let</span> <span style="color: #cdd6f4;">respuesta</span> <span style="color: #cba6f7;">of</span> posiblesRespuestas<span style="color: #fab387;">)</span> <span style="color: #fab387;">{</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Recorremos todas las preguntas</span>
+    finalRespuesta += <span style="color: #a6e3a1;">`&lt;option value="${respuesta}"&gt;${respuesta}&lt;/option&gt;`</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Metemos un elemento option por cada pregunta</span>
   <span style="color: #fab387;">}</span>
-  finalRespuesta = finalRespuesta + <span style="color: #a6e3a1;">"&lt;/select&gt;"</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Cerramos el select</span>
-  <span style="color: #cba6f7; font-style: italic;">return</span> finalRespuesta <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Devolvemos el resultado</span>
+  finalRespuesta = finalRespuesta + <span style="color: #a6e3a1;">"&lt;/select&gt;"</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Cerramos el select</span>
+  <span style="color: #cba6f7;">return</span> finalRespuesta <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Devolvemos el resultado</span>
 <span style="color: #f38ba8;">}</span>
 </code></pre>
 </div>
 </section>
-<section id="slide-org072c776">
-<h3 id="org072c776">Definición de elementos</h3>
+<section id="slide-orga12b0af">
+<h3 id="orga12b0af">Definición de elementos</h3>
 <p>
 Aquí definimos los elementos que seran necesarios tener para luego poder llevar a cabo el flujo de ejecucion y que todo se vea correctamente a nivel global
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-javascript"   ><code trim><span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Primero definimos las variables que emplearemos en el flujo principal del programa</span>
-<span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">preguntas</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Las preguntas que se van a hacer</span>
-<span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">preguntasFalladas</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Las preguntas que se han fallado durante el Quiz</span>
-<span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">reintento</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Si se ha hecho el reintento</span>
-<span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">puntos</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Puntos</span>
-<span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">i</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Variable que representa el indice de la lista sobre la que vamos a hacer</span>
+<pre  class="src src-javascript"   ><code trim><span style="color: #6c7086;">// </span><span style="color: #6c7086;">Primero definimos las variables que emplearemos en el flujo principal del programa</span>
+<span style="color: #cba6f7;">let</span> <span style="color: #cdd6f4;">preguntas</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Las preguntas que se van a hacer</span>
+<span style="color: #cba6f7;">let</span> <span style="color: #cdd6f4;">preguntasFalladas</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Las preguntas que se han fallado durante el Quiz</span>
+<span style="color: #cba6f7;">let</span> <span style="color: #cdd6f4;">reintento</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Si se ha hecho el reintento</span>
+<span style="color: #cba6f7;">let</span> <span style="color: #cdd6f4;">puntos</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Puntos</span>
+<span style="color: #cba6f7;">let</span> <span style="color: #cdd6f4;">i</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Variable que representa el indice de la lista sobre la que vamos a hacer</span>
 
-<span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">Luego definiremos los elementos sobre los que necesitaremos hacer cosas, como estos elementos siempre van a ser los</span>
-<span style="color: #6c7086; font-style: italic;">mismos en todo el flujo de ejecucion no necesito poder cambiar sus valores de hecho al contrario eso seria contraproducente asi que son una constante</span>
+<span style="color: #6c7086;">/* </span><span style="color: #6c7086;">Luego definiremos los elementos sobre los que necesitaremos hacer cosas, como estos elementos siempre van a ser los</span>
+<span style="color: #6c7086;">mismos en todo el flujo de ejecucion no necesito poder cambiar sus valores de hecho al contrario eso seria contraproducente asi que son una constante</span>
 <span style="color: #6c7086;">*/</span>
-<span style="color: #cba6f7; font-style: italic;">const</span> <span style="color: #cdd6f4;">imgFeedback</span> = document.getElementById<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"feedback-img"</span><span style="color: #f38ba8;">)</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">La imagen que indica si hemos acertado o no</span>
-<span style="color: #cba6f7; font-style: italic;">const</span> <span style="color: #cdd6f4;">pregunta</span> = document.getElementById<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"pregunta"</span><span style="color: #f38ba8;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">El espacio donde se mostrara la pregunta</span>
-<span style="color: #cba6f7; font-style: italic;">const</span> <span style="color: #cdd6f4;">opciones</span> = document.getElementById<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"opciones"</span><span style="color: #f38ba8;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">El espacio donde se muestran las opciones</span>
-<span style="color: #cba6f7; font-style: italic;">const</span> <span style="color: #cdd6f4;">puntosCon</span> = document.getElementById<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"puntos"</span><span style="color: #f38ba8;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Espacio donde se muestran los puntos</span>
+<span style="color: #cba6f7;">const</span> <span style="color: #cdd6f4;">imgFeedback</span> = document.getElementById<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"feedback-img"</span><span style="color: #f38ba8;">)</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086;">La imagen que indica si hemos acertado o no</span>
+<span style="color: #cba6f7;">const</span> <span style="color: #cdd6f4;">pregunta</span> = document.getElementById<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"pregunta"</span><span style="color: #f38ba8;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">El espacio donde se mostrara la pregunta</span>
+<span style="color: #cba6f7;">const</span> <span style="color: #cdd6f4;">opciones</span> = document.getElementById<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"opciones"</span><span style="color: #f38ba8;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">El espacio donde se muestran las opciones</span>
+<span style="color: #cba6f7;">const</span> <span style="color: #cdd6f4;">puntosCon</span> = document.getElementById<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"puntos"</span><span style="color: #f38ba8;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Espacio donde se muestran los puntos</span>
 
 </code></pre>
 </div>
 </section>
-<section id="slide-org9183a61">
-<h3 id="org9183a61">Definición de evento primario</h3>
+<section id="slide-orgce5b8d1">
+<h3 id="orgce5b8d1">Definición de evento primario</h3>
 <p>
 Se lo denomina así por que es el evento que lo inicia todo desde la primera pantalla activando la pantalla con preguntas
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-javascript"   ><code trim>document.getElementById<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"start"</span><span style="color: #f38ba8;">)</span>.addEventListener<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"click"</span>,<span style="color: #cba6f7; font-style: italic;">function</span><span style="color: #fab387;">()</span> <span style="color: #fab387;">{</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">En cuanto le damos al boton de empezar</span>
-  document.getElementById<span style="color: #f9e2af;">(</span><span style="color: #a6e3a1;">"pantalla-incial"</span><span style="color: #f9e2af;">)</span>.style.display = <span style="color: #a6e3a1;">"none"</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Ocultamos la seccion inical</span>
-  document.getElementById<span style="color: #f9e2af;">(</span><span style="color: #a6e3a1;">'pantalla-juego'</span><span style="color: #f9e2af;">)</span>.style.display = <span style="color: #a6e3a1;">"flex"</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Desocultamos seteando la propiedad de la pantalla de juego como flex</span>
-  comenzarJuego<span style="color: #f9e2af;">()</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">A&#241;adimos la funcion que define todos los datos necesarios para ejecutar el juego y luego la funcion mostrarPreguntas</span>
+<pre  class="src src-javascript"   ><code trim>document.getElementById<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"start"</span><span style="color: #f38ba8;">)</span>.addEventListener<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">"click"</span>,<span style="color: #cba6f7;">function</span><span style="color: #fab387;">()</span> <span style="color: #fab387;">{</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">En cuanto le damos al boton de empezar</span>
+  document.getElementById<span style="color: #f9e2af;">(</span><span style="color: #a6e3a1;">"pantalla-incial"</span><span style="color: #f9e2af;">)</span>.style.display = <span style="color: #a6e3a1;">"none"</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Ocultamos la seccion inical</span>
+  document.getElementById<span style="color: #f9e2af;">(</span><span style="color: #a6e3a1;">'pantalla-juego'</span><span style="color: #f9e2af;">)</span>.style.display = <span style="color: #a6e3a1;">"flex"</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">Desocultamos seteando la propiedad de la pantalla de juego como flex</span>
+  comenzarJuego<span style="color: #f9e2af;">()</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086;">A&#241;adimos la funcion que define todos los datos necesarios para ejecutar el juego y luego la funcion mostrarPreguntas</span>
 <span style="color: #fab387;">}</span><span style="color: #f38ba8;">)</span>
 </code></pre>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org6b1d263">
-<h2 id="org6b1d263">Como se estructura 🧩</h2>
+<section id="slide-org1a510b9">
+<h2 id="org1a510b9">Como se estructura 🧩</h2>
 <p>
 Ahora vamos a ver como se estructura el documento HTML que sirve de base para todo esto (al menos a un nivel gráfico), el documento a efectos de lo que nosotros vemos se divide en dos secciones, y luego tenemos el head que yo lo voy a mostrar porque tiene alguna
 cosa interesante.
 </p>
 </section>
-<section id="slide-orgd243e48">
-<h3 id="orgd243e48">Cabecera</h3>
+<section id="slide-org1bdaf90">
+<h3 id="org1bdaf90">Cabecera</h3>
 <p>
 Esta es la cabecera del archivo que normalmente no se vería en el HTML final del juego pero que yo quiero explicar aquí algo rápido algunas cosas
 </p>
@@ -338,8 +338,8 @@ Esta es la cabecera del archivo que normalmente no se vería en el HTML final de
 </code></pre>
 </div>
 </section>
-<section id="slide-orgb865f46">
-<h3 id="orgb865f46">Pantalla inicial</h3>
+<section id="slide-org73614c3">
+<h3 id="org73614c3">Pantalla inicial</h3>
 <p>
 Esta es la pantalla en la que inicia el jugador 
 </p>
@@ -356,8 +356,8 @@ Esta es la pantalla en la que inicia el jugador
 </code></pre>
 </div>
 </section>
-<section id="slide-orgf13b0ea">
-<h3 id="orgf13b0ea">Pantalla de juego</h3>
+<section id="slide-org36990c1">
+<h3 id="org36990c1">Pantalla de juego</h3>
 <p>
 Aquí definimos la pantalla de juego y aunque pueda parecer escueto cuando metemos el javascript esta es la más expresiva
 </p>
@@ -374,14 +374,14 @@ Aquí definimos la pantalla de juego y aunque pueda parecer escueto cuando metem
 </section>
 </section>
 <section>
-<section id="slide-orge32a92d">
-<h2 id="orge32a92d">Dándole estilo 🎨</h2>
+<section id="slide-orgc0c05e1">
+<h2 id="orgc0c05e1">Dándole estilo 🎨</h2>
 <p>
 Aunque todo el HTML y el JavaScript esta muy bien ,no nos gusta mucho si se ve 💩
 </p>
 </section>
-<section id="slide-orga1c7c53">
-<h3 id="orga1c7c53">Fuente tipográfica</h3>
+<section id="slide-org1920f04">
+<h3 id="org1920f04">Fuente tipográfica</h3>
 <p>
 La fuente tipográfica general usada es <b>Roboto</b>.
 </p>
@@ -389,232 +389,231 @@ La fuente tipográfica general usada es <b>Roboto</b>.
 
 <pre  class="src src-css"   ><code trim><span style="color: #f38ba8;">@import</span> url<span style="color: #f38ba8;">(</span><span style="color: #a6e3a1;">'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&amp;display=swap'</span><span style="color: #f38ba8;">)</span>;
  <span style="color: #89b4fa;">*</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">font-family</span>: <span style="color: #a6e3a1;">"Roboto"</span>;
+  <span style="color: #cba6f7;">font-family</span>: <span style="color: #a6e3a1;">"Roboto"</span>;
 <span style="color: #f38ba8;">}</span>
 </code></pre>
 </div>
 </section>
-<section id="slide-org4cdd448">
-<h3 id="org4cdd448">Cuerpo</h3>
+<section id="slide-org772a28a">
+<h3 id="org772a28a">Cuerpo</h3>
 <p>
 Este bloque agrupa el fondo y tipografía global, así como estilos de párrafos, puntos, imágenes fijas y pie de página.
 </p>
 <div class="org-src-container">
 
 <pre  class="src src-css"   ><code trim><span style="color: #89b4fa;">body</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">font-family</span>: <span style="color: #a6e3a1;">'Roboto'</span>, sans-serif;
-  <span style="color: #cba6f7; font-style: italic;">background</span>: radial-gradient<span style="color: #fab387;">(</span>circle at top left,
+  <span style="color: #cba6f7;">font-family</span>: <span style="color: #a6e3a1;">'Roboto'</span>, sans-serif;
+  <span style="color: #cba6f7;">background</span>: radial-gradient<span style="color: #fab387;">(</span>circle at top left,
       <span style="color: #000000; background-color: #ffe37a;">#ffe37a</span> 0%,
-      <span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">amarillo ma&#237;z</span><span style="color: #6c7086;"> */</span>
+      <span style="color: #6c7086;">/* </span><span style="color: #6c7086;">amarillo ma&#237;z</span><span style="color: #6c7086;"> */</span>
       <span style="color: #000000; background-color: #ffc34f;">#ffc34f</span> 25%,
-      <span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">naranja mango</span><span style="color: #6c7086;"> */</span>
+      <span style="color: #6c7086;">/* </span><span style="color: #6c7086;">naranja mango</span><span style="color: #6c7086;"> */</span>
       <span style="color: #000000; background-color: #ff9a32;">#ff9a32</span> 55%,
-      <span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">mandarina jugosa</span><span style="color: #6c7086;"> */</span>
+      <span style="color: #6c7086;">/* </span><span style="color: #6c7086;">mandarina jugosa</span><span style="color: #6c7086;"> */</span>
       <span style="color: #000000; background-color: #ff7035;">#ff7035</span> 80%,
-      <span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">naranja&#8209;rojo suave</span><span style="color: #6c7086;"> */</span>
+      <span style="color: #6c7086;">/* </span><span style="color: #6c7086;">naranja&#8209;rojo suave</span><span style="color: #6c7086;"> */</span>
       <span style="color: #ffffff; background-color: #ff4e4e;">#ff4e4e</span> 100%
-      <span style="color: #6c7086;">/* </span><span style="color: #000000; background-color: #FF7F50;">coral</span><span style="color: #6c7086; font-style: italic;"> vivo</span><span style="color: #6c7086;"> */</span>
+      <span style="color: #6c7086;">/* </span><span style="color: #000000; background-color: #FF7F50;">coral</span><span style="color: #6c7086;"> vivo</span><span style="color: #6c7086;"> */</span>
     <span style="color: #fab387;">)</span>;
-  <span style="color: #cba6f7; font-style: italic;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
-  <span style="color: #cba6f7; font-style: italic;">display</span>: flex;
-  <span style="color: #cba6f7; font-style: italic;">flex-direction</span>: column;
-  <span style="color: #cba6f7; font-style: italic;">align-items</span>: center;
-  <span style="color: #cba6f7; font-style: italic;">justify-content</span>: center;
-  <span style="color: #cba6f7; font-style: italic;">height</span>: 100vh;
-  <span style="color: #cba6f7; font-style: italic;">margin</span>: 0;
+  <span style="color: #cba6f7;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #cba6f7;">display</span>: flex;
+  <span style="color: #cba6f7;">flex-direction</span>: column;
+  <span style="color: #cba6f7;">align-items</span>: center;
+  <span style="color: #cba6f7;">justify-content</span>: center;
+  <span style="color: #cba6f7;">height</span>: 100vh;
+  <span style="color: #cba6f7;">margin</span>: 0;
 <span style="color: #f38ba8;">}</span>
 
-<span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">Puntos destacados</span><span style="color: #6c7086;"> */</span>
+<span style="color: #6c7086;">/* </span><span style="color: #6c7086;">Puntos destacados</span><span style="color: #6c7086;"> */</span>
 <span style="color: #89b4fa;">#puntos</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">font-weight</span>: bold;
-  <span style="color: #cba6f7; font-style: italic;">font-size</span>: 1.5rem;
-  <span style="color: #cba6f7; font-style: italic;">color</span>: <span style="color: #ffffff; background-color: #0b2d4a;">#0b2d4a</span>;
-  <span style="color: #cba6f7; font-style: italic;">user-select</span>: none;
+  <span style="color: #cba6f7;">font-weight</span>: bold;
+  <span style="color: #cba6f7;">font-size</span>: 1.5rem;
+  <span style="color: #cba6f7;">color</span>: <span style="color: #ffffff; background-color: #0b2d4a;">#0b2d4a</span>;
+  <span style="color: #cba6f7;">user-select</span>: none;
 <span style="color: #f38ba8;">}</span>
 
-<span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">P&#225;rrafos con fondo transl&#250;cido</span><span style="color: #6c7086;"> */</span>
+<span style="color: #6c7086;">/* </span><span style="color: #6c7086;">P&#225;rrafos con fondo transl&#250;cido</span><span style="color: #6c7086;"> */</span>
 <span style="color: #89b4fa;">p</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">display</span>: flex;
-  <span style="color: #cba6f7; font-style: italic;">flex-direction</span>: column;
-  <span style="color: #cba6f7; font-style: italic;">font-size</span>: 1.2rem;
-  <span style="color: #cba6f7; font-style: italic;">background</span>: <span style="color: #000000; background-color: #ffffff;">#ffffff10</span>;
-  <span style="color: #cba6f7; font-style: italic;">padding</span>: 10px 20px;
-  <span style="color: #cba6f7; font-style: italic;">border-radius</span>: 10px;
-  <span style="color: #cba6f7; font-style: italic;">box-shadow</span>: 0 2px 4px <span style="color: #ffffff; background-color: #000000;">#00000030</span>;
+  <span style="color: #cba6f7;">display</span>: flex;
+  <span style="color: #cba6f7;">flex-direction</span>: column;
+  <span style="color: #cba6f7;">font-size</span>: 1.2rem;
+  <span style="color: #cba6f7;">background</span>: <span style="color: #000000; background-color: #ffffff;">#ffffff10</span>;
+  <span style="color: #cba6f7;">padding</span>: 10px 20px;
+  <span style="color: #cba6f7;">border-radius</span>: 10px;
+  <span style="color: #cba6f7;">box-shadow</span>: 0 2px 4px <span style="color: #ffffff; background-color: #000000;">#00000030</span>;
 <span style="color: #f38ba8;">}</span>
 
-<span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">Imagen de feedback oculta</span><span style="color: #6c7086;"> */</span>
+<span style="color: #6c7086;">/* </span><span style="color: #6c7086;">Imagen de feedback oculta</span><span style="color: #6c7086;"> */</span>
 <span style="color: #89b4fa;">#feedback-img</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">opacity</span>: 0;
-  <span style="color: #cba6f7; font-style: italic;">position</span>: fixed;
-  <span style="color: #cba6f7; font-style: italic;">margin</span>: 0 auto;
-  <span style="color: #cba6f7; font-style: italic;">align-items</span>: center;
-  <span style="color: #cba6f7; font-style: italic;">justify-content</span>: center;
-  <span style="color: #cba6f7; font-style: italic;">user-select</span>: none;
-  <span style="color: #cba6f7; font-style: italic;">max-height</span>: 150px;
-  <span style="color: #cba6f7; font-style: italic;">z-index</span>: 9999;
+  <span style="color: #cba6f7;">opacity</span>: 0;
+  <span style="color: #cba6f7;">position</span>: fixed;
+  <span style="color: #cba6f7;">margin</span>: 0 auto;
+  <span style="color: #cba6f7;">align-items</span>: center;
+  <span style="color: #cba6f7;">justify-content</span>: center;
+  <span style="color: #cba6f7;">user-select</span>: none;
+  <span style="color: #cba6f7;">max-height</span>: 150px;
+  <span style="color: #cba6f7;">z-index</span>: 9999;
 <span style="color: #f38ba8;">}</span>
 
-<span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">Pie de p&#225;gina fijo</span><span style="color: #6c7086;"> */</span>
+<span style="color: #6c7086;">/* </span><span style="color: #6c7086;">Pie de p&#225;gina fijo</span><span style="color: #6c7086;"> */</span>
 <span style="color: #89b4fa;">footer</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">position</span>: fixed;
-  <span style="color: #cba6f7; font-style: italic;">bottom</span>: 0;
-  <span style="color: #cba6f7; font-style: italic;">width</span>: 100%;
-  <span style="color: #cba6f7; font-style: italic;">text-align</span>: center;
-  <span style="color: #cba6f7; font-style: italic;">margin-bottom</span>: 20px;
-  <span style="color: #cba6f7; font-style: italic;">user-select</span>: none;
+  <span style="color: #cba6f7;">position</span>: fixed;
+  <span style="color: #cba6f7;">bottom</span>: 0;
+  <span style="color: #cba6f7;">width</span>: 100%;
+  <span style="color: #cba6f7;">text-align</span>: center;
+  <span style="color: #cba6f7;">margin-bottom</span>: 20px;
+  <span style="color: #cba6f7;">user-select</span>: none;
 <span style="color: #f38ba8;">}</span>
 </code></pre>
 </div>
 </section>
-<section id="slide-org8cac5d4">
-<h3 id="org8cac5d4">Select</h3>
+<section id="slide-org12b06f2">
+<h3 id="org12b06f2">Select</h3>
 <p>
-El estilo del `&lt;select&gt;` que muestra las preguntas.
+El estilo del <code>&lt;select&gt;</code> que muestra las preguntas.
 </p>
 <div class="org-src-container">
 
 <pre  class="src src-css"   ><code trim><span style="color: #89b4fa;">#opciones select</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">appearance</span>: none;
+  <span style="color: #cba6f7;">appearance</span>: none;
   <span style="color: #cba6f7; font-style: italic;">-webkit-appearance</span>: none;
-  <span style="color: #cba6f7; font-style: italic;">padding</span>: 12px 20px;
-  <span style="color: #cba6f7; font-style: italic;">font-size</span>: 1rem;
-  <span style="color: #cba6f7; font-style: italic;">border-radius</span>: 15px;
-  <span style="color: #cba6f7; font-style: italic;">border</span>: none;
-  <span style="color: #cba6f7; font-style: italic;">background</span>: linear-gradient<span style="color: #fab387;">(</span>135deg,
+  <span style="color: #cba6f7;">padding</span>: 12px 20px;
+  <span style="color: #cba6f7;">font-size</span>: 1rem;
+  <span style="color: #cba6f7;">border-radius</span>: 15px;
+  <span style="color: #cba6f7;">border</span>: none;
+  <span style="color: #cba6f7;">background</span>: linear-gradient<span style="color: #fab387;">(</span>135deg,
       <span style="color: #000000; background-color: #b4e34e;">#b4e34e</span> 0%,
-      <span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">pistacho claro</span><span style="color: #6c7086;">  */</span>
+      <span style="color: #6c7086;">/* </span><span style="color: #6c7086;">pistacho claro</span><span style="color: #6c7086;">  */</span>
       <span style="color: #000000; background-color: #9cd73c;">#9cd73c</span> 40%,
-      <span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">lima medio</span><span style="color: #6c7086;">      */</span>
+      <span style="color: #6c7086;">/* </span><span style="color: #6c7086;">lima medio</span><span style="color: #6c7086;">      */</span>
       <span style="color: #000000; background-color: #78c427;">#78c427</span> 100%
-      <span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">pistacho intenso</span><span style="color: #6c7086;">*/</span>
+      <span style="color: #6c7086;">/* </span><span style="color: #6c7086;">pistacho intenso</span><span style="color: #6c7086;">*/</span>
     <span style="color: #fab387;">)</span>;
-  <span style="color: #cba6f7; font-style: italic;">color</span>: <span style="color: #ffffff; background-color: #333;">#333</span>;
-  <span style="color: #cba6f7; font-style: italic;">margin-bottom</span>: 20px;
-  <span style="color: #cba6f7; font-style: italic;">box-shadow</span>: 0 4px 8px <span style="color: #ffffff; background-color: #000000;">#00000040</span>;
-  <span style="color: #cba6f7; font-style: italic;">transition</span>: all 0.3s ease;
-  <span style="color: #cba6f7; font-style: italic;">width</span>: 250px;
-  <span style="color: #cba6f7; font-style: italic;">text-align</span>: center;
+  <span style="color: #cba6f7;">color</span>: <span style="color: #ffffff; background-color: #333;">#333</span>;
+  <span style="color: #cba6f7;">margin-bottom</span>: 20px;
+  <span style="color: #cba6f7;">box-shadow</span>: 0 4px 8px <span style="color: #ffffff; background-color: #000000;">#00000040</span>;
+  <span style="color: #cba6f7;">transition</span>: all 0.3s ease;
+  <span style="color: #cba6f7;">width</span>: 250px;
+  <span style="color: #cba6f7;">text-align</span>: center;
 <span style="color: #f38ba8;">}</span>
 <span style="color: #89b4fa;">#opciones select:hover</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">transform</span>: scale<span style="color: #fab387;">(</span>1.05<span style="color: #fab387;">)</span>;
-  <span style="color: #cba6f7; font-style: italic;">cursor</span>: pointer;
+  <span style="color: #cba6f7;">transform</span>: scale<span style="color: #fab387;">(</span>1.05<span style="color: #fab387;">)</span>;
+  <span style="color: #cba6f7;">cursor</span>: pointer;
 <span style="color: #f38ba8;">}</span>
 </code></pre>
 </div>
 </section>
-<section id="slide-orgc90e951">
-<h3 id="orgc90e951">Botones</h3>
+<section id="slide-orgfda2947">
+<h3 id="orgfda2947">Botones</h3>
 <p>
 Aquí van los estilos de todos los botones (reset, start, irInicio, seguirNormal, reintentarFallidas).
 </p>
-
 <div class="org-src-container">
 
-<pre  class="src src-css"   ><code trim><span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">Reset</span><span style="color: #6c7086;"> */</span>
+<pre  class="src src-css"   ><code trim><span style="color: #6c7086;">/* </span><span style="color: #6c7086;">Reset</span><span style="color: #6c7086;"> */</span>
 <span style="color: #89b4fa;">#reset</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">appearance</span>: none;
-  <span style="color: #cba6f7; font-style: italic;">padding</span>: 12px 28px;
-  <span style="color: #cba6f7; font-style: italic;">justify-content</span>: center;
-  <span style="color: #cba6f7; font-style: italic;">align-items</span>: center;
-  <span style="color: #cba6f7; font-style: italic;">font-size</span>: 1.1rem;
-  <span style="color: #cba6f7; font-style: italic;">font-family</span>: inherit;
-  <span style="color: #cba6f7; font-style: italic;">font-weight</span>: 600;
-  <span style="color: #cba6f7; font-style: italic;">margin</span>: 10px;
-  <span style="color: #cba6f7; font-style: italic;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
-  <span style="color: #cba6f7; font-style: italic;">background</span>: linear-gradient<span style="color: #fab387;">(</span>135deg, <span style="color: #ffffff; background-color: #ff416c;">#ff416c</span>, <span style="color: #ffffff; background-color: #ff4e50;">#ff4e50</span><span style="color: #fab387;">)</span>;
-  <span style="color: #cba6f7; font-style: italic;">border</span>: none;
-  <span style="color: #cba6f7; font-style: italic;">border-radius</span>: 15px;
-  <span style="color: #cba6f7; font-style: italic;">box-shadow</span>: 0 4px 10px <span style="color: #ffffff; background-color: #000000;">#00000040</span>;
-  <span style="color: #cba6f7; font-style: italic;">transition</span>: transform .2s ease, box-shadow .2s ease;
+  <span style="color: #cba6f7;">appearance</span>: none;
+  <span style="color: #cba6f7;">padding</span>: 12px 28px;
+  <span style="color: #cba6f7;">justify-content</span>: center;
+  <span style="color: #cba6f7;">align-items</span>: center;
+  <span style="color: #cba6f7;">font-size</span>: 1.1rem;
+  <span style="color: #cba6f7;">font-family</span>: inherit;
+  <span style="color: #cba6f7;">font-weight</span>: 600;
+  <span style="color: #cba6f7;">margin</span>: 10px;
+  <span style="color: #cba6f7;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #cba6f7;">background</span>: linear-gradient<span style="color: #fab387;">(</span>135deg, <span style="color: #ffffff; background-color: #ff416c;">#ff416c</span>, <span style="color: #ffffff; background-color: #ff4e50;">#ff4e50</span><span style="color: #fab387;">)</span>;
+  <span style="color: #cba6f7;">border</span>: none;
+  <span style="color: #cba6f7;">border-radius</span>: 15px;
+  <span style="color: #cba6f7;">box-shadow</span>: 0 4px 10px <span style="color: #ffffff; background-color: #000000;">#00000040</span>;
+  <span style="color: #cba6f7;">transition</span>: transform .2s ease, box-shadow .2s ease;
 <span style="color: #f38ba8;">}</span>
 <span style="color: #89b4fa;">#reset:hover</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">transform</span>: scale<span style="color: #fab387;">(</span>1.07<span style="color: #fab387;">)</span>;
-  <span style="color: #cba6f7; font-style: italic;">box-shadow</span>: 0 6px 14px <span style="color: #ffffff; background-color: #000000;">#00000060</span>;
-  <span style="color: #cba6f7; font-style: italic;">cursor</span>: pointer;
+  <span style="color: #cba6f7;">transform</span>: scale<span style="color: #fab387;">(</span>1.07<span style="color: #fab387;">)</span>;
+  <span style="color: #cba6f7;">box-shadow</span>: 0 6px 14px <span style="color: #ffffff; background-color: #000000;">#00000060</span>;
+  <span style="color: #cba6f7;">cursor</span>: pointer;
 <span style="color: #f38ba8;">}</span>
 <span style="color: #89b4fa;">#reset:active</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">transform</span>: scale<span style="color: #fab387;">(</span>.97<span style="color: #fab387;">)</span>;
-  <span style="color: #cba6f7; font-style: italic;">box-shadow</span>: 0 2px 6px <span style="color: #ffffff; background-color: #000000;">#00000060</span> inset;
-  <span style="color: #cba6f7; font-style: italic;">filter</span>: brightness<span style="color: #fab387;">(</span>.9<span style="color: #fab387;">)</span>;
+  <span style="color: #cba6f7;">transform</span>: scale<span style="color: #fab387;">(</span>.97<span style="color: #fab387;">)</span>;
+  <span style="color: #cba6f7;">box-shadow</span>: 0 2px 6px <span style="color: #ffffff; background-color: #000000;">#00000060</span> inset;
+  <span style="color: #cba6f7;">filter</span>: brightness<span style="color: #fab387;">(</span>.9<span style="color: #fab387;">)</span>;
 <span style="color: #f38ba8;">}</span>
 <span style="color: #89b4fa;">#reset:disabled</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">opacity</span>: .4;
-  <span style="color: #cba6f7; font-style: italic;">cursor</span>: not-allowed;
-  <span style="color: #cba6f7; font-style: italic;">transform</span>: none;
+  <span style="color: #cba6f7;">opacity</span>: .4;
+  <span style="color: #cba6f7;">cursor</span>: not-allowed;
+  <span style="color: #cba6f7;">transform</span>: none;
 <span style="color: #f38ba8;">}</span>
 
-<span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">Start e IrInicio</span><span style="color: #6c7086;"> */</span>
+<span style="color: #6c7086;">/* </span><span style="color: #6c7086;">Start e IrInicio</span><span style="color: #6c7086;"> */</span>
 <span style="color: #89b4fa;">#start,</span>
 <span style="color: #89b4fa;">#irInicio</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">appearance</span>: none;
-  <span style="color: #cba6f7; font-style: italic;">padding</span>: 12px 28px;
-  <span style="color: #cba6f7; font-style: italic;">display</span>: block;
-  <span style="color: #cba6f7; font-style: italic;">margin</span>: 0 auto;
-  <span style="color: #cba6f7; font-style: italic;">font-size</span>: 1.1rem;
-  <span style="color: #cba6f7; font-style: italic;">font-family</span>: inherit;
-  <span style="color: #cba6f7; font-style: italic;">font-weight</span>: 600;
-  <span style="color: #cba6f7; font-style: italic;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
-  <span style="color: #cba6f7; font-style: italic;">background</span>: linear-gradient<span style="color: #fab387;">(</span>135deg, <span style="color: #000000; background-color: #32c866;">#32c866</span>, <span style="color: #000000; background-color: #2cb84d;">#2cb84d</span><span style="color: #fab387;">)</span>;
-  <span style="color: #cba6f7; font-style: italic;">border</span>: none;
-  <span style="color: #cba6f7; font-style: italic;">border-radius</span>: 15px;
-  <span style="color: #cba6f7; font-style: italic;">box-shadow</span>: 0 4px 10px <span style="color: #ffffff; background-color: #000000;">#00000040</span>;
-  <span style="color: #cba6f7; font-style: italic;">transition</span>: transform .2s ease, box-shadow .2s ease;
+  <span style="color: #cba6f7;">appearance</span>: none;
+  <span style="color: #cba6f7;">padding</span>: 12px 28px;
+  <span style="color: #cba6f7;">display</span>: block;
+  <span style="color: #cba6f7;">margin</span>: 0 auto;
+  <span style="color: #cba6f7;">font-size</span>: 1.1rem;
+  <span style="color: #cba6f7;">font-family</span>: inherit;
+  <span style="color: #cba6f7;">font-weight</span>: 600;
+  <span style="color: #cba6f7;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #cba6f7;">background</span>: linear-gradient<span style="color: #fab387;">(</span>135deg, <span style="color: #000000; background-color: #32c866;">#32c866</span>, <span style="color: #000000; background-color: #2cb84d;">#2cb84d</span><span style="color: #fab387;">)</span>;
+  <span style="color: #cba6f7;">border</span>: none;
+  <span style="color: #cba6f7;">border-radius</span>: 15px;
+  <span style="color: #cba6f7;">box-shadow</span>: 0 4px 10px <span style="color: #ffffff; background-color: #000000;">#00000040</span>;
+  <span style="color: #cba6f7;">transition</span>: transform .2s ease, box-shadow .2s ease;
 <span style="color: #f38ba8;">}</span>
 <span style="color: #89b4fa;">#start:hover,</span>
 <span style="color: #89b4fa;">#irInicio:hover</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">transform</span>: scale<span style="color: #fab387;">(</span>1.07<span style="color: #fab387;">)</span>;
-  <span style="color: #cba6f7; font-style: italic;">box-shadow</span>: 0 6px 14px <span style="color: #ffffff; background-color: #000000;">#00000060</span>;
-  <span style="color: #cba6f7; font-style: italic;">cursor</span>: pointer;
+  <span style="color: #cba6f7;">transform</span>: scale<span style="color: #fab387;">(</span>1.07<span style="color: #fab387;">)</span>;
+  <span style="color: #cba6f7;">box-shadow</span>: 0 6px 14px <span style="color: #ffffff; background-color: #000000;">#00000060</span>;
+  <span style="color: #cba6f7;">cursor</span>: pointer;
 <span style="color: #f38ba8;">}</span>
 <span style="color: #89b4fa;">#start:active,</span>
 <span style="color: #89b4fa;">#irInicio:active</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">transform</span>: scale<span style="color: #fab387;">(</span>.97<span style="color: #fab387;">)</span>;
-  <span style="color: #cba6f7; font-style: italic;">box-shadow</span>: 0 2px 6px <span style="color: #ffffff; background-color: #000000;">#00000060</span> inset;
-  <span style="color: #cba6f7; font-style: italic;">filter</span>: brightness<span style="color: #fab387;">(</span>.9<span style="color: #fab387;">)</span>;
+  <span style="color: #cba6f7;">transform</span>: scale<span style="color: #fab387;">(</span>.97<span style="color: #fab387;">)</span>;
+  <span style="color: #cba6f7;">box-shadow</span>: 0 2px 6px <span style="color: #ffffff; background-color: #000000;">#00000060</span> inset;
+  <span style="color: #cba6f7;">filter</span>: brightness<span style="color: #fab387;">(</span>.9<span style="color: #fab387;">)</span>;
 <span style="color: #f38ba8;">}</span>
 
-<span style="color: #6c7086;">/* </span><span style="color: #6c7086; font-style: italic;">Seguir normal y reintentar fallidas</span><span style="color: #6c7086;"> */</span>
+<span style="color: #6c7086;">/* </span><span style="color: #6c7086;">Seguir normal y reintentar fallidas</span><span style="color: #6c7086;"> */</span>
 <span style="color: #89b4fa;">#seguirNormal,</span>
 <span style="color: #89b4fa;">#reintentarFallidas</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">appearance</span>: none;
-  <span style="color: #cba6f7; font-style: italic;">padding</span>: 12px 28px;
-  <span style="color: #cba6f7; font-style: italic;">display</span>: block;
-  <span style="color: #cba6f7; font-style: italic;">margin</span>: 10px auto;
-  <span style="color: #cba6f7; font-style: italic;">font-size</span>: 1.1rem;
-  <span style="color: #cba6f7; font-style: italic;">font-family</span>: inherit;
-  <span style="color: #cba6f7; font-style: italic;">font-weight</span>: 600;
-  <span style="color: #cba6f7; font-style: italic;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
-  <span style="color: #cba6f7; font-style: italic;">border</span>: none;
-  <span style="color: #cba6f7; font-style: italic;">border-radius</span>: 15px;
-  <span style="color: #cba6f7; font-style: italic;">box-shadow</span>: 0 4px 10px <span style="color: #ffffff; background-color: #000000;">rgba(0,0,0,0.25)</span>;
-  <span style="color: #cba6f7; font-style: italic;">transition</span>: transform .2s ease, box-shadow .2s ease;
-  <span style="color: #cba6f7; font-style: italic;">cursor</span>: pointer;
+  <span style="color: #cba6f7;">appearance</span>: none;
+  <span style="color: #cba6f7;">padding</span>: 12px 28px;
+  <span style="color: #cba6f7;">display</span>: block;
+  <span style="color: #cba6f7;">margin</span>: 10px auto;
+  <span style="color: #cba6f7;">font-size</span>: 1.1rem;
+  <span style="color: #cba6f7;">font-family</span>: inherit;
+  <span style="color: #cba6f7;">font-weight</span>: 600;
+  <span style="color: #cba6f7;">color</span>: <span style="color: #000000; background-color: #fff;">#fff</span>;
+  <span style="color: #cba6f7;">border</span>: none;
+  <span style="color: #cba6f7;">border-radius</span>: 15px;
+  <span style="color: #cba6f7;">box-shadow</span>: 0 4px 10px <span style="color: #ffffff; background-color: #000000;">rgba(0,0,0,0.25)</span>;
+  <span style="color: #cba6f7;">transition</span>: transform .2s ease, box-shadow .2s ease;
+  <span style="color: #cba6f7;">cursor</span>: pointer;
 <span style="color: #f38ba8;">}</span>
 <span style="color: #89b4fa;">#seguirNormal</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">background</span>: linear-gradient<span style="color: #fab387;">(</span>135deg, <span style="color: #000000; background-color: #32c866;">#32c866</span> 0%, <span style="color: #000000; background-color: #2cb84d;">#2cb84d</span> 100%<span style="color: #fab387;">)</span>;
+  <span style="color: #cba6f7;">background</span>: linear-gradient<span style="color: #fab387;">(</span>135deg, <span style="color: #000000; background-color: #32c866;">#32c866</span> 0%, <span style="color: #000000; background-color: #2cb84d;">#2cb84d</span> 100%<span style="color: #fab387;">)</span>;
 <span style="color: #f38ba8;">}</span>
 <span style="color: #89b4fa;">#reintentarFallidas</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">background</span>: linear-gradient<span style="color: #fab387;">(</span>135deg, <span style="color: #000000; background-color: #ff9a32;">#ff9a32</span> 0%, <span style="color: #ffffff; background-color: #ff4e50;">#ff4e50</span> 100%<span style="color: #fab387;">)</span>;
+  <span style="color: #cba6f7;">background</span>: linear-gradient<span style="color: #fab387;">(</span>135deg, <span style="color: #000000; background-color: #ff9a32;">#ff9a32</span> 0%, <span style="color: #ffffff; background-color: #ff4e50;">#ff4e50</span> 100%<span style="color: #fab387;">)</span>;
 <span style="color: #f38ba8;">}</span>
 <span style="color: #89b4fa;">#seguirNormal:hover,</span>
 <span style="color: #89b4fa;">#reintentarFallidas:hover</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">transform</span>: scale<span style="color: #fab387;">(</span>1.07<span style="color: #fab387;">)</span>;
-  <span style="color: #cba6f7; font-style: italic;">box-shadow</span>: 0 6px 14px <span style="color: #ffffff; background-color: #000000;">rgba(0,0,0,0.4)</span>;
+  <span style="color: #cba6f7;">transform</span>: scale<span style="color: #fab387;">(</span>1.07<span style="color: #fab387;">)</span>;
+  <span style="color: #cba6f7;">box-shadow</span>: 0 6px 14px <span style="color: #ffffff; background-color: #000000;">rgba(0,0,0,0.4)</span>;
 <span style="color: #f38ba8;">}</span>
 <span style="color: #89b4fa;">#seguirNormal:active,</span>
 <span style="color: #89b4fa;">#reintentarFallidas:active</span> <span style="color: #f38ba8;">{</span>
-  <span style="color: #cba6f7; font-style: italic;">transform</span>: scale<span style="color: #fab387;">(</span>.97<span style="color: #fab387;">)</span>;
-  <span style="color: #cba6f7; font-style: italic;">box-shadow</span>: 0 2px 6px <span style="color: #ffffff; background-color: #000000;">rgba(0,0,0,0.4)</span> inset;
-  <span style="color: #cba6f7; font-style: italic;">filter</span>: brightness<span style="color: #fab387;">(</span>.9<span style="color: #fab387;">)</span>;
+  <span style="color: #cba6f7;">transform</span>: scale<span style="color: #fab387;">(</span>.97<span style="color: #fab387;">)</span>;
+  <span style="color: #cba6f7;">box-shadow</span>: 0 2px 6px <span style="color: #ffffff; background-color: #000000;">rgba(0,0,0,0.4)</span> inset;
+  <span style="color: #cba6f7;">filter</span>: brightness<span style="color: #fab387;">(</span>.9<span style="color: #fab387;">)</span>;
 <span style="color: #f38ba8;">}</span>
 </code></pre>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgeaab15f">
-<h2 id="orgeaab15f">Final ❓</h2>
+<section id="slide-org244f01e">
+<h2 id="org244f01e">Final ❓</h2>
 <p>
 Muchas gracias por vuestro tiempo espero que os haya gustado, esta presentación fue hecha gracias a <a href="https://revealjs.com/">RevealJS</a>
 </p>
