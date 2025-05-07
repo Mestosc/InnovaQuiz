@@ -193,7 +193,7 @@ function mostrarPregunta() {
 	  mostrarFaseFinal()
       }
   }
-  let p = preguntas[i]
+  p = preguntas[i]
   pregunta.textContent = p.pregunta;
   opciones.innerHTML = anadirPosiblesRespuestas(p.posiblesRespuestas) // Opciones 
   puntosCon.innerHTML = "Puntos: " + puntos
@@ -237,7 +237,9 @@ let preguntasFalladas; // Las preguntas que se han fallado durante el Quiz
 let reintento; // Si se ha hecho el reintento
 let puntos; // Puntos
 let i; // Variable que representa el indice de la lista sobre la que vamos a hacer
-
+let p;  /* La pregunta que se encuentra en cada momento para acceder a ella más facil cuando operemos dentro de la funcion, 
+la coloco aqui para evitar un error que ma de Uncaught Type o algo así
+*/
 
 /* Luego definiremos los elementos sobre los que necesitaremos hacer cosas, como estos elementos siempre van a ser los
 mismos en todo el flujo de ejecucion no necesito poder cambiar sus valores de hecho al contrario eso seria contraproducente asi que son una constante

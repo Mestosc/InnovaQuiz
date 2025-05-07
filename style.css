@@ -225,11 +225,7 @@ footer {
   filter: brightness(.9);
 }
 
-#reset:disabled {
-  opacity: .4;
-  cursor: not-allowed;
-  transform: none;
-}
+
 
 /* Estilo base común */
 #seguirNormal,
