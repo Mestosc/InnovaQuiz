@@ -40,6 +40,10 @@ Aquí incluyo capturas del juego para que veáis como es
 
 ![Ejemplo con seleccion de respuestas](image-2.png)
 
+![Pantalla redención](pantallaRedencion.png)
+
+![Pantalla final](pantallaFinal.png)
+
 ## 🙌 Agradecimientos
 
 - A los desarrolladores de ✨ **AnimeJS** por esta increíble herramienta.
