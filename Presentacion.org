@@ -15,6 +15,10 @@ Características:
 - Te da la posibilidad de reinventar una vez las preguntas fallidas
 
 Eso son las características que un usuario más notara
+** Apunte 📝
+En primer lugar aviso que esto fue hecho con la ayuda parcial de ChatGPT(salvo en el CSS ahi hizo todo prácticamente, yo hice algunas cosas de la configuración de ciertas imágenes) para resolver algunos problemas, hacer principalmente el CSS y alguna otra cosa para poder centrarme así en la lógica del juego,
+y en corregir diversos detalles para poder centrarme en ciertos detalles más pequeños pero que también son importantes tanto en el propio proyecto como alrededor por ejemplo el README del repositorio de Github, esta presentacion
+y algunos detalles dentro del propio proyecto en relación a como están los botones, etc...
 
 * Visión de lo que es el juego 🕹️
 Aquí esta el 
@@ -23,6 +27,7 @@ Aquí esta el
 La llamada pantalla de redencion nos da la oportunidad de volver a contestar las preguntas incorrectas una vez más antes de acabar 
 [[./pantallaRedencion.png]]
 ** Imagen pantalla final
+Esta es la pantalla a la que se llega al finalizar una partida
 [[./pantallaFinal.png]]
 * Vamos a hablar de código 👨‍💻
 Bien aquí somos programadores y probablemente más cosas aquí queremos código así que vamos a echarle un vistazo a algunas de las funciones más importantes
@@ -40,6 +45,25 @@ class Pregunta { // Clase que define las preguntas del cuestionario
         return this.respuestaCorrecta === respuestaUsuario;
     }
 }
+#+end_src
+** Definición de elementos
+Aquí definimos los elementos que serán necesarios tener para luego poder llevar a cabo el flujo de ejecucion y que todo se vea correctamente a nivel global
+#+begin_src javascript
+// Primero definimos las variables que emplearemos en el flujo principal del programa
+let preguntas; // Las preguntas que se van a hacer
+let preguntasFalladas; // Las preguntas que se han fallado durante el Quiz
+let reintento; // Si se ha hecho el reintento
+let puntos; // Puntos
+let i; // Variable que representa el indice de la lista sobre la que vamos a hacer
+
+/* Luego definiremos los elementos sobre los que necesitaremos hacer cosas, como estos elementos siempre van a ser los
+mismos en todo el flujo de ejecucion no necesito poder cambiar sus valores de hecho al contrario eso seria contraproducente asi que son una constante
+*/
+const imgFeedback = document.getElementById("feedback-img"); // La imagen que indica si hemos acertado o no
+const pregunta = document.getElementById("pregunta") // El espacio donde se mostrara la pregunta
+const opciones = document.getElementById("opciones") // El espacio donde se muestran las opciones
+const puntosCon = document.getElementById("puntos") // Espacio donde se muestran los puntos
+
 #+end_src
 ** Comenzar juego
 Cada vez que queremos volver a empezar el juego (desde el principio) es necesario establecer una serie de valores y ejecutar la función mostrarPregunta, así que lo abstraigo aquí en lugar de poner todo el rato ese mismo proceso 
@@ -171,25 +195,6 @@ function anadirPosiblesRespuestas(posiblesRespuestas) {
   finalRespuesta = finalRespuesta + "</select>" // Cerramos el select
   return finalRespuesta // Devolvemos el resultado
 }
-#+end_src
-** Definición de elementos
-Aquí definimos los elementos que seran necesarios tener para luego poder llevar a cabo el flujo de ejecucion y que todo se vea correctamente a nivel global
-#+begin_src javascript :exports code
-// Primero definimos las variables que emplearemos en el flujo principal del programa
-let preguntas; // Las preguntas que se van a hacer
-let preguntasFalladas; // Las preguntas que se han fallado durante el Quiz
-let reintento; // Si se ha hecho el reintento
-let puntos; // Puntos
-let i; // Variable que representa el indice de la lista sobre la que vamos a hacer
-
-/* Luego definiremos los elementos sobre los que necesitaremos hacer cosas, como estos elementos siempre van a ser los
-mismos en todo el flujo de ejecucion no necesito poder cambiar sus valores de hecho al contrario eso seria contraproducente asi que son una constante
-*/
-const imgFeedback = document.getElementById("feedback-img"); // La imagen que indica si hemos acertado o no
-const pregunta = document.getElementById("pregunta") // El espacio donde se mostrara la pregunta
-const opciones = document.getElementById("opciones") // El espacio donde se muestran las opciones
-const puntosCon = document.getElementById("puntos") // Espacio donde se muestran los puntos
-
 #+end_src
 ** Definición de evento primario
 Se lo denomina así por que es el evento que lo inicia todo desde la primera pantalla activando la pantalla con preguntas
@@ -446,4 +451,4 @@ Aquí van los estilos de todos los botones (reset, start, irInicio, seguirNormal
 }
 #+end_src
 * Final ❓
-Muchas gracias por vuestro tiempo espero que os haya gustado, esta presentación fue hecha gracias a [[https://revealjs.com/][RevealJS]]
+Muchas gracias por vuestro tiempo, y espero que os haya gustado, esta presentación fue hecha gracias a [[https://revealjs.com/][RevealJS]]
