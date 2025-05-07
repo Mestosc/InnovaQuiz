@@ -144,8 +144,9 @@ function generarMensajeFinal(puntos) {
 }
 
 
-function animarImagenFeedback() {
+function animarImagenFeedback(texto) {
   imgFeedback.style.display = "block"
+  imgFeedback.alt = texto
   anime.timeline({ autoplay: true }) // Establezco un conjunto de animaciones que se llevaran a cabo
     .add({
       targets: imgFeedback, // Definimos hacia que objeto aplica la animacion
@@ -200,6 +201,7 @@ function mostrarPregunta() {
   let selrespuesta = document.getElementById("selrespuesta");
   selrespuesta.addEventListener("change", function () {
     let respuestaUsuario = this.value;
+    let texto = p.compararRespuesta(respuestaUsuario) ? "Correcto, la respuesta es correcta" : "Incorrecto, la respuesta no es correcta";
     if (p.compararRespuesta(respuestaUsuario)) {
       puntos += p.puntos;
       puntosCon.innerHTML = "Puntos: " + puntos;
@@ -210,7 +212,7 @@ function mostrarPregunta() {
 	preguntasFalladas.push(p)
 	imgFeedback.alt = "Respuesta incorrecta, has fallado la pregunta"
     }
-    animarImagenFeedback() // Llamamos a la funcion que anima la imagen Feedback
+    animarImagenFeedback(texto) // Llamamos a la funcion que anima la imagen Feedback
     setTimeout(() => {
       i++;
       mostrarPregunta(); // Ejecutamos mostrarPregunta 

@@ -33,8 +33,8 @@
 <h2 class="author">Oscar Rodriguez</h2>
 </section>
 <section>
-<section id="slide-org7f89fb8">
-<h2 id="org7f89fb8">¿Que es Innova Quiz?</h2>
+<section id="slide-orgd45f2f0">
+<h2 id="orgd45f2f0">¿Que es Innova Quiz?</h2>
 <p>
 <b>Innova Quiz</b> es un pequeño juego de preguntas tipo trivia, desarrollado como proyecto para la asignatura de <b><b>LMSXI</b></b>. Las preguntas están centradas principalmente en temas de 🧮 matemáticas e 🖥️ informática, y tienen un nivel de dificultad accesible. Eso según el README en  <a href="https://github.com/Mestosc/InnovaQuiz">Github</a>
 </p>
@@ -52,8 +52,8 @@ Características:
 Eso son las características que un usuario más notara
 </p>
 </section>
-<section id="slide-org312a59a">
-<h3 id="org312a59a">Apunte 📝</h3>
+<section id="slide-org3a82a2b">
+<h3 id="org3a82a2b">Apunte 📝</h3>
 <p>
 En primer lugar aviso que esto fue hecho con la ayuda parcial de ChatGPT(salvo en el CSS ahi hizo todo prácticamente, yo hice algunas cosas de la configuración de ciertas imágenes) para resolver algunos problemas, hacer principalmente el CSS y alguna otra cosa para poder centrarme así en la lógica del juego,
 y en corregir diversos detalles para poder centrarme en ciertos detalles más pequeños pero que también son importantes tanto en el propio proyecto como alrededor por ejemplo el README del repositorio de Github, esta presentacion
@@ -62,22 +62,22 @@ y algunos detalles dentro del propio proyecto en relación a como están los bot
 </section>
 </section>
 <section>
-<section id="slide-org844708f">
-<h2 id="org844708f">Visión de lo que es el juego 🕹️</h2>
+<section id="slide-orgfddf40c">
+<h2 id="orgfddf40c">Visión de lo que es el juego 🕹️</h2>
 <p>
 Aquí esta el 
 <a href="index.html">Juego</a>
 </p>
 </section>
-<section id="slide-orgdeca038">
-<h3 id="orgdeca038">Imagen de la pantalla de redención</h3>
+<section id="slide-orgfc213a2">
+<h3 id="orgfc213a2">Imagen de la pantalla de redención</h3>
 <p>
 La llamada pantalla de redencion nos da la oportunidad de volver a contestar las preguntas incorrectas una vez más antes de acabar 
 <img src="./pantallaRedencion.png" alt="pantallaRedencion.png" />
 </p>
 </section>
-<section id="slide-org34589ff">
-<h3 id="org34589ff">Imagen pantalla final</h3>
+<section id="slide-org8c5a333">
+<h3 id="org8c5a333">Imagen pantalla final</h3>
 <p>
 Esta es la pantalla a la que se llega al finalizar una partida
 <img src="./pantallaFinal.png" alt="pantallaFinal.png" />
@@ -85,14 +85,14 @@ Esta es la pantalla a la que se llega al finalizar una partida
 </section>
 </section>
 <section>
-<section id="slide-org02bc39a">
-<h2 id="org02bc39a">Vamos a hablar de código 👨‍💻</h2>
+<section id="slide-orga165136">
+<h2 id="orga165136">Vamos a hablar de código 👨‍💻</h2>
 <p>
 Bien aquí somos programadores y probablemente más cosas aquí queremos código así que vamos a echarle un vistazo a algunas de las funciones más importantes
 </p>
 </section>
-<section id="slide-org4bc01e2">
-<h3 id="org4bc01e2">Definición de pregunta</h3>
+<section id="slide-orgdd7d3f1">
+<h3 id="orgdd7d3f1">Definición de pregunta</h3>
 <p>
 Defino una plantilla para lo que son las preguntas
 </p>
@@ -112,8 +112,8 @@ Defino una plantilla para lo que son las preguntas
 </code></pre>
 </div>
 </section>
-<section id="slide-org26ecfc7">
-<h3 id="org26ecfc7">Definición de elementos</h3>
+<section id="slide-org2904efe">
+<h3 id="org2904efe">Definición de elementos</h3>
 <p>
 Aquí definimos los elementos que serán necesarios tener para luego poder llevar a cabo el flujo de ejecucion y que todo se vea correctamente a nivel global
 </p>
@@ -139,8 +139,8 @@ Aquí definimos los elementos que serán necesarios tener para luego poder lleva
 </code></pre>
 </div>
 </section>
-<section id="slide-org8c7a30f">
-<h3 id="org8c7a30f">Comenzar juego</h3>
+<section id="slide-org45dce0c">
+<h3 id="org45dce0c">Comenzar juego</h3>
 <p>
 Cada vez que queremos volver a empezar el juego (desde el principio) es necesario establecer una serie de valores y ejecutar la función mostrarPregunta, así que lo abstraigo aquí en lugar de poner todo el rato ese mismo proceso 
 </p>
@@ -161,8 +161,8 @@ Cada vez que queremos volver a empezar el juego (desde el principio) es necesari
 </code></pre>
 </div>
 </section>
-<section id="slide-orgb86379b">
-<h3 id="orgb86379b">Mostrar Pregunta</h3>
+<section id="slide-org72039b9">
+<h3 id="org72039b9">Mostrar Pregunta</h3>
 <p>
 Es el núcleo de este juego prácticamente hablando, ya que muestra las preguntas junto con la opción de respuesta e itera por la lista en respuesta al evento de responder hasta que llega al final en el cual
 dependiendo de si hay respuestas que hayas fallado que realizara diversas acciones
@@ -188,42 +188,44 @@ dependiendo de si hay respuestas que hayas fallado que realizara diversas accion
           mostrarFaseFinal<span style="color: #a6e3a1;">()</span>
       <span style="color: #f9e2af;">}</span>
   <span style="color: #fab387;">}</span>
-  <span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">p</span> = preguntas<span style="color: #fab387;">[</span>i<span style="color: #fab387;">]</span>
+  p = preguntas<span style="color: #fab387;">[</span>i<span style="color: #fab387;">]</span>
   pregunta.textContent = p.pregunta;
   opciones.innerHTML = anadirPosiblesRespuestas<span style="color: #fab387;">(</span>p.posiblesRespuestas<span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Opciones </span>
   puntosCon.innerHTML = <span style="color: #a6e3a1;">"Puntos: "</span> + puntos
   <span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">selrespuesta</span> = document.getElementById<span style="color: #fab387;">(</span><span style="color: #a6e3a1;">"selrespuesta"</span><span style="color: #fab387;">)</span>;
   selrespuesta.addEventListener<span style="color: #fab387;">(</span><span style="color: #a6e3a1;">"change"</span>, <span style="color: #cba6f7; font-style: italic;">function</span> <span style="color: #f9e2af;">()</span> <span style="color: #f9e2af;">{</span>
     <span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">respuestaUsuario</span> = <span style="color: #fab387;">this</span>.value;
+    <span style="color: #cba6f7; font-style: italic;">let</span> <span style="color: #cdd6f4;">texto</span> = p.compararRespuesta<span style="color: #a6e3a1;">(</span>respuestaUsuario<span style="color: #a6e3a1;">)</span> ? <span style="color: #a6e3a1;">"Correcto, la respuesta es correcta"</span> : <span style="color: #a6e3a1;">"Incorrecto, la respuesta no es correcta"</span>;
     <span style="color: #cba6f7; font-style: italic;">if</span> <span style="color: #a6e3a1;">(</span>p.compararRespuesta<span style="color: #74c7ec;">(</span>respuestaUsuario<span style="color: #74c7ec;">)</span><span style="color: #a6e3a1;">)</span> <span style="color: #a6e3a1;">{</span>
       puntos += p.puntos;
       puntosCon.innerHTML = <span style="color: #a6e3a1;">"Puntos: "</span> + puntos;
       imgFeedback.src = <span style="color: #a6e3a1;">"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSIyNDBweCIgaGVpZ2h0PSIyNDBweCI+PHBhdGggZmlsbD0iIzRjYWY1MCIgZD0iTTQ0LDI0YzAsMTEuMDQ1LTguOTU1LDIwLTIwLDIwUzQsMzUuMDQ1LDQsMjRTMTIuOTU1LDQsMjQsNFM0NCwxMi45NTUsNDQsMjR6Ii8+PHBhdGggZmlsbD0iI2NjZmY5MCIgZD0iTTM0LjYwMiwxNC42MDJMMjEsMjguMTk5bC01LjYwMi01LjU5OGwtMi43OTcsMi43OTdMMjEsMzMuODAxbDE2LjM5OC0xNi40MDJMMzQuNjAyLDE0LjYwMnoiLz48L3N2Zz4="</span>
-      imgFeedback.alt = <span style="color: #a6e3a1;">"Respuesta correcta, has acertado la pregunta"</span>
+        imgFeedback.alt = <span style="color: #a6e3a1;">"Respuesta correcta, has acertado la pregunta"</span>
     <span style="color: #a6e3a1;">}</span> <span style="color: #cba6f7; font-style: italic;">else</span> <span style="color: #a6e3a1;">{</span>
       imgFeedback.src = <span style="color: #a6e3a1;">"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSIyNDBweCIgaGVpZ2h0PSIyNDBweCI+PHBhdGggZmlsbD0iI2Y0NDMzNiIgZD0iTTQ0LDI0YzAsMTEuMDQ1LTguOTU1LDIwLTIwLDIwUzQsMzUuMDQ1LDQsMjRTMTIuOTU1LDQsMjQsNFM0NCwxMi45NTUsNDQsMjR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTI5LjY1NiwxNS41MTZsMi44MjgsMi44MjhsLTE0LjE0LDE0LjE0bC0yLjgyOC0yLjgyOEwyOS42NTYsMTUuNTE2eiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0zMi40ODQsMjkuNjU2bC0yLjgyOCwyLjgyOGwtMTQuMTQtMTQuMTRsMi44MjgtMi44MjhMMzIuNDg0LDI5LjY1NnoiLz48L3N2Zz4="</span>
-      preguntasFalladas.push<span style="color: #74c7ec;">(</span>p<span style="color: #74c7ec;">)</span>
-      imgFeedback.alt = <span style="color: #a6e3a1;">"Respuesta incorrecta, has fallado la pregunta"</span>
+        preguntasFalladas.push<span style="color: #74c7ec;">(</span>p<span style="color: #74c7ec;">)</span>
+        imgFeedback.alt = <span style="color: #a6e3a1;">"Respuesta incorrecta, has fallado la pregunta"</span>
     <span style="color: #a6e3a1;">}</span>
-    animarImagenFeedback<span style="color: #a6e3a1;">()</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Llamamos a la funcion que anima la imagen Feedback</span>
+    animarImagenFeedback<span style="color: #a6e3a1;">(</span>texto<span style="color: #a6e3a1;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Llamamos a la funcion que anima la imagen Feedback</span>
     setTimeout<span style="color: #a6e3a1;">(</span><span style="color: #74c7ec;">()</span> =&gt; <span style="color: #74c7ec;">{</span>
       i++;
       mostrarPregunta<span style="color: #b4befe;">()</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Ejecutamos mostrarPregunta </span>
     <span style="color: #74c7ec;">}</span>, 1700<span style="color: #a6e3a1;">)</span>; <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Espera 1.7 segundos antes de pasar, pensando ponerlo a 1.5</span>
-  <span style="color: #f9e2af;">}</span>, <span style="color: #f9e2af;">{</span>once: <span style="color: #fab387;">true</span><span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span>  <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Ese once true es para que el solo se ejecute el event listener una vez ya que como genero el select de forma dinamica cada vez y lo voy llamando he oido que el selrespuesta podria ir a&#241;adiendo eventListeners a medida que voy iterando as&#237; lo evito </span>
+  <span style="color: #f9e2af;">}</span>, <span style="color: #f9e2af;">{</span>once: <span style="color: #fab387;">true</span><span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Ese once true es para que el solo se ejecute el event listener una vez ya que como genero el select de forma dinamica cada vez y lo voy llamando he oido que el selrespuesta podria ir a&#241;adiendo eventListeners a medida que voy iterando as&#237; lo evito </span>
 <span style="color: #f38ba8;">}</span>
 </code></pre>
 </div>
 </section>
-<section id="slide-orgc9bc76d">
-<h3 id="orgc9bc76d">Animar Imagen</h3>
+<section id="slide-org26aaf4f">
+<h3 id="org26aaf4f">Animar Imagen</h3>
 <p>
 Permite animar la imagen que nos dice si las cosas están correctas o incorrectas, usando la librería AnimeJS, gracias a Samuel por recomendarmela
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7; font-style: italic;">function</span> <span style="color: #89b4fa;">animarImagenFeedback</span><span style="color: #f38ba8;">()</span> <span style="color: #f38ba8;">{</span>
+<pre  class="src src-javascript"   ><code trim><span style="color: #cba6f7; font-style: italic;">function</span> <span style="color: #89b4fa;">animarImagenFeedback</span><span style="color: #f38ba8;">(</span><span style="color: #cdd6f4;">texto</span><span style="color: #f38ba8;">)</span> <span style="color: #f38ba8;">{</span>
   imgFeedback.style.display = <span style="color: #a6e3a1;">"block"</span>
+  imgFeedback.alt = texto
   anime.timeline<span style="color: #fab387;">(</span><span style="color: #f9e2af;">{</span> autoplay: <span style="color: #fab387;">true</span> <span style="color: #f9e2af;">}</span><span style="color: #fab387;">)</span> <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Establezco un conjunto de animaciones que se llevaran a cabo</span>
     .add<span style="color: #fab387;">(</span><span style="color: #f9e2af;">{</span>
       targets: imgFeedback, <span style="color: #6c7086;">// </span><span style="color: #6c7086; font-style: italic;">Definimos hacia que objeto aplica la animacion</span>
@@ -246,8 +248,8 @@ Permite animar la imagen que nos dice si las cosas están correctas o incorrecta
 </code></pre>
 </div>
 </section>
-<section id="slide-orgce9f857">
-<h3 id="orgce9f857">Mostrar fase final</h3>
+<section id="slide-org3ec5369">
+<h3 id="org3ec5369">Mostrar fase final</h3>
 <p>
 Muestra la fase final del cuestionario
 </p>
@@ -265,8 +267,8 @@ Muestra la fase final del cuestionario
 </code></pre>
 </div>
 </section>
-<section id="slide-orgb2a0914">
-<h3 id="orgb2a0914">Generar mensaje final</h3>
+<section id="slide-org8ce5cc2">
+<h3 id="org8ce5cc2">Generar mensaje final</h3>
 <p>
 Usando una puntuación del 1 al 10 genera un mensaje final
 </p>
@@ -288,8 +290,8 @@ Usando una puntuación del 1 al 10 genera un mensaje final
 </code></pre>
 </div>
 </section>
-<section id="slide-org71164a6">
-<h3 id="org71164a6">Añadir posibles respuestas</h3>
+<section id="slide-org3afde1c">
+<h3 id="org3afde1c">Añadir posibles respuestas</h3>
 <p>
 Nos crea un elemento <code>select</code> de html que contiene las respuestas
 </p>
@@ -308,8 +310,8 @@ Nos crea un elemento <code>select</code> de html que contiene las respuestas
 </code></pre>
 </div>
 </section>
-<section id="slide-org6247466">
-<h3 id="org6247466">Definición de evento primario</h3>
+<section id="slide-org11a53e9">
+<h3 id="org11a53e9">Definición de evento primario</h3>
 <p>
 Se lo denomina así por que es el evento que lo inicia todo desde la primera pantalla activando la pantalla con preguntas
 </p>
@@ -325,15 +327,15 @@ Se lo denomina así por que es el evento que lo inicia todo desde la primera pan
 </section>
 </section>
 <section>
-<section id="slide-org0b387ed">
-<h2 id="org0b387ed">Como se estructura 🧩</h2>
+<section id="slide-org76f8dfa">
+<h2 id="org76f8dfa">Como se estructura 🧩</h2>
 <p>
 Ahora vamos a ver como se estructura el documento HTML que sirve de base para todo esto (al menos a un nivel gráfico), el documento a efectos de lo que nosotros vemos se divide en dos secciones, y luego tenemos el head que yo lo voy a mostrar porque tiene alguna
 cosa interesante.
 </p>
 </section>
-<section id="slide-org65569a1">
-<h3 id="org65569a1">Cabecera</h3>
+<section id="slide-orgbc3c107">
+<h3 id="orgbc3c107">Cabecera</h3>
 <p>
 Esta es la cabecera del archivo que normalmente no se vería en el HTML final del juego pero que yo quiero explicar aquí algo rápido algunas cosas
 </p>
@@ -349,8 +351,8 @@ Esta es la cabecera del archivo que normalmente no se vería en el HTML final de
 </code></pre>
 </div>
 </section>
-<section id="slide-org7ce5613">
-<h3 id="org7ce5613">Pantalla inicial</h3>
+<section id="slide-orgd21aa1c">
+<h3 id="orgd21aa1c">Pantalla inicial</h3>
 <p>
 Esta es la pantalla en la que inicia el jugador 
 </p>
@@ -367,8 +369,8 @@ Esta es la pantalla en la que inicia el jugador
 </code></pre>
 </div>
 </section>
-<section id="slide-org36f1b86">
-<h3 id="org36f1b86">Pantalla de juego</h3>
+<section id="slide-org853085e">
+<h3 id="org853085e">Pantalla de juego</h3>
 <p>
 Aquí definimos la pantalla de juego y aunque pueda parecer escueto cuando metemos el javascript esta es la más expresiva
 </p>
@@ -385,14 +387,14 @@ Aquí definimos la pantalla de juego y aunque pueda parecer escueto cuando metem
 </section>
 </section>
 <section>
-<section id="slide-org166a278">
-<h2 id="org166a278">Dándole estilo 🎨</h2>
+<section id="slide-orgaf55eaa">
+<h2 id="orgaf55eaa">Dándole estilo 🎨</h2>
 <p>
 Aunque todo el HTML y el JavaScript esta muy bien ,no nos gusta mucho si se ve 💩
 </p>
 </section>
-<section id="slide-orgabb67d7">
-<h3 id="orgabb67d7">Fuente tipográfica</h3>
+<section id="slide-org0ad2080">
+<h3 id="org0ad2080">Fuente tipográfica</h3>
 <p>
 La fuente tipográfica general usada es <b>Roboto</b>.
 </p>
@@ -405,8 +407,8 @@ La fuente tipográfica general usada es <b>Roboto</b>.
 </code></pre>
 </div>
 </section>
-<section id="slide-orgd9c3b4a">
-<h3 id="orgd9c3b4a">Cuerpo</h3>
+<section id="slide-org0d07164">
+<h3 id="org0d07164">Cuerpo</h3>
 <p>
 Este bloque agrupa el fondo y tipografía global, así como estilos de párrafos, puntos, imágenes fijas y pie de página.
 </p>
@@ -478,8 +480,8 @@ Este bloque agrupa el fondo y tipografía global, así como estilos de párrafos
 </code></pre>
 </div>
 </section>
-<section id="slide-org63ab8a8">
-<h3 id="org63ab8a8">Select</h3>
+<section id="slide-org314fc64">
+<h3 id="org314fc64">Select</h3>
 <p>
 El estilo del <code>select</code> que muestra las preguntas.
 </p>
@@ -514,8 +516,8 @@ El estilo del <code>select</code> que muestra las preguntas.
 </code></pre>
 </div>
 </section>
-<section id="slide-orgc37a0bf">
-<h3 id="orgc37a0bf">Botones</h3>
+<section id="slide-org88f6f18">
+<h3 id="org88f6f18">Botones</h3>
 <p>
 Aquí van los estilos de todos los botones (reset, start, irInicio, seguirNormal, reintentarFallidas).
 </p>
@@ -623,8 +625,8 @@ Aquí van los estilos de todos los botones (reset, start, irInicio, seguirNormal
 </section>
 </section>
 <section>
-<section id="slide-org7d6ec6f">
-<h2 id="org7d6ec6f">Final ❓</h2>
+<section id="slide-org510277e">
+<h2 id="org510277e">Final ❓</h2>
 <p>
 Muchas gracias por vuestro tiempo, y espero que os haya gustado, esta presentación fue hecha gracias a <a href="https://revealjs.com/">RevealJS</a>
 </p>
